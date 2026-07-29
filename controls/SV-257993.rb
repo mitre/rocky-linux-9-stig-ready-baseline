@@ -1,0 +1,40 @@
+control 'SV-257993' do
+  title 'RHEL 9 must not allow users to override SSH environment variables.'
+  desc 'SSH environment options potentially allow users to bypass access
+restriction in some configurations.'
+  desc 'check', %q(Verify that unattended or automatic logon via SSH is disabled with the following command:
+
+$ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs sudo grep -iH '^\s*permituserenvironment'
+
+PermitUserEnvironment no
+
+If "PermitUserEnvironment" is set to "yes", is missing completely, or is commented out, this is a finding.
+
+If the required value is not set, this is a finding.)
+  desc 'fix', 'Configure the RHEL 9 SSH daemon to not allow unattended or automatic logon to the system by editing the following line in the "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d":
+
+PermitUserEnvironment no
+
+Restart the SSH daemon  for the setting to take effect:
+
+$ sudo systemctl restart sshd.service'
+  impact 0.5
+  tag severity: 'medium'
+  tag gtitle: 'SRG-OS-000480-GPOS-00229'
+  tag gid: 'V-257993'
+  tag rid: 'SV-257993r1045049_rule'
+  tag stig_id: 'RHEL-09-255085'
+  tag fix_id: 'F-61658r1045048_fix'
+  tag cci: ['CCI-000366']
+  tag nist: ['CM-6 b']
+  tag 'host'
+  tag 'container-conditional'
+
+  only_if('This requirement is Not Applicable inside a container, the containers host manages the containers filesystems') {
+    !%w[docker podman kubepods lxc].include?(virtualization.system) || file('/etc/ssh/sshd_config').exist?
+  }
+
+  describe sshd_config do
+    its('PermitUserEnvironment') { should eq 'no' }
+  end
+end
