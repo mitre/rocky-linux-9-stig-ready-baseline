@@ -28,36 +28,29 @@ If the installed version of RHEL 9 is not supported, this is a finding.'
 
   release = os.release
 
-  # Note that versions 9.0 and 9.2 of RHEL9 are within the EUS window at
-  # time of writing.
-
-  # 9.1 is not a EUS-supported release and is no longer officially supported
-  # by Red Hat. The date given for the expiration for 9.1 is based on the
-  # RHEL9 Planning Guide diagram found on Red Hat's Life Cycle page:
-  # https://access.redhat.com/support/policy/updates/errata/#Life_Cycle_Dates
-
-  EOMS_DATE = {
-    /^9\.0/ => 'May 31, 2024',
-    /^9\.1/ => 'April 1, 2023',
-    /^9\.2/ => 'May 31, 2025',
-    /^9\.3/ => 'April 30, 2024',
-    /^9\.4/ => 'May 31, 2026',
-    /^9\.5/ => 'April 30, 2025',
-    /^9\.6/ => 'May 31, 2027',
-    /^9\.7/ => 'April 30, 2026',
-    /^9\.8/ => 'May 31, 2028',
-    /^9\.9/ => 'April 30, 2027',
-    /^9\.10/ => 'May 31, 2032'
+  # Rocky supports only the current minor release before the final 9.10
+  # maintenance release. Dates are from Rocky's release-version policy:
+  # https://wiki.rockylinux.org/rocky/version/
+  ROCKY_9_MINOR_EOL = {
+    /^9\.0/ => 'November 26, 2022',
+    /^9\.1/ => 'May 16, 2023',
+    /^9\.2/ => 'November 20, 2023',
+    /^9\.3/ => 'May 9, 2024',
+    /^9\.4/ => 'November 19, 2024',
+    /^9\.5/ => 'June 4, 2025',
+    /^9\.6/ => 'December 1, 2025',
+    /^9\.7/ => 'May 28, 2026',
+    /^9\.8/ => 'November 30, 2026'
   }.find { |k, _v| k.match(release) }&.last
 
   describe "The release \"#{release}\"" do
-    if EOMS_DATE.nil?
+    if ROCKY_9_MINOR_EOL.nil?
       it 'is a supported release' do
-        expect(EOMS_DATE).not_to be_nil, "Release '#{release}' has no specified support window"
+        expect(ROCKY_9_MINOR_EOL).not_to be_nil, "Rocky Linux release '#{release}' has no specified support window"
       end
     else
       it 'is still within the support window' do
-        expect(Date.today).to be <= Date.parse(EOMS_DATE)
+        expect(Date.today).to be <= Date.parse(ROCKY_9_MINOR_EOL)
       end
     end
   end

@@ -792,17 +792,16 @@ inputs:
 
   # SV-257819
   - name: rpm_gpg_file
-    description: Red Hat uses GPG keys labels defined in file
+    description: Rocky Linux package-signing key file
     type: String
-    value: /etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
+    value: /etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
 
   # SV-257819
   - name: rpm_gpg_keys
-    description: Red Hat uses GPG keys labels with matching fingerprints
+    description: Rocky Linux package-signing key labels with matching fingerprints
     type: Hash
     value:
-      "release key 2": "567E 347A D004 4ADE 55BA  8A5F 199E 2F91 FD43 1D51"
-      "auxiliary key": "7E46 2425 8C40 6535 D56D  6F13 5054 E4A4 5A63 40B3"
+      "Rocky Enterprise Software Foundation - Release key 2022": "21CB 256A E16F C54C 6E65 2949 702D 426D 350D 275D"
 
   # SV-258077
   - name: stop_idle_session_sec

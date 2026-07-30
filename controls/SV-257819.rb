@@ -66,13 +66,17 @@ Using the steps listed in the Check Text, confirm the newly imported keys show a
     it { should exist }
   end
   rpm_gpg_keys.each do |k, v|
-    describe command('rpm -q --queryformat "%{SUMMARY}\\n" gpg-pubkey | grep -i "red hat"') do
+    describe command('rpm -q --queryformat "%{SUMMARY}\\n" gpg-pubkey') do
       its('stdout') { should include k.to_s }
     end
     next unless file(rpm_gpg_file).exist?
 
-    describe command("gpg -q --keyid-format short --with-fingerprint #{rpm_gpg_file}") do
-      its('stdout') { should include v }
+    describe "The fingerprint for #{k}" do
+      subject { command("gpg -q --keyid-format short --with-fingerprint #{rpm_gpg_file}").stdout.gsub(/\s+/, '') }
+
+      it 'matches the Rocky Linux package-signing key' do
+        expect(subject).to include(v.gsub(/\s+/, ''))
+      end
     end
   end
 end

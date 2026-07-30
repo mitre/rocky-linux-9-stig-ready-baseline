@@ -27,6 +27,10 @@ $ sudo dnf install subscription-manager'
   tag 'host'
   tag 'container'
 
+  only_if('This control is Not Applicable on Rocky Linux because it does not use Red Hat Subscription Manager.', impact: 0.0) do
+    os.name != 'rocky'
+  end
+
   describe package('subscription-manager') do
     it { should be_installed }
   end
