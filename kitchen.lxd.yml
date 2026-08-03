@@ -25,7 +25,6 @@ provisioner:
 verifier:
   input_files:
     - kitchen.inputs.yml
-    - rocky9.inputs.yml
 
 suites:
   - name: vanilla
