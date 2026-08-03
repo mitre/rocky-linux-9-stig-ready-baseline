@@ -22,6 +22,12 @@ provisioner:
   requirements_collection_path: spec/ansible/roles/requirements.yml
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
 
+verifier:
+  input_files:
+    - kitchen.inputs.yml
+    - rocky9.inputs.yml
+    - rocky9.lxd.inputs.yml
+
 suites:
   - name: vanilla
     provisioner:
@@ -33,7 +39,7 @@ suites:
 
   - name: hardened
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-hardened.yml
+      playbook: spec/ansible/roles/ansible-role-rhel-hardened-lxd.yml
     driver:
       tags:
         Name: Hardened-<%= ENV['USER'] %>
@@ -42,11 +48,12 @@ suites:
 lifecycle:
   pre_converge:
     - remote: |
+        set -euo pipefail
         echo "+++ Updating DNF Packages +++"
         sudo dnf -y update --nogpgcheck --nobest
         echo ""
         echo "+++ Installing needed packages for workflow and utility +++\n\n"
-        sudo dnf -y install --nogpgcheck bc bind-utils redhat-lsb-core vim git wget gcc openssl-devel libffi-devel bzip2-devel
+        sudo dnf -y install --nogpgcheck bc bind-utils vim git wget gcc openssl-devel libffi-devel bzip2-devel
         echo ""
         echo "+++ Installing Python 3.9 and Ansible +++\n\n"
         export PATH=/usr/local/bin:$PATH
