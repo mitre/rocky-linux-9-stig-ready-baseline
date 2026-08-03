@@ -18,6 +18,8 @@
     rhel_09_212020: false
     rhel_09_212025: false
     rhel_09_212030: false
+    # The Rocky LXD cloud image has no kdump service to disable.
+    rhel_09_213115: false
     rhel_09_251040: false # task is busted as of release 1.1.0
     rhel_09_652025: false # task is busted as of release 1.1.0
     rhel_09_653030: false
