@@ -51,7 +51,7 @@ lifecycle:
         sudo dnf -y update --nogpgcheck --nobest
         echo ""
         echo "+++ Installing needed packages for workflow and utility +++\n\n"
-        sudo dnf -y install --nogpgcheck bc bind-utils vim git wget gcc openssl-devel libffi-devel bzip2-devel
+        sudo dnf -y install --nogpgcheck bc bind-utils vim git wget gcc openssl-devel libffi-devel bzip2-devel selinux-policy-targeted policycoreutils
         echo ""
         echo "+++ Installing Python 3.9 and Ansible +++\n\n"
         export PATH=/usr/local/bin:$PATH
