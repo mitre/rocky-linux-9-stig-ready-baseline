@@ -1,4 +1,4 @@
-name: RHEL 9 LXD VM Testing Matrix
+name: Rocky Linux 9 LXD VM Testing Matrix
 
 on:
   pull_request:
@@ -21,16 +21,17 @@ jobs:
       CHEF_LICENSE: accept-silent
       CHEF_LICENSE_KEY: ${{ secrets.SAF_CHEF_LICENSE_KEY }}
       KITCHEN_LOCAL_YAML: kitchen.lxd.yml
-      PLATFORM: "rhel-9"
+      PLATFORM: "rocky-9"
       LC_ALL: "en_US.UTF-8"
-      LXD_VM_USERNAME: "rhel"
+      LXD_IMAGE: "images:rockylinux/9/cloud"
+      LXD_VM_USERNAME: "rocky"
     strategy:
       matrix:
         suite: ["vanilla", "hardened"]
       fail-fast: false
     steps:
       - name: Install host packages
-        run: sudo apt-get update && sudo apt-get -y install jq qemu-utils gdisk
+        run: sudo apt-get update && sudo apt-get -y install jq
 
       - name: Check out repository
         uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
@@ -53,51 +54,44 @@ jobs:
           bundle install
           bundle exec cinc-auditor vendor . --overwrite
 
-      - name: Prepare SSH private key for Kitchen
-        env:
-          KITCHEN_SSH_PRIVATE_KEY: ${{ secrets.KITCHEN_SSH_PRIVATE_KEY }}
+      - name: Generate ephemeral SSH key for Kitchen
         run: |
           set -euo pipefail
-          KEY="$RUNNER_TEMP/kitchen_key"
-          printf '%s\n' "$KITCHEN_SSH_PRIVATE_KEY" > "$KEY"
+          KEY="$RUNNER_TEMP/kitchen_ed25519"
+          ssh-keygen -t ed25519 -a 64 -N "" -f "$KEY" -C "kitchen-ci-$(date -u +%Y%m%dT%H%M%SZ)" </dev/null
           chmod 600 "$KEY"
-          echo "KITCHEN_SSH_KEY=$KEY" >> "$GITHUB_ENV"
+          chmod 644 "$KEY.pub"
+          {
+            echo "KITCHEN_SSH_KEY=$KEY"
+            echo "KITCHEN_SSH_PUBKEY=$(cat "$KEY.pub")"
+          } >> "$GITHUB_ENV"
 
-      - name: Download RHEL QCOW2 via Image Builder
-        env:
-          RH_SSO_CLIENT_ID: ${{ secrets.RH_SSO_CLIENT_ID }}
-          RH_SSO_CLIENT_SECRET: ${{ secrets.RH_SSO_CLIENT_SECRET }}
-          RH_COMPOSE_ID: ${{ secrets.RH_COMPOSE_ID }}
-        run: ./.github/scripts/fetch-rhel-image.sh
-
-      - name: Repackage QCOW2 with grown disk and fixed GPT for LXD
-        run: |
-          set -euo pipefail
-          qemu-img convert -O raw rhel-image.qcow2 disk.raw
-          qemu-img resize disk.raw +16M
-          sgdisk -e disk.raw
-          qemu-img convert -O qcow2 disk.raw disk.qcow2
-
-      - name: Import image into LXD
-        run: |
-          set -euo pipefail
-          cat > metadata.yaml <<EOF
-          architecture: x86_64
-          creation_date: $(date +%s)
-          properties:
-            description: "RHEL 9 Image Builder QCOW2"
-            os: "rhel"
-            release: "9"
-          type: virtual-machine
-          EOF
-          tar -cf metadata.tar metadata.yaml
-          lxc image import metadata.tar disk.qcow2 --alias rhel9-imagebuilder
-
-      - name: Launch and wait for VM
+      - name: Launch Rocky Linux VM with cloud-init enabling SSH
         run: |
           set -euo pipefail
           NAME="${{ matrix.suite }}-${{ env.PLATFORM }}"
-          lxc launch rhel9-imagebuilder "$NAME" --vm -c limits.memory=4GiB
+
+          cat > user-data.yaml <<EOF
+          #cloud-config
+          package_update: true
+          packages:
+            - openssh-server
+          users:
+            - name: ${LXD_VM_USERNAME}
+              groups: [wheel]
+              sudo: ALL=(ALL) NOPASSWD:ALL
+              shell: /bin/bash
+              ssh_authorized_keys:
+                - ${KITCHEN_SSH_PUBKEY}
+          ssh_pwauth: false
+          EOF
+
+          lxc launch "$LXD_IMAGE" "$NAME" --vm -c limits.memory=4GiB -c cloud-init.user-data="$(cat user-data.yaml)"
+
+      - name: Wait for VM
+        run: |
+          set -euo pipefail
+          NAME="${{ matrix.suite }}-${{ env.PLATFORM }}"
           for i in $(seq 1 30); do
             lxc list --format=csv | grep -q "$NAME.*RUNNING" && break
             sleep 10
@@ -162,4 +156,4 @@ jobs:
 
       - name: Cleanup SSH private key
         if: always()
-        run: rm -f "$RUNNER_TEMP/kitchen_key"
+        run: rm -f "$RUNNER_TEMP/kitchen_ed25519" "$RUNNER_TEMP/kitchen_ed25519.pub"
