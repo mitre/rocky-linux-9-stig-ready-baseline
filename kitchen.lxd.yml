@@ -26,7 +26,6 @@ verifier:
   input_files:
     - kitchen.inputs.yml
     - rocky9.inputs.yml
-    - rocky9.lxd.inputs.yml
 
 suites:
   - name: vanilla
