@@ -12,6 +12,10 @@
     rhel9stig_use_aide: false # task is busted https://github.com/ansible-lockdown/RHEL9-STIG/issues/161
     # An LXD cloud VM has no guest-managed GRUB configuration.
     system_is_ec2: false
+    # The ephemeral CI account authenticates with an SSH key and intentionally
+    # has a locked password; the role's password-access safety assertion is
+    # therefore not applicable.
+    rhel_09_010380: false
     rhel_09_212010: false
     rhel_09_212020: false
     rhel_09_212025: false
