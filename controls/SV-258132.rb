@@ -36,19 +36,12 @@ $ sudo systemctl restart sssd.service'
   tag nist: ['IA-5 (2) (c)', 'IA-5 (2) (a) (2)']
   tag 'host'
 
-  only_if('This control is Not Applicable to containers', impact: 0.0) {
-    !%w[docker podman kubepods lxc].include?(virtualization.system)
+  only_if('This control is Not Applicable to containers, when smart-card authentication is disabled, or when an approved alternate multifactor authentication method is configured.', impact: 0.0) {
+    !%w[docker podman kubepods lxc].include?(virtualization.system) && input('smart_card_enabled') && input('alternate_mfa_method') == ''
   }
 
-  if input('alternate_mfa_method') == ''
-    describe file('/etc/sssd/sssd.conf') do
-      it { should exist }
-      its('content') { should match(/^\s*\[certmap.*\]\s*$/) }
-    end
-  else
-    impact 0.0
-    describe 'N/A' do
-      skip 'The system is using an approved alternative MFA method; this control is Not Applicable.'
-    end
+  describe file('/etc/sssd/sssd.conf') do
+    it { should exist }
+    its('content') { should match(/^\s*\[certmap.*\]\s*$/) }
   end
 end

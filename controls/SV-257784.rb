@@ -40,8 +40,16 @@ $ sudo systemctl daemon-reload'
     !%w[docker podman kubepods lxc].include?(virtualization.system)
   }
 
-  describe command('grep -iR CtrlAltDelBurstAction /etc/systemd/system*') do
-    its('exit_status') { should eq 0 }
-    its('stdout') { should match(/^[[:space:]]*CtrlAltDelBurstAction[[:space:]]*=[[:space:]]*none/i) }
+  setting = 'CtrlAltDelBurstAction'
+  expected_value = 'none'
+  configured_values = command("grep -iRhs '^[[:space:]]*#{setting}[[:space:]]*=' /etc/systemd/system.conf /etc/systemd/system.conf.d 2>/dev/null").stdout.lines.filter_map do |line|
+    line.match(/^\s*#{setting}\s*=\s*(?<value>\S+)/i)&.[](:value)&.downcase
+  end
+
+  describe 'Ctrl-Alt-Delete burst action' do
+    it "sets #{setting} to #{expected_value}" do
+      expect(configured_values).not_to be_empty, "No uncommented #{setting} setting was found in the systemd configuration"
+      expect(configured_values).to all(eq(expected_value)), "#{setting} must be set only to #{expected_value}; found: #{configured_values.join(', ')}"
+    end
   end
 end

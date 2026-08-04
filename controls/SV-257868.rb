@@ -26,23 +26,26 @@ If the "/tmp" file system is mounted without the "nosuid" option, this is a find
 
   path = '/tmp'
   option = 'nosuid'
-  mount_option_enabled = input('mount_tmp_options')[option]
+  path_mount = mount(path)
+  fstab_mount = etc_fstab.where { mount_point == path }
 
-  if mount_option_enabled
-    describe mount(path) do
+  describe path_mount do
+    it { should be_mounted }
+  end
+
+  if path_mount.mounted?
+    describe path_mount do
       its('options') { should include option }
     end
+  end
 
-    describe etc_fstab.where { mount_point == path } do
+  describe fstab_mount do
+    it { should exist }
+  end
+
+  if fstab_mount.configured?
+    describe fstab_mount do
       its('mount_options.flatten') { should include option }
-    end
-  else
-    describe mount(path) do
-      its('options') { should_not include option }
-    end
-
-    describe etc_fstab.where { mount_point == path } do
-      its('mount_options.flatten') { should_not include option }
     end
   end
 end

@@ -958,7 +958,7 @@ inputs:
       '/usr/sbin/semanage'            : 'privileged-unix-update',
       '/usr/sbin/setfiles'            : 'privileged-unix-update',
       '/usr/sbin/userhelper'          : 'privileged-unix-update',
-      '/usr/sbin/setsebool'           : 'privileged-unix-update',
+      '/usr/sbin/setsebool'           : 'privileged',
       '/usr/sbin/unix_chkpwd'         : 'privileged-unix-update',
       '/usr/libexec/openssh/ssh-keysign' : 'privileged-ssh',
       '/usr/bin/setfacl'              : 'perm_mod',
@@ -1053,7 +1053,7 @@ inputs:
   - name: password_hash_rounds
     description: Number of rounds for hashing passwords
     type: Numeric
-    value: 10000
+    value: 100000
 
   # SV-258227
   - name: expected_panic_value
