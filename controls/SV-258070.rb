@@ -1,5 +1,5 @@
 control 'SV-258070' do
-  title 'RHEL 9 must log username information when unsuccessful logon attempts occur.'
+  title 'Rocky Linux 9 must log username information when unsuccessful logon attempts occur.'
   desc 'Without auditing of these events, it may be harder or impossible to identify what an attacker did after an attack.'
   desc 'check', 'Verify the "/etc/security/faillock.conf" file is configured to log username information when unsuccessful logon attempts occur with the following command:
 
@@ -8,7 +8,7 @@ $ sudo grep audit /etc/security/faillock.conf
 audit
 
 If the "audit" option is not set, is missing, or is commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to log username information when unsuccessful logon attempts occur.
+  desc 'fix', 'Configure Rocky Linux 9 to log username information when unsuccessful logon attempts occur.
 
 Enable the feature using the following command:
 

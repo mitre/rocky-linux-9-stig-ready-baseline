@@ -1,14 +1,14 @@
 control 'SV-257986' do
-  title 'RHEL 9 must enable the Pluggable Authentication Module (PAM) interface for SSHD.'
+  title 'Rocky Linux 9 must enable the Pluggable Authentication Module (PAM) interface for SSHD.'
   desc 'When UsePAM is set to "yes", PAM runs through account and session types properly. This is important when restricted access to services based off of IP, time, or other factors of the account is needed. Additionally, this ensures users can inherit certain environment variables on login or disallow access to the server.'
-  desc 'check', %q(Verify the RHEL 9 SSHD is configured to allow for the UsePAM interface with the following command:
+  desc 'check', %q(Verify the Rocky Linux 9 SSHD is configured to allow for the UsePAM interface with the following command:
 
 $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs sudo grep -iH '^\s*usepam'
 
 UsePAM yes
 
 If the "UsePAM" keyword is set to "no", is missing, or is commented out, this is a finding.)
-  desc 'fix', 'Configure the RHEL 9 SSHD to use the UsePAM interface by adding or modifying the following line in "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d".
+  desc 'fix', 'Configure the Rocky Linux 9 SSHD to use the UsePAM interface by adding or modifying the following line in "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d".
 
 UsePAM yes
 

@@ -1,8 +1,8 @@
 control 'SV-258034' do
-  title 'RHEL 9 must be configured to disable USB mass storage.'
+  title 'Rocky Linux 9 must be configured to disable USB mass storage.'
   desc 'USB mass storage permits easy introduction of unknown devices, thereby
 facilitating malicious activity.'
-  desc 'check', 'Verify that RHEL 9 disables the ability to load the USB Storage kernel module with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 disables the ability to load the USB Storage kernel module with the following command:
 
 $ grep -r usb-storage /etc/modprobe.conf /etc/modprobe.d/*
 

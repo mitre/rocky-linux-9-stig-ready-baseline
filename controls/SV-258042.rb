@@ -1,6 +1,6 @@
 control 'SV-258042' do
-  title 'RHEL 9 user account passwords must have a 60-day maximum password lifetime restriction.'
-  desc 'Any password, no matter how complex, can eventually be cracked; therefore, passwords need to be changed periodically. If RHEL 9 does not limit the lifetime of passwords and force users to change their passwords, there is the risk that RHEL 9 passwords could be compromised.'
+  title 'Rocky Linux 9 user account passwords must have a 60-day maximum password lifetime restriction.'
+  desc 'Any password, no matter how complex, can eventually be cracked; therefore, passwords need to be changed periodically. If Rocky Linux 9 does not limit the lifetime of passwords and force users to change their passwords, there is the risk that Rocky Linux 9 passwords could be compromised.'
   desc 'check', %q(Verify the maximum time period for existing passwords is restricted to 60 days with the following commands:
 
 $ sudo awk -F: '$5 > 60 {printf "%s %d\n", $1, $5}' /etc/shadow

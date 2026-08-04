@@ -1,14 +1,14 @@
 control 'SV-257946' do
-  title 'RHEL 9 must disable the chrony daemon from acting as a server.'
+  title 'Rocky Linux 9 must disable the chrony daemon from acting as a server.'
   desc 'Minimizing the exposure of the server functionality of the chrony daemon diminishes the attack surface.'
-  desc 'check', 'Verify RHEL 9 disables the chrony daemon from acting as a server with the following command:
+  desc 'check', 'Verify Rocky Linux 9 disables the chrony daemon from acting as a server with the following command:
 
 $ grep -w port /etc/chrony.conf
 
 port 0
 
 If the "port" option is not set to "0", is commented out, or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable the chrony daemon from acting as a server by adding/modifying the following line in the /etc/chrony.conf file:
+  desc 'fix', 'Configure Rocky Linux 9 to disable the chrony daemon from acting as a server by adding/modifying the following line in the /etc/chrony.conf file:
 
 port 0'
   impact 0.3

@@ -1,5 +1,5 @@
 control 'SV-257890' do
-  title 'All RHEL 9 local interactive user home directories must have mode 0750 or less permissive.'
+  title 'All Rocky Linux 9 local interactive user home directories must have mode 0750 or less permissive.'
   desc 'Excessive permissions on local interactive user home directories may
 allow unauthorized access to user files by other users.'
   desc 'check', %q(Verify the assigned home directory of all local interactive users has a mode of "0750" or less permissive with the following command:

@@ -1,5 +1,5 @@
 control 'SV-257827' do
-  title 'RHEL 9 must not have the sendmail package installed.'
+  title 'Rocky Linux 9 must not have the sendmail package installed.'
   desc 'The sendmail software was not developed with security in mind, and its design prevents it from being effectively contained by SELinux. Postfix must be used instead.'
   desc 'check', 'Verify that the sendmail package is not installed with the following command:
 

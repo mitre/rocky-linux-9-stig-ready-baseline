@@ -1,18 +1,8 @@
 control 'SV-257825' do
-  title 'RHEL 9 subscription-manager package must be installed.'
-  desc 'The Red Hat Subscription Manager application manages software subscriptions and software repositories for installed software products on the local system. It communicates with backend servers, such as the Red Hat Customer Portal or an on-premise instance of Subscription Asset Manager, to register the local system and grant access to software resources determined by the subscription entitlement.'
-  desc 'check', 'Verify that RHEL 9 subscription-manager package is installed with the following command:
-
-$ dnf list --installed subscription-manager
-
-Example output:
-
-subscription-manager.x86_64          1.29.26-3.el9_0
-
-If the "subscription-manager" package is not installed, this is a finding.'
-  desc 'fix', 'The  subscription-manager package can be installed with the following command:
-
-$ sudo dnf install subscription-manager'
+  title 'Rocky Linux 9 does not require Red Hat Subscription Manager.'
+  desc 'Rocky Linux uses its own package repositories and does not use Red Hat Subscription Manager to register systems or grant subscription entitlements.'
+  desc 'check', 'This control is Not Applicable to Rocky Linux 9 because Rocky Linux does not use Red Hat Subscription Manager.'
+  desc 'fix', 'No action is required on Rocky Linux 9.'
   impact 0.5
   tag check_id: 'C-61566r1044887_chk'
   tag severity: 'medium'

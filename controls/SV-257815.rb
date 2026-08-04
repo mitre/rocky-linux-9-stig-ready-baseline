@@ -1,9 +1,9 @@
 control 'SV-257815' do
-  title 'RHEL 9 must disable acquiring, saving, and processing core dumps.'
+  title 'Rocky Linux 9 must disable acquiring, saving, and processing core dumps.'
   desc 'A core dump includes a memory image taken at the time the operating system terminates an application. The memory image could contain sensitive data and is generally useful only for developers trying to debug problems.'
   desc 'check', 'Note: If kernel dumps are disabled in accordance with RHEL-09-213040, this requirement is not applicable.
 
-Verify RHEL 9 is not configured to acquire, save, or process core dumps with the following command:
+Verify Rocky Linux 9 is not configured to acquire, save, or process core dumps with the following command:
 
 $ sudo systemctl status systemd-coredump.socket
 

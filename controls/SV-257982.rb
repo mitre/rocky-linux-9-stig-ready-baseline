@@ -1,7 +1,7 @@
 control 'SV-257982' do
-  title 'RHEL 9 must log SSH connection attempts and failures to the server.'
+  title 'Rocky Linux 9 must log SSH connection attempts and failures to the server.'
   desc 'SSH provides several logging levels with varying amounts of verbosity. "DEBUG" is specifically not recommended other than strictly for debugging SSH communications since it provides so much data that it is difficult to identify important security information. "INFO" or "VERBOSE" level is the basic level that only records login activity of SSH users. In many situations, such as Incident Response, it is important to determine when a particular user was active on a system. The logout record can eliminate those users who disconnected, which helps narrow the field.'
-  desc 'check', %q(Verify that RHEL 9 logs SSH connection attempts and failures to the server.
+  desc 'check', %q(Verify that Rocky Linux 9 logs SSH connection attempts and failures to the server.
 
 Check what the SSH daemon's "LogLevel" option is set to with the following command:
 
@@ -10,7 +10,7 @@ $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '
 LogLevel VERBOSE
 
 If a value of "VERBOSE" is not returned or the line is commented out or missing, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to log connection attempts add or modify the following line in "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d".
+  desc 'fix', 'Configure Rocky Linux 9 to log connection attempts add or modify the following line in "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d".
 
 LogLevel VERBOSE
 

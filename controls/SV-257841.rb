@@ -1,7 +1,7 @@
 control 'SV-257841' do
-  title 'RHEL 9 must have the rng-tools package installed.'
+  title 'Rocky Linux 9 must have the rng-tools package installed.'
   desc '"rng-tools" provides hardware random number generator tools, such as those used in the formation of x509/PKI certificates.'
-  desc 'check', 'Verify that RHEL 9 has the rng-tools package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the rng-tools package installed with the following command:
 
 $ dnf list --installed rng-tools
 

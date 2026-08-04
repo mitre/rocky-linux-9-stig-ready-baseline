@@ -1,19 +1,16 @@
 control 'SV-257777' do
-  title 'RHEL 9 must be a vendor-supported release.'
-  desc 'An operating system release is considered "supported" if the vendor continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.
+  title 'Rocky Linux 9 must be a vendor-supported release.'
+  desc 'An operating system release is considered "supported" if Rocky Linux continues to provide security patches for the product. With an unsupported release, it will not be possible to resolve security issues discovered in the system software.
 
-End Of Life dates for Red Hat Linux 9 releases are as follows:
-Current end of Full Support for Red Hat Linux 9 is 31 May 2027.
-Current end of Maintenance Support for Red Hat Linux 9 is 31 May 3032.
-Current end of Extended Life Cycle Support (ELS) for Red Hat Linux 9 is 31 May 2035.'
-  desc 'check', 'Verify the version or RHEL 9 is vendor supported with the following command:
+Rocky Linux 9 minor releases are supported until the next minor release is available, except for the final 9.10 release, which is supported through 31 May 2032. Refer to Rocky Linux release-version policy for the current support schedule.'
+  desc 'check', 'Verify the installed Rocky Linux 9 release is vendor supported with the following command:
 
 $ cat /etc/redhat-release
 
-Red Hat Enterprise Linux release 9.6 (Plow)
+Rocky Linux release 9.8 (Blue Onyx)
 
-If the installed version of RHEL 9 is not supported, this is a finding.'
-  desc 'fix', 'Upgrade to a supported version of RHEL 9.'
+If the installed version of Rocky Linux 9 is not supported, this is a finding.'
+  desc 'fix', 'Upgrade to a supported version of Rocky Linux 9.'
   impact 0.7
   tag severity: 'high'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'

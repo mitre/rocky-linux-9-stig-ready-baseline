@@ -1,5 +1,5 @@
 control 'SV-258172' do
-  title 'RHEL 9 /etc/audit/auditd.conf file must have 0640 or less permissive to prevent unauthorized access.'
+  title 'Rocky Linux 9 /etc/audit/auditd.conf file must have 0640 or less permissive to prevent unauthorized access.'
   desc "Without the capability to restrict the roles and individuals that can select which events are audited, unauthorized personnel may be able to prevent the auditing of critical events. Misconfigured audits may degrade the system's performance by overwhelming the audit log. Misconfigured audits may also make it more difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one."
   desc 'check', 'Verify the mode of /etc/audit/auditd.conf with the command:
 

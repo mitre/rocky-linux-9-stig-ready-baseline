@@ -1,5 +1,5 @@
 control 'SV-258142' do
-  title 'The rsyslog service on RHEL 9 must be active.'
+  title 'The rsyslog service on Rocky Linux 9 must be active.'
   desc 'The "rsyslog" service must be running to provide logging services, which are essential to system administration.'
   desc 'check', 'Verify that "rsyslog" is active with the following command:
 

@@ -1,5 +1,5 @@
 control 'SV-258059' do
-  title 'The root account must be the only account having unrestricted access to RHEL 9 system.'
+  title 'The root account must be the only account having unrestricted access to Rocky Linux 9 system.'
   desc 'An account has root authority if it has a user identifier (UID) of "0". Multiple accounts with a UID of "0" afford more opportunity for potential intruders to guess a password for a privileged account. Proper configuration of sudo is recommended to afford multiple system administrators access to root privileges in an accountable manner.'
   desc 'check', %q(Verify that only the "root" account has a UID "0" assignment with the following command:
 

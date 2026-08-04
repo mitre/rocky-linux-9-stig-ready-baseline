@@ -1,5 +1,5 @@
 control 'SV-257965' do
-  title 'RHEL 9 must use a reverse-path filter for IPv4 network traffic when possible by default.'
+  title 'Rocky Linux 9 must use a reverse-path filter for IPv4 network traffic when possible by default.'
   desc 'Enabling reverse path filtering drops packets with source addresses that should not have been able to be received on the interface on which they were received. It must not be used on systems that are routers for complicated networks, but is helpful for end hosts and routers serving small networks.
 
 The sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographic order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.
@@ -10,7 +10,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 uses reverse path filtering on IPv4 interfaces.
+  desc 'check', 'Verify Rocky Linux 9 uses reverse path filtering on IPv4 interfaces.
 
 Check the value of the "net.ipv4.conf.default.rp_filter" with the following command:
 
@@ -18,7 +18,7 @@ $ sudo sysctl net.ipv4.conf.default.rp_filter
 net.ipv4.conf.default.rp_filter = 1
 
 If the returned line does not have a value of "1", or a line is not returned, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to use reverse path filtering on IPv4 interfaces by default.
+  desc 'fix', 'Configure Rocky Linux 9 to use reverse path filtering on IPv4 interfaces by default.
 
 Create a configuration file if it does not already exist:
 

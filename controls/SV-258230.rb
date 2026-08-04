@@ -1,7 +1,7 @@
 control 'SV-258230' do
-  title 'RHEL 9 must enable FIPS mode.'
+  title 'Rocky Linux 9 must enable FIPS mode.'
   desc 'Use of weak or untested encryption algorithms undermines the purposes of utilizing encryption to protect data. The operating system must implement cryptographic modules adhering to the higher standards approved by the federal government since this provides assurance they have been tested and validated. This includes NIST FIPS-validated cryptography for the following: Provisioning digital signatures, generating cryptographic hashes, and to protect data requiring data-at-rest protections in accordance with applicable federal laws, Executive Orders, directives, policies, regulations, and standards.'
-  desc 'check', 'Verify RHEL 9 is in FIPS mode with the following command:
+  desc 'check', 'Verify Rocky Linux 9 is in FIPS mode with the following command:
 
 $ sudo fips-mode-setup --check
 FIPS mode is enabled.

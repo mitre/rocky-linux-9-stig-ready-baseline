@@ -1,5 +1,5 @@
 control 'SV-257790' do
-  title 'RHEL 9 /boot/grub2/grub.cfg file must be group-owned by root.'
+  title 'Rocky Linux 9 /boot/grub2/grub.cfg file must be group-owned by root.'
   desc 'The "root" group is a highly privileged group. Furthermore, the group-owner of this file should not have any access privileges anyway.'
   desc 'check', 'Verify the group ownership of the "/boot/grub2/grub.cfg" file with the following command:
 

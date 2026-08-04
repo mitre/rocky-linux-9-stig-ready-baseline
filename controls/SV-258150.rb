@@ -1,5 +1,5 @@
 control 'SV-258150' do
-  title 'RHEL 9 must use cron logging.'
+  title 'Rocky Linux 9 must use cron logging.'
   desc 'Cron logging can be used to trace the successful or unsuccessful
 execution of cron jobs. It can also be used to spot intrusions into the use of
 the cron facility by unauthorized and malicious users.'

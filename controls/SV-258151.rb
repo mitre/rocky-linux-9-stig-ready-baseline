@@ -1,11 +1,11 @@
 control 'SV-258151' do
-  title 'RHEL 9 audit package must be installed.'
+  title 'Rocky Linux 9 audit package must be installed.'
   desc 'Without establishing what type of events occurred, the source of events, where events occurred, and the outcome of events, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.
 
 Audit record content that may be necessary to satisfy this requirement includes, for example, time stamps, source and destination addresses, user/process identifiers, event descriptions, success/fail indications, filenames involved, and access control or flow control rules invoked.
 
-Associating event types with detected events in audit logs provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured RHEL 9 system.'
-  desc 'check', 'Verify that the RHEL 9 audit service package is installed.
+Associating event types with detected events in audit logs provides a means of investigating an attack, recognizing resource utilization or capacity thresholds, or identifying an improperly configured Rocky Linux 9 system.'
+  desc 'check', 'Verify that the Rocky Linux 9 audit service package is installed.
 
 Check that the audit service package is installed with the following command:
 

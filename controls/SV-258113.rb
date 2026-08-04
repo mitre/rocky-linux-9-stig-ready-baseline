@@ -1,16 +1,16 @@
 control 'SV-258113' do
-  title 'RHEL 9 must require the maximum number of repeating characters of the same character class be limited to four when passwords are changed.'
+  title 'Rocky Linux 9 must require the maximum number of repeating characters of the same character class be limited to four when passwords are changed.'
   desc 'Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
 
 Password complexity is one factor of several that determines how long it takes to crack a password. The more complex a password, the greater the number of possible combinations that need to be tested before the password is compromised.'
-  desc 'check', 'Verify that RHEL 9 requires that passwords can have a maximum of four repeating characters of the same character class.
+  desc 'check', 'Verify that Rocky Linux 9 requires that passwords can have a maximum of four repeating characters of the same character class.
 
 $ grep maxclassrepeat /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.conf
 
 maxclassrepeat = 4
 
 If the value of "maxclassrepeat" is set to "0", more than "4", or is commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to require the change of the number of repeating characters of the same character class when passwords are changed by setting the "maxclassrepeat" option.
+  desc 'fix', 'Configure Rocky Linux 9 to require the change of the number of repeating characters of the same character class when passwords are changed by setting the "maxclassrepeat" option.
 
 Add or update the following line in the "/etc/security/pwquality.conf" file or a configuration file in the "/etc/security/pwquality.conf.d/" directory to contain the "maxclassrepeat" parameter:
 

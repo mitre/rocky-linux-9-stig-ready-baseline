@@ -1,5 +1,5 @@
 control 'SV-257858' do
-  title 'RHEL 9 must prevent special devices on file systems that are used with removable media.'
+  title 'Rocky Linux 9 must prevent special devices on file systems that are used with removable media.'
   desc 'The "nodev" mount option causes the system not to interpret character or block special devices. Executing character or blocking special devices from untrusted file systems increases the opportunity for nonprivileged users to attain unauthorized administrative access.'
   desc 'check', 'Verify file systems that are used for removable media are mounted with the "nodev" option with the following command:
 

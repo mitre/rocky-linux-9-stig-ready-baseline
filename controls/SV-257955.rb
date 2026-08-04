@@ -1,7 +1,7 @@
 control 'SV-257955' do
-  title 'There must be no shosts.equiv files on RHEL 9.'
+  title 'There must be no shosts.equiv files on Rocky Linux 9.'
   desc 'The shosts.equiv files are used to configure host-based authentication for the system via SSH. Host-based authentication is not sufficient for preventing unauthorized access to the system, as it does not require interactive identification and authentication of a connection request, or for the use of two-factor authentication.'
-  desc 'check', 'Verify there are no "shosts.equiv" files on RHEL 9 with the following command:
+  desc 'check', 'Verify there are no "shosts.equiv" files on Rocky Linux 9 with the following command:
 
 $ sudo find / -name shosts.equiv
 

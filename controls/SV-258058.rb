@@ -1,5 +1,5 @@
 control 'SV-258058' do
-  title 'RHEL 9 must not have unauthorized accounts.'
+  title 'Rocky Linux 9 must not have unauthorized accounts.'
   desc 'Accounts providing no operational purpose provide additional
 opportunities for system compromise. Unnecessary accounts include user accounts
 for individuals not requiring access to the system and application accounts for

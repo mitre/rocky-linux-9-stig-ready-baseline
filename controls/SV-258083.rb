@@ -1,7 +1,7 @@
 control 'SV-258083' do
-  title 'RHEL 9 must have the sudo package installed.'
+  title 'Rocky Linux 9 must have the sudo package installed.'
   desc '"sudo" is a program designed to allow a system administrator to give limited root privileges to users and log root activity. The basic philosophy is to give as few privileges as possible but still allow system users to get their work done.'
-  desc 'check', 'Verify that RHEL 9 sudo package is installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 sudo package is installed with the following command:
 
 $ dnf list --installed sudo
 

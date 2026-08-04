@@ -1,11 +1,11 @@
 control 'SV-257951' do
-  title 'RHEL 9 must be configured to prevent unrestricted mail relaying.'
+  title 'Rocky Linux 9 must be configured to prevent unrestricted mail relaying.'
   desc 'If unrestricted mail relaying is permitted, unauthorized senders could
 use this host as a mail relay for the purpose of sending spam or other
 unauthorized activity.'
   desc 'check', 'If postfix is not installed, this is Not Applicable.
 
-Verify RHEL 9 is configured to prevent unrestricted mail relaying with the following command:
+Verify Rocky Linux 9 is configured to prevent unrestricted mail relaying with the following command:
 
 $ postconf -n smtpd_client_restrictions
 

@@ -1,7 +1,7 @@
 control 'SV-258045' do
-  title 'RHEL 9 duplicate User IDs (UIDs) must not exist for interactive users.'
+  title 'Rocky Linux 9 duplicate User IDs (UIDs) must not exist for interactive users.'
   desc 'To ensure accountability and prevent unauthenticated access, interactive users must be identified and authenticated to prevent potential misuse and compromise of the system.'
-  desc 'check', %q(Verify that RHEL 9 contains no duplicate UIDs for interactive users with the following command:
+  desc 'check', %q(Verify that Rocky Linux 9 contains no duplicate UIDs for interactive users with the following command:
 
 $ sudo awk -F ":" 'list[$3]++{print $1, $3}' /etc/passwd
 

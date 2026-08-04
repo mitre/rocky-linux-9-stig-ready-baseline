@@ -1,5 +1,5 @@
 control 'SV-258095' do
-  title 'RHEL 9 must configure the use of the pam_faillock.so module in the /etc/pam.d/system-auth file.'
+  title 'Rocky Linux 9 must configure the use of the pam_faillock.so module in the /etc/pam.d/system-auth file.'
   desc 'If the pam_faillock.so module is not loaded, the system will not correctly lockout accounts to prevent password guessing attacks.'
   desc 'check', 'Verify the pam_faillock.so module is present in the "/etc/pam.d/system-auth" file:
 
@@ -12,7 +12,7 @@ account required pam_faillock.so
 If the pam_faillock.so module is not present in the "/etc/pam.d/system-auth" file with the "preauth" line listed before pam_unix.so, this is a finding.
 
 If the system administrator (SA) can demonstrate that the required configuration is contained in a PAM configuration file included or substacked from the system-auth file, this is not a finding.'
-  desc 'fix', 'Configure RHEL 9 to include the use of the pam_faillock.so module in the /etc/pam.d/system-auth file.
+  desc 'fix', 'Configure Rocky Linux 9 to include the use of the pam_faillock.so module in the /etc/pam.d/system-auth file.
 
 If PAM is managed with authselect, enable the feature with the following command:
 

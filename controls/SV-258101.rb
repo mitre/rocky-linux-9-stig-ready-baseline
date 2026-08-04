@@ -1,9 +1,9 @@
 control 'SV-258101' do
-  title 'RHEL 9 must enforce password complexity rules for the root account.'
+  title 'Rocky Linux 9 must enforce password complexity rules for the root account.'
   desc 'Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
 
 Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised.'
-  desc 'check', 'Verify that RHEL 9 enforces password complexity rules for the root account.
+  desc 'check', 'Verify that Rocky Linux 9 enforces password complexity rules for the root account.
 
 Check if root user is required to use complex passwords with the following command:
 
@@ -12,7 +12,7 @@ $ grep enforce_for_root /etc/security/pwquality.conf /etc/security/pwquality.con
 /etc/security/pwquality.conf:enforce_for_root
 
 If "enforce_for_root" is commented or missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to enforce password complexity on the root account.
+  desc 'fix', 'Configure Rocky Linux 9 to enforce password complexity on the root account.
 
 Add or update the following line in the "/etc/security/pwquality.conf" file or a configuration file in the "/etc/security/pwquality.conf.d/" directory to contain the "enforce_for_root" parameter:
 

@@ -1,5 +1,5 @@
 control 'SV-257948' do
-  title 'RHEL 9 systems using Domain Name Servers (DNS) resolution must have at least two name servers configured.'
+  title 'Rocky Linux 9 systems using Domain Name Servers (DNS) resolution must have at least two name servers configured.'
   desc 'To provide availability for name resolution services, multiple
 redundant name servers are mandated. A failure in name resolution could lead to
 the failure of security functions requiring name resolution, which may include

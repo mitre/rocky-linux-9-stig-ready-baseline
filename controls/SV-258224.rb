@@ -1,14 +1,14 @@
 control 'SV-258224' do
-  title 'RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /var/log/faillock.'
+  title 'Rocky Linux 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /var/log/faillock.'
   desc 'Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.'
-  desc 'check', 'Verify RHEL 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/faillock" with the following command:
+  desc 'check', 'Verify Rocky Linux 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/faillock" with the following command:
 
 $ sudo auditctl -l | grep /var/log/faillock
 
 -w /var/log/faillock -p wa -k logins
 
 If the command does not return a line, or the line is commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/faillock".
+  desc 'fix', 'Configure Rocky Linux 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/faillock".
 
 Add or update the following file system rule to "/etc/audit/rules.d/audit.rules":
 

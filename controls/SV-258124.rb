@@ -1,9 +1,9 @@
 control 'SV-258124' do
-  title 'RHEL 9 must have the pcsc-lite package installed.'
+  title 'Rocky Linux 9 must have the pcsc-lite package installed.'
   desc 'The pcsc-lite package must be installed if it is to be available for multifactor authentication using smart cards.'
   desc 'check', 'Note: If the system administrator (SA) demonstrates the use of an approved alternate multifactor authentication method, this requirement is Not Applicable.
 
-Verify that RHEL 9 has the pcsc-lite package installed with the following command:
+Verify that Rocky Linux 9 has the pcsc-lite package installed with the following command:
 
 $ dnf list --installed pcsc-lite
 

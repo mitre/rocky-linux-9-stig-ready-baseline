@@ -1,5 +1,5 @@
 control 'SV-258228' do
-  title 'RHEL 9 audit system must protect logon UIDs from unauthorized change.'
+  title 'Rocky Linux 9 audit system must protect logon UIDs from unauthorized change.'
   desc 'If modification of login user identifiers (UIDs) is not prevented, they can be changed by nonprivileged users and make auditing complicated or impossible.'
   desc 'check', 'Verify the audit system prevents unauthorized changes to logon UIDs with the following command:
 
@@ -8,7 +8,7 @@ $ sudo grep -i immutable /etc/audit/audit.rules
 --loginuid-immutable
 
 If the "--loginuid-immutable" option is not returned in the "/etc/audit/audit.rules", or the line is commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 auditing to prevent modification of login UIDs once they are set by adding the following line to /etc/audit/rules.d/audit.rules:
+  desc 'fix', 'Configure Rocky Linux 9 auditing to prevent modification of login UIDs once they are set by adding the following line to /etc/audit/rules.d/audit.rules:
 
 --loginuid-immutable
 

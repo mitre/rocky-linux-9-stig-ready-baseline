@@ -1,7 +1,7 @@
 control 'SV-258048' do
-  title 'All RHEL 9 interactive users must have a primary group that exists.'
+  title 'All Rocky Linux 9 interactive users must have a primary group that exists.'
   desc 'If a user is assigned the Group Identifier (GID) of a group that does not exist on the system, and a group with the GID is subsequently created, the user may have unintended rights to any files associated with the group.'
-  desc 'check', 'Verify that all RHEL 9 interactive users have a valid GID.
+  desc 'check', 'Verify that all Rocky Linux 9 interactive users have a valid GID.
 
 Check that the interactive users have a valid GID with the following command:
 

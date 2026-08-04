@@ -1,14 +1,14 @@
 control 'SV-258054' do
-  title 'RHEL 9 must automatically lock an account when three unsuccessful logon attempts occur.'
+  title 'Rocky Linux 9 must automatically lock an account when three unsuccessful logon attempts occur.'
   desc 'By limiting the number of failed logon attempts, the risk of unauthorized system access via user password guessing, otherwise known as brute-force attacks, is reduced. Limits are imposed by locking the account.'
-  desc 'check', %q(Verify RHEL 9 is configured to lock an account after three unsuccessful logon attempts with the command:
+  desc 'check', %q(Verify Rocky Linux 9 is configured to lock an account after three unsuccessful logon attempts with the command:
 
 $ grep 'deny =' /etc/security/faillock.conf
 
 deny = 3
 
 If the "deny" option is not set to "3" or less (but not "0"), is missing or commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to lock an account when three unsuccessful logon attempts occur.
+  desc 'fix', 'Configure Rocky Linux 9 to lock an account when three unsuccessful logon attempts occur.
 
 Add/modify the "/etc/security/faillock.conf" file to match the following line:
 

@@ -1,5 +1,5 @@
 control 'SV-258060' do
-  title 'RHEL 9 must ensure account lockouts persist.'
+  title 'Rocky Linux 9 must ensure account lockouts persist.'
   desc 'Having lockouts persist across reboots ensures that account is only unlocked by an administrator. If the lockouts did not persist across reboots, an attacker could simply reboot the system to continue brute force attacks against the accounts on the system.'
   desc 'check', 'Verify the "/etc/security/faillock.conf" file is configured to use a nondefault faillock directory to ensure contents persist after reboot with the following command:
 
@@ -8,7 +8,7 @@ $ sudo grep -w dir /etc/security/faillock.conf
 dir = /var/log/faillock
 
 If the "dir" option is not set to a nondefault documented tally log directory or is missing or commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 maintain the contents of the faillock directory after a reboot.
+  desc 'fix', 'Configure Rocky Linux 9 maintain the contents of the faillock directory after a reboot.
 
 Add/modify the "/etc/security/faillock.conf" file to match the following line:
 

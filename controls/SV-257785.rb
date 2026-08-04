@@ -1,7 +1,7 @@
 control 'SV-257785' do
-  title 'The x86 Ctrl-Alt-Delete key sequence must be disabled on RHEL 9.'
+  title 'The x86 Ctrl-Alt-Delete key sequence must be disabled on Rocky Linux 9.'
   desc 'A locally logged-on user who presses Ctrl-Alt-Delete when at the console can reboot the system. If accidentally pressed, as could happen in the case of a mixed OS environment, this can create the risk of short-term loss of availability of systems due to unintentional reboot. In a graphical user environment, risk of unintentional reboot from the Ctrl-Alt-Delete sequence is reduced because the user will be prompted before any action is taken.'
-  desc 'check', 'Verify RHEL 9 is not configured to reboot the system when Ctrl-Alt-Delete is pressed with the following command:
+  desc 'check', 'Verify Rocky Linux 9 is not configured to reboot the system when Ctrl-Alt-Delete is pressed with the following command:
 
 $ sudo systemctl status ctrl-alt-del.target
 
@@ -10,7 +10,7 @@ Loaded: masked (Reason: Unit ctrl-alt-del.target is masked.)
 Active: inactive (dead)
 
 If the "ctrl-alt-del.target" is loaded and not masked, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable the ctrl-alt-del.target with the following command:
+  desc 'fix', 'Configure Rocky Linux 9 to disable the ctrl-alt-del.target with the following command:
 
 $ sudo systemctl disable --now ctrl-alt-del.target
 $ sudo systemctl mask --now ctrl-alt-del.target'

@@ -1,5 +1,5 @@
 control 'SV-258106' do
-  title 'RHEL 9 must require users to provide a password for privilege escalation.'
+  title 'Rocky Linux 9 must require users to provide a password for privilege escalation.'
   desc 'Without reauthentication, users may access resources or perform tasks for which they do not have authorization.
 
 When operating systems provide the capability to escalate a functional capability, it is critical that the user reauthenticate.'
@@ -8,7 +8,7 @@ When operating systems provide the capability to escalate a functional capabilit
 $ sudo grep -iR 'NOPASSWD' /etc/sudoers /etc/sudoers.d/
 
 If any occurrences of "NOPASSWD" are returned from the command and have not been documented with the information system security officer (ISSO) as an organizationally defined administrative group using multifactor authentication (MFA), this is a finding.)
-  desc 'fix', %q(Configure RHEL 9 to not allow users to execute privileged actions without authenticating with a password.
+  desc 'fix', %q(Configure Rocky Linux 9 to not allow users to execute privileged actions without authenticating with a password.
 
 Remove any occurrence of "NOPASSWD" found in "/etc/sudoers" file or files in the "/etc/sudoers.d" directory.
 

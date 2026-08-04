@@ -1,5 +1,5 @@
 control 'SV-258008' do
-  title 'RHEL 9 SSH daemon must perform strict mode checking of home directory configuration files.'
+  title 'Rocky Linux 9 SSH daemon must perform strict mode checking of home directory configuration files.'
   desc 'If other users have access to modify user-specific SSH configuration files, they may be able to log into the system as another user.'
   desc 'check', %q(Verify the SSH daemon performs strict mode checking of home directory configuration files with the following command:
 

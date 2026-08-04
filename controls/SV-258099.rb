@@ -1,5 +1,5 @@
 control 'SV-258099' do
-  title 'RHEL 9 password-auth must be configured to use a sufficient number of hashing rounds.'
+  title 'Rocky Linux 9 password-auth must be configured to use a sufficient number of hashing rounds.'
   desc 'Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised. Passwords that are encrypted with a weak algorithm are no more protected than if they are kept in plain text.
 
 Using more hashing rounds makes password cracking attacks more difficult.'
@@ -10,7 +10,7 @@ $ grep rounds /etc/pam.d/password-auth
 password sufficient pam_unix.so sha512 rounds=100000
 
 If a matching line is not returned or "rounds" is less than "100000", this a finding.'
-  desc 'fix', 'Configure RHEL 9 to use 100000 hashing rounds for hashing passwords.
+  desc 'fix', 'Configure Rocky Linux 9 to use 100000 hashing rounds for hashing passwords.
 
 Add or modify the following line in "/etc/pam.d/password-auth" and set "rounds" to "100000".
 

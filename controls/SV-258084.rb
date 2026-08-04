@@ -1,11 +1,11 @@
 control 'SV-258084' do
-  title 'RHEL 9 must require reauthentication when using the "sudo" command.'
+  title 'Rocky Linux 9 must require reauthentication when using the "sudo" command.'
   desc %q(Without reauthentication, users may access resources or perform tasks for which they do not have authorization.
 
 When operating systems provide the capability to escalate a functional capability, it is critical the organization requires the user to reauthenticate when using the "sudo" command.
 
 If the value is set to an integer less than "0", the user's time stamp will not expire and the user will not have to reauthenticate for privileged actions until the user's session is terminated.)
-  desc 'check', %q(Verify RHEL 9 requires reauthentication when using the "sudo" command to elevate privileges with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 requires reauthentication when using the "sudo" command to elevate privileges with the following command:
 
 $ sudo grep -ir 'timestamp_timeout' /etc/sudoers /etc/sudoers.d/
 
@@ -14,7 +14,7 @@ $ sudo grep -ir 'timestamp_timeout' /etc/sudoers /etc/sudoers.d/
 If results are returned from more than one file location, this is a finding.
 
 If "timestamp_timeout" is set to a negative number, is commented out, or no results are returned, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to reauthenticate "sudo" commands after the specified timeout:
+  desc 'fix', 'Configure Rocky Linux 9 to reauthenticate "sudo" commands after the specified timeout:
 
 Add the following line to "/etc/sudoers" or a file in "/etc/sudoers.d":
 

@@ -1,11 +1,11 @@
 control 'SV-258148' do
-  title 'RHEL 9 must encrypt via the gtls driver the transfer of audit records offloaded onto a different system or media from the system being audited via rsyslog.'
+  title 'Rocky Linux 9 must encrypt via the gtls driver the transfer of audit records offloaded onto a different system or media from the system being audited via rsyslog.'
   desc 'Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
 
 Offloading is a common process in information systems with limited audit storage capacity.
 
-RHEL 9 installation media provides "rsyslogd", a system utility providing support for message logging. Support for both internet and Unix domain sockets enables this utility to support both local and remote logging. Coupling this utility with "gnutls" (a secure communications library implementing the SSL, TLS and DTLS protocols) creates a method to securely encrypt and offload auditing.'
-  desc 'check', %q(Verify RHEL 9 uses the gtls driver to encrypt audit records offloaded onto a different system or media from the system being audited with the following command:
+Rocky Linux 9 installation media provides "rsyslogd", a system utility providing support for message logging. Support for both internet and Unix domain sockets enables this utility to support both local and remote logging. Coupling this utility with "gnutls" (a secure communications library implementing the SSL, TLS and DTLS protocols) creates a method to securely encrypt and offload auditing.'
+  desc 'check', %q(Verify Rocky Linux 9 uses the gtls driver to encrypt audit records offloaded onto a different system or media from the system being audited with the following command:
 
 $ grep -Ei 'DefaultNetStreamDriver\b|StreamDriver.Name' /etc/rsyslog.conf /etc/rsyslog.d/*.conf
 
@@ -14,7 +14,7 @@ $ grep -Ei 'DefaultNetStreamDriver\b|StreamDriver.Name' /etc/rsyslog.conf /etc/r
 If the value of the "$DefaultNetstreamDriver or StreamDriver" option is not set to "gtls" or the line is commented out, this is a finding.
 
 If the variable name "StreamDriver" is present in an omfwd statement block, this is not a finding. However, if the "StreamDriver" variable is in a module block, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to use the gtls driver to encrypt offloaded audit records by setting the following options in "/etc/rsyslog.conf" or "/etc/rsyslog.d/[customfile].conf":
+  desc 'fix', 'Configure Rocky Linux 9 to use the gtls driver to encrypt offloaded audit records by setting the following options in "/etc/rsyslog.conf" or "/etc/rsyslog.d/[customfile].conf":
 
 $DefaultNetstreamDriver gtls'
   impact 0.5

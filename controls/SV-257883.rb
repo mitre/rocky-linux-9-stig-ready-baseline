@@ -1,8 +1,8 @@
 control 'SV-257883' do
-  title 'RHEL 9 library directories must have mode 755 or less permissive.'
-  desc 'If RHEL 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+  title 'Rocky Linux 9 library directories must have mode 755 or less permissive.'
+  desc 'If Rocky Linux 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
 
-This requirement applies to RHEL 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
+This requirement applies to Rocky Linux 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
   desc 'check', 'Verify the system-wide shared library directories have mode "755" or less permissive with the following command:
 
 $ sudo find -L /lib /lib64 /usr/lib /usr/lib64 -perm /022 -type d -exec ls -l {} \\;

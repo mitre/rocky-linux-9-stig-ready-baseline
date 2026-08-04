@@ -1,7 +1,7 @@
 control 'SV-258087' do
-  title 'RHEL 9 must restrict privilege elevation to authorized personnel.'
+  title 'Rocky Linux 9 must restrict privilege elevation to authorized personnel.'
   desc 'If the "sudoers" file is not configured correctly, any user defined on the system can initiate privileged actions on the target system.'
-  desc 'check', "Verify RHEL 9 restricts privilege elevation to authorized personnel with the following command:
+  desc 'check', "Verify Rocky Linux 9 restricts privilege elevation to authorized personnel with the following command:
 
 $ sudo grep -iwR 'ALL' /etc/sudoers /etc/sudoers.d/ | grep -v '#'
 

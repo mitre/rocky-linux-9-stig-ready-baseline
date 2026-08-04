@@ -1,5 +1,5 @@
 control 'SV-258080' do
-  title 'RHEL 9 must configure SELinux context type to allow the use of a nondefault faillock tally directory.'
+  title 'Rocky Linux 9 must configure SELinux context type to allow the use of a nondefault faillock tally directory.'
   desc 'Not having the correct SELinux context on the faillock directory may lead to unauthorized access to the directory.'
   desc 'check', 'Verify the location of the nondefault tally directory for the pam_faillock module with the following command:
 
@@ -16,7 +16,7 @@ $ ls -Zd /var/log/faillock
 unconfined_u:object_r:faillog_t:s0 /var/log/faillock
 
 If the security context type of the nondefault tally directory is not "faillog_t", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to allow the use of a nondefault faillock tally directory while SELinux enforces a targeted policy.
+  desc 'fix', 'Configure Rocky Linux 9 to allow the use of a nondefault faillock tally directory while SELinux enforces a targeted policy.
 
 First enable the feature using the following command:
 

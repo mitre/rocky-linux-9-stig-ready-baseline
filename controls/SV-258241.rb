@@ -1,7 +1,7 @@
 control 'SV-258241' do
-  title 'RHEL 9 must implement a FIPS 140-3-compliant systemwide cryptographic policy.'
+  title 'Rocky Linux 9 must implement a FIPS 140-3-compliant systemwide cryptographic policy.'
   desc 'Centralized cryptographic policies simplify applying secure ciphers across an operating system and the applications that run on that operating system. Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data.'
-  desc 'check', %q(Verify RHEL 9 is set to use a FIPS 140-3-compliant systemwide cryptographic policy with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 is set to use a FIPS 140-3-compliant systemwide cryptographic policy with the following command:
 
 $ update-crypto-policies --show
 
@@ -27,7 +27,7 @@ If there are algorithms that include "SHA1" or a hash value less than "224" this
 If the "min_rsa_size" is not set to a value of at least "2048", this is a finding.
 
 If these commands do not return any output, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to use a FIPS 140-3-compliant systemwide cryptographic policy.
+  desc 'fix', 'Configure Rocky Linux 9 to use a FIPS 140-3-compliant systemwide cryptographic policy.
 
 Create a subpolicy for enhancements to the base systemwide crypto-policy by creating the file /etc/crypto-policies/policies/modules/STIG.pmod with the following content:
 

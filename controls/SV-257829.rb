@@ -1,5 +1,5 @@
 control 'SV-257829' do
-  title 'RHEL 9 must not have the ypserv package installed.'
+  title 'Rocky Linux 9 must not have the ypserv package installed.'
   desc 'The NIS service provides an unencrypted authentication service, which does not provide for the confidentiality and integrity of user passwords or the remote session.
 
 Removing the "ypserv" package decreases the risk of the accidental (or intentional) activation of NIS or NIS+ services.'

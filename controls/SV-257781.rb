@@ -1,7 +1,7 @@
 control 'SV-257781' do
-  title 'The graphical display manager must not be the default target on RHEL 9 unless approved.'
+  title 'The graphical display manager must not be the default target on Rocky Linux 9 unless approved.'
   desc 'Unnecessary service packages must not be installed to decrease the attack surface of the system. Graphical display managers have a long history of security vulnerabilities and must not be used, unless approved and documented.'
-  desc 'check', 'Verify that RHEL 9 is configured to boot to the command line:
+  desc 'check', 'Verify that Rocky Linux 9 is configured to boot to the command line:
 
 $ systemctl get-default
 

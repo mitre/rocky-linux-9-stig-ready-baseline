@@ -1,5 +1,5 @@
 control 'SV-257803' do
-  title 'RHEL 9 must disable the kernel.core_pattern.'
+  title 'Rocky Linux 9 must disable the kernel.core_pattern.'
   desc 'A core dump includes a memory image taken at the time the operating system terminates an application. The memory image could contain sensitive data and is generally useful only for developers trying to debug problems.
 
 The sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographical order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.
@@ -10,7 +10,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 disables storing core dumps.
+  desc 'check', 'Verify Rocky Linux 9 disables storing core dumps.
 
 Check the status of the "kernel.core_pattern" kernel parameter with the following command:
 
@@ -18,7 +18,7 @@ $ sudo sysctl kernel.core_pattern
 kernel.core_pattern = |/bin/false
 
 If "kernel.core_pattern" is not set to "|/bin/false", or a line is not returned and the need for core dumps is not documented with the information system security officer (ISSO) as an operational requirement, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable storing core dumps.
+  desc 'fix', 'Configure Rocky Linux 9 to disable storing core dumps.
 
 Create a drop-in if it does not already exist:
 

@@ -1,5 +1,5 @@
 control 'SV-257807' do
-  title 'RHEL 9 must disable the Stream Control Transmission Protocol (SCTP) kernel module.'
+  title 'Rocky Linux 9 must disable the Stream Control Transmission Protocol (SCTP) kernel module.'
   desc 'It is detrimental for operating systems to provide, or install by
 default, functionality exceeding requirements or mission objectives. These
 unnecessary capabilities or services are often overlooked and therefore may
@@ -12,7 +12,7 @@ additional attack vectors.
 protocol, designed to support the idea of message-oriented communication, with
 several streams of messages within one connection. Disabling SCTP protects the
 system against exploitation of any flaws in its implementation.'
-  desc 'check', 'Verify that RHEL 9 disables the ability to load the sctp kernel module with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 disables the ability to load the sctp kernel module with the following command:
 
 $ grep -r sctp /etc/modprobe.conf /etc/modprobe.d/*
 

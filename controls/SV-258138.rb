@@ -1,6 +1,6 @@
 control 'SV-258138' do
-  title 'RHEL 9 must be configured so that the file integrity tool verifies Access Control Lists (ACLs).'
-  desc 'RHEL 9 installation media ships with an optional file integrity tool called Advanced Intrusion Detection Environment (AIDE). AIDE is highly configurable at install time. This requirement assumes the "aide.conf" file is under the "/etc" directory.
+  title 'Rocky Linux 9 must be configured so that the file integrity tool verifies Access Control Lists (ACLs).'
+  desc 'Rocky Linux 9 installation media ships with an optional file integrity tool called Advanced Intrusion Detection Environment (AIDE). AIDE is highly configurable at install time. This requirement assumes the "aide.conf" file is under the "/etc" directory.
 
 ACLs can provide permissions beyond those permitted through the file mode and must be verified by the file integrity tools.'
   desc 'check', 'Verify that AIDE is verifying ACLs with the following command:

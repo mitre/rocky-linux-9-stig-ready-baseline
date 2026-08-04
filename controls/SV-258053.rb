@@ -1,5 +1,5 @@
 control 'SV-258053' do
-  title "All RHEL 9 local interactive user home directories must be group-owned by the home directory owner's primary group."
+  title "All Rocky Linux 9 local interactive user home directories must be group-owned by the home directory owner's primary group."
   desc 'If the Group Identifier (GID) of a local interactive users home directory is not the same as the primary GID of the user, this would allow unauthorized access to the users files, and users that share the same group may not be able to access files that they legitimately should.'
   desc 'check', %q(Verify the assigned home directory of all local interactive users is group-owned by that user's primary GID with the following command:
 

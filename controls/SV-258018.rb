@@ -1,10 +1,10 @@
 control 'SV-258018' do
-  title 'RHEL 9 must not allow unattended or automatic logon via the graphical user interface.'
+  title 'Rocky Linux 9 must not allow unattended or automatic logon via the graphical user interface.'
   desc 'Failure to restrict system access to authenticated users negatively
 impacts operating system security.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 does not allow an unattended or automatic logon to the system via a graphical user interface.
+Verify Rocky Linux 9 does not allow an unattended or automatic logon to the system via a graphical user interface.
 
 Check for the value of the "AutomaticLoginEnable" in the "/etc/gdm/custom.conf" file with the following command:
 

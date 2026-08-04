@@ -1,5 +1,5 @@
 control 'SV-257993' do
-  title 'RHEL 9 must not allow users to override SSH environment variables.'
+  title 'Rocky Linux 9 must not allow users to override SSH environment variables.'
   desc 'SSH environment options potentially allow users to bypass access
 restriction in some configurations.'
   desc 'check', %q(Verify that unattended or automatic logon via SSH is disabled with the following command:
@@ -11,7 +11,7 @@ PermitUserEnvironment no
 If "PermitUserEnvironment" is set to "yes", is missing completely, or is commented out, this is a finding.
 
 If the required value is not set, this is a finding.)
-  desc 'fix', 'Configure the RHEL 9 SSH daemon to not allow unattended or automatic logon to the system by editing the following line in the "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d":
+  desc 'fix', 'Configure the Rocky Linux 9 SSH daemon to not allow unattended or automatic logon to the system by editing the following line in the "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d":
 
 PermitUserEnvironment no
 

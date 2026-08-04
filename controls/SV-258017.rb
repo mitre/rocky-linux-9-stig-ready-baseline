@@ -1,9 +1,9 @@
 control 'SV-258017' do
-  title 'RHEL 9 must prevent a user from overriding the disabling of the graphical user interface autorun function.'
+  title 'Rocky Linux 9 must prevent a user from overriding the disabling of the graphical user interface autorun function.'
   desc 'Techniques used to address this include protocols using nonces (e.g., numbers generated for a specific one-time use) or challenges (e.g., TLS, WS_Security). Additional techniques include time-synchronous or challenge-response one-time authenticators.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 disables ability of the user to override the graphical user interface autorun setting.
+Verify Rocky Linux 9 disables ability of the user to override the graphical user interface autorun setting.
 
 Check that the autorun setting is set to prevent user modification with the following command:
 

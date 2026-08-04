@@ -1,5 +1,5 @@
 control 'SV-257828' do
-  title 'RHEL 9 must not have the nfs-utils package installed.'
+  title 'Rocky Linux 9 must not have the nfs-utils package installed.'
   desc '"nfs-utils" provides a daemon for the kernel NFS server and related tools. This package also contains the "showmount" program. "showmount" queries the mount daemon on a remote host for information about the Network File System (NFS) server on the remote host. For example, "showmount" can display the clients that are mounted on that host.'
   desc 'check', 'Verify that the nfs-utils package is not installed with the following command:
 

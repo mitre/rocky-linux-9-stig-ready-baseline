@@ -1,5 +1,5 @@
 control 'SV-272496' do
-  title 'RHEL 9 must elevate the SELinux context when an administrator calls the sudo command.'
+  title 'Rocky Linux 9 must elevate the SELinux context when an administrator calls the sudo command.'
   desc 'Without verification of the security functions, security functions may not operate correctly and the failure may go unnoticed. Security function is defined as the hardware, software, and/or firmware of the information system responsible for enforcing the system security policy and supporting the isolation of code and data on which the protection is based. Security functionality includes, but is not limited to, establishing system accounts, configuring access authorizations (i.e., permissions, privileges), setting events to be audited, and setting intrusion detection parameters.
 
 This requirement applies to operating systems performing security function verification/testing and/or systems and environments that require this functionality.
@@ -7,7 +7,7 @@ This requirement applies to operating systems performing security function verif
 Preventing nonprivileged users from executing privileged functions mitigates the risk that unauthorized individuals or processes may gain unnecessary access to information or privileges.
 
 Privileged functions include, for example, establishing accounts, performing system integrity checks, or administering cryptographic key management activities. Nonprivileged users are individuals who do not possess appropriate authorizations. Circumventing intrusion detection and prevention mechanisms or malicious code protection mechanisms are examples of privileged functions that require protection from nonprivileged users.'
-  desc 'check', 'Verify RHEL 9 elevates the SELinux context when an administrator calls the sudo command with the following command:
+  desc 'check', 'Verify Rocky Linux 9 elevates the SELinux context when an administrator calls the sudo command with the following command:
 
 This command must be run as root:
 
@@ -15,7 +15,7 @@ This command must be run as root:
 %{designated_group_or_user_name} ALL=(ALL) TYPE=sysadm_t ROLE=sysadm_r ALL
 
 If a designated sudoers administrator group or account(s) is not configured to elevate the SELinux type and role to "sysadm_t" and "sysadm_r" with the use of the sudo command, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to elevate the SELinux context when an administrator calls the sudo command.
+  desc 'fix', 'Configure Rocky Linux 9 to elevate the SELinux context when an administrator calls the sudo command.
 
 Edit a file in the "/etc/sudoers.d" directory with the following command:
 

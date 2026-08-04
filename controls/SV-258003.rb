@@ -1,5 +1,5 @@
 control 'SV-258003' do
-  title 'RHEL 9 SSH daemon must not allow GSSAPI authentication.'
+  title 'Rocky Linux 9 SSH daemon must not allow GSSAPI authentication.'
   desc "Generic Security Service Application Program Interface (GSSAPI) authentication is used to provide additional authentication mechanisms to applications. Allowing GSSAPI authentication through SSH exposes the system's GSSAPI to remote hosts, increasing the attack surface of the system."
   desc 'check', %q(Verify the SSH daemon does not allow GSSAPI authentication with the following command:
 

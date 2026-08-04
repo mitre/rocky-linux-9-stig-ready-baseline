@@ -1,5 +1,5 @@
 control 'SV-258170' do
-  title 'RHEL 9 must write audit records to disk.'
+  title 'Rocky Linux 9 must write audit records to disk.'
   desc 'Audit data should be synchronously written to disk to ensure log integrity. This setting assures that all audit event data is written disk.'
   desc 'check', 'Verify that the audit system is configured to write logs to the disk with the following command:
 

@@ -1,5 +1,5 @@
 control 'SV-257897' do
-  title 'RHEL 9 /etc/shadow- file must have mode 0000 or less permissive to prevent unauthorized access.'
+  title 'Rocky Linux 9 /etc/shadow- file must have mode 0000 or less permissive to prevent unauthorized access.'
   desc 'The "/etc/shadow-" file is a backup file of "/etc/shadow", and as such, contains the list of local system accounts and password hashes. Protection of this file is critical for system security.'
   desc 'check', 'Verify that the "/etc/shadow-" file has mode "0000" with the following command:
 

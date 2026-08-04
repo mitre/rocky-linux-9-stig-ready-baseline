@@ -1,5 +1,5 @@
 control 'SV-257932' do
-  title 'RHEL 9 must be configured so that all system device files are correctly labeled to prevent unauthorized modification.'
+  title 'Rocky Linux 9 must be configured so that all system device files are correctly labeled to prevent unauthorized modification.'
   desc 'If an unauthorized or modified device is allowed to exist on the system, there is the possibility the system may perform unintended or unauthorized operations.'
   desc 'check', 'Verify that all system device files are correctly labeled to prevent unauthorized modification.
 

@@ -1,5 +1,5 @@
 control 'SV-257942' do
-  title 'RHEL 9 must enable hardening for the Berkeley Packet Filter just-in-time compiler.'
+  title 'Rocky Linux 9 must enable hardening for the Berkeley Packet Filter just-in-time compiler.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
 
 Enabling hardening for the Berkeley Packet Filter (BPF) Just-in-time (JIT) compiler aids in mitigating JIT spraying attacks. Setting the value to "2" enables JIT hardening for all users.
@@ -12,7 +12,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 enables hardening for the BPF JIT compiler.
+  desc 'check', 'Verify Rocky Linux 9 enables hardening for the BPF JIT compiler.
 
 Check the status of the "net.core.bpf_jit_harden" parameter with the following command:
 
@@ -20,7 +20,7 @@ $ sudo sysctl net.core.bpf_jit_harden
 net.core.bpf_jit_harden = 2
 
 If "net.core.bpf_jit_harden" is not equal to "2" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to enable hardening for the BPF JIT compiler.
+  desc 'fix', 'Configure Rocky Linux 9 to enable hardening for the BPF JIT compiler.
 
 Create the drop-in file if it does not already exist:
 

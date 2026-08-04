@@ -1,5 +1,5 @@
 control 'SV-257902' do
-  title 'RHEL 9 /etc/gshadow file must be owned by root.'
+  title 'Rocky Linux 9 /etc/gshadow file must be owned by root.'
   desc 'The "/etc/gshadow" file contains group password hashes. Protection of this file is critical for system security.'
   desc 'check', 'Verify the ownership of the "/etc/gshadow" file with the following command:
 

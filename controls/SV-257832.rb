@@ -1,5 +1,5 @@
 control 'SV-257832' do
-  title 'RHEL 9 must not have the gssproxy package installed.'
+  title 'Rocky Linux 9 must not have the gssproxy package installed.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore, may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
 
 Operating systems are capable of providing a wide variety of functions and services. Some of the functions and services provided by default may not be necessary to support essential organizational operations (e.g., key missions, functions).

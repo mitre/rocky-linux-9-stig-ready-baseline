@@ -1,5 +1,5 @@
 control 'SV-257894' do
-  title 'RHEL 9 /etc/gshadow- file must have mode 0000 or less permissive to prevent unauthorized access.'
+  title 'Rocky Linux 9 /etc/gshadow- file must have mode 0000 or less permissive to prevent unauthorized access.'
   desc 'The "/etc/gshadow-" file is a backup of "/etc/gshadow", and as such, contains group password hashes. Protection of this file is critical for system security.'
   desc 'check', 'Verify that the "/etc/gshadow-" file has mode "0000" with the following command:
 

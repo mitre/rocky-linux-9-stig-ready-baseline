@@ -1,9 +1,9 @@
 control 'SV-272488' do
-  title 'RHEL 9 must have the Postfix package installed.'
+  title 'Rocky Linux 9 must have the Postfix package installed.'
   desc 'Postfix is a free, open-source mail transfer agent (MTA) that sends and receives emails. It is a server-side application that can be used to set up a local mail server, create a null-client mail relay, use a Postfix server as a destination for multiple domains, or choose an LDAP directory instead of files for lookups. Postfix supports protocols such as LDAP, SMTP AUTH (SASL), and TLS. It uses the Simple Mail Transfer Protocol (SMTP) to transfer emails between servers.'
   desc 'check', 'Note: If the admin can demonstrate that there is another system/service to send audit failure notifications to the administrator/ISSO, this control is not applicable.
 
-Verify RHEL 9 has the Postfix package installed with the following command:
+Verify Rocky Linux 9 has the Postfix package installed with the following command:
 
 $ sudo dnf list --installed postfix
 

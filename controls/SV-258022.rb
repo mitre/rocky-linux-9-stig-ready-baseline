@@ -1,20 +1,20 @@
 control 'SV-258022' do
-  title 'RHEL 9 must prevent a user from overriding the screensaver lock-enabled setting for the graphical user interface.'
+  title 'Rocky Linux 9 must prevent a user from overriding the screensaver lock-enabled setting for the graphical user interface.'
   desc "A session time-out lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not log out because of the temporary nature of the absence. Rather than relying on the user to manually lock their operating system session prior to vacating the vicinity, operating systems need to be able to identify when a user's session has idled and take action to initiate the session lock.
 
 The session lock is implemented at the point where session activity can be determined and/or controlled.
 
 Implementing session settings will have little value if a user is able to manipulate these settings from the defaults prescribed in the other requirements of this implementation guide."
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 prevents a user from overriding settings for graphical user interfaces.
+Verify Rocky Linux 9 prevents a user from overriding settings for graphical user interfaces.
 
 $ gsettings writable org.gnome.desktop.screensaver lock-enabled
 
 false
 
 If "lock-enabled" is writable and the result is "true", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to prevent a user from overriding settings for graphical user interfaces.
+  desc 'fix', 'Configure Rocky Linux 9 to prevent a user from overriding settings for graphical user interfaces.
 
 Create a database to contain the systemwide screensaver settings (if it does not already exist) with the following command:
 

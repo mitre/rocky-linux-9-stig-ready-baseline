@@ -1,7 +1,7 @@
 control 'SV-258214' do
-  title 'Successful/unsuccessful uses of the shutdown command in RHEL 9 must generate an audit record.'
+  title 'Successful/unsuccessful uses of the shutdown command in Rocky Linux 9 must generate an audit record.'
   desc 'Misuse of the shutdown command may cause availability issues for the system.'
-  desc 'check', 'Verify that RHEL 9 is configured to audit the execution of the "shutdown" command with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 is configured to audit the execution of the "shutdown" command with the following command:
 
 $ sudo cat /etc/audit/rules.d/* | grep shutdown
 

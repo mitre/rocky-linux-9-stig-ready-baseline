@@ -1,9 +1,9 @@
 control 'SV-258162' do
-  title 'RHEL 9 must take appropriate action when the internal event queue is full.'
+  title 'Rocky Linux 9 must take appropriate action when the internal event queue is full.'
   desc 'The audit system should have an action setup in the event the internal event queue becomes full so that no data is lost.  Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
 
 Offloading is a common process in information systems with limited audit storage capacity.'
-  desc 'check', 'Verify that RHEL 9 audit system is configured to take an appropriate action when the internal event queue is full:
+  desc 'check', 'Verify that Rocky Linux 9 audit system is configured to take an appropriate action when the internal event queue is full:
 
 $ sudo grep -i overflow_action /etc/audit/auditd.conf
 

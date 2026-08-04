@@ -1,5 +1,5 @@
 control 'SV-258188' do
-  title 'RHEL 9 must audit all uses of the truncate, ftruncate, creat, open, openat, and open_by_handle_at system calls.'
+  title 'Rocky Linux 9 must audit all uses of the truncate, ftruncate, creat, open, openat, and open_by_handle_at system calls.'
   desc 'Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
 
 Audit records can be generated from various components within the information system (e.g., module or policy filter).
@@ -7,7 +7,7 @@ Audit records can be generated from various components within the information sy
 When a user logs on, the auid is set to the uid of the account being authenticated. Daemons are not user sessions and have the loginuid set to -1. The auid representation is an unsigned 32-bit integer, which equals 4294967295. The audit system interprets -1, 4294967295, and "unset" in the same way.
 
 The system call rules are loaded into a matching engine that intercepts each system call made by all programs on the system. Therefore, it is very important to use system call rules only when absolutely necessary since these affect performance. The more rules, the bigger the performance hit. The performance can be helped, however, by combining system calls into one rule whenever possible.'
-  desc 'check', %q(Verify RHEL 9 is configured to audit successful/unsuccessful attempts to use the "truncate", "ftruncate", "creat", "open", "openat", and "open_by_handle_at" system calls with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 is configured to audit successful/unsuccessful attempts to use the "truncate", "ftruncate", "creat", "open", "openat", and "open_by_handle_at" system calls with the following command:
 
 $ sudo auditctl -l | grep 'open\b\|openat\|open_by_handle_at\|truncate\|creat'
 
@@ -21,7 +21,7 @@ If the output does not produce rules containing "-F exit=-EPERM", this is a find
 If the output does not produce rules containing "-F exit=-EACCES", this is a finding.
 
 If the command does not return an audit rule for "truncate", "ftruncate", "creat", "open", "openat", and "open_by_handle_at" or any of the lines returned are commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to generate an audit event for any successful/unsuccessful use of the "truncate", "ftruncate", "creat", "open", "openat", and "open_by_handle_at" system calls by adding or updating the following rules in the "/etc/audit/rules.d/audit.rules" file:
+  desc 'fix', 'Configure Rocky Linux 9 to generate an audit event for any successful/unsuccessful use of the "truncate", "ftruncate", "creat", "open", "openat", and "open_by_handle_at" system calls by adding or updating the following rules in the "/etc/audit/rules.d/audit.rules" file:
 
 -a always,exit -F arch=b32 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=unset -k perm_access
 -a always,exit -F arch=b64 -S truncate,ftruncate,creat,open,openat,open_by_handle_at -F exit=-EPERM -F auid>=1000 -F auid!=unset -k perm_access

@@ -1,5 +1,5 @@
 control 'SV-258118' do
-  title 'RHEL 9 must not be configured to bypass password requirements for privilege escalation.'
+  title 'Rocky Linux 9 must not be configured to bypass password requirements for privilege escalation.'
   desc 'Without reauthentication, users may access resources or perform tasks for which they do not have authorization. When operating systems provide the capability to escalate a functional capability, it is critical the user reauthenticate.'
   desc 'check', 'Verify the operating system is not configured to bypass password requirements for privilege escalation with the following command:
 

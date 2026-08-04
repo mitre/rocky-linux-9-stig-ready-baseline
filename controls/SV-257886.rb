@@ -1,6 +1,6 @@
 control 'SV-257886' do
-  title 'RHEL 9 /var/log/messages file must have mode 0640 or less permissive.'
-  desc "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the RHEL 9 system or platform. Additionally, personally identifiable information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.
+  title 'Rocky Linux 9 /var/log/messages file must have mode 0640 or less permissive.'
+  desc "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the Rocky Linux 9 system or platform. Additionally, personally identifiable information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.
 
 The structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements."
   desc 'check', %q(Verify the "/var/log/messages" file has a mode of "0640" or less permissive with the following command:

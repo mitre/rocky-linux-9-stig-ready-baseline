@@ -1,12 +1,12 @@
 control 'SV-257935' do
-  title 'RHEL 9 must have the firewalld package installed.'
+  title 'Rocky Linux 9 must have the firewalld package installed.'
   desc '"Firewalld" provides an easy and effective way to block/limit remote access to the system via ports, services, and protocols.
 
 Remote access services, such as those providing remote access to network devices and information systems, which lack automated control capabilities, increase risk and make remote user access management difficult at best.
 
 Remote access is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
 
-RHEL 9 functionality (e.g., SSH) must be capable of taking enforcement action if the audit reveals unauthorized activity. Automated control of remote access sessions allows organizations to ensure ongoing compliance with remote access policies by enforcing connection rules of remote access applications on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).'
+Rocky Linux 9 functionality (e.g., SSH) must be capable of taking enforcement action if the audit reveals unauthorized activity. Automated control of remote access sessions allows organizations to ensure ongoing compliance with remote access policies by enforcing connection rules of remote access applications on a variety of information system components (e.g., servers, workstations, notebook computers, smartphones, and tablets).'
   desc 'check', 'Run the following command to determine if the firewalld package is installed with the following command:
 
 $ dnf list --installed firewalld

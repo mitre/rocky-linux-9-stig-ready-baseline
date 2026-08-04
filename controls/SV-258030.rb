@@ -1,16 +1,16 @@
 control 'SV-258030' do
-  title 'RHEL 9 must prevent a user from overriding the disable-restart-buttons setting for the graphical user interface.'
+  title 'Rocky Linux 9 must prevent a user from overriding the disable-restart-buttons setting for the graphical user interface.'
   desc 'A user who is at the console can reboot the system at the login screen. If restart or shutdown buttons are pressed at the login screen, this can create the risk of short-term loss of availability of systems due to reboot.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 prevents a user from overriding the disable-restart-buttons setting for graphical user interfaces.
+Verify Rocky Linux 9 prevents a user from overriding the disable-restart-buttons setting for graphical user interfaces.
 
 $ gsettings writable org.gnome.login-screen disable-restart-buttons
 
 false
 
 If "disable-restart-buttons" is writable and the result is "true", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to prevent a user from overriding the disable-restart-buttons setting for graphical user interfaces.
+  desc 'fix', 'Configure Rocky Linux 9 to prevent a user from overriding the disable-restart-buttons setting for graphical user interfaces.
 
 Create a database to contain the systemwide graphical user logon settings (if it does not already exist) with the following command:
 

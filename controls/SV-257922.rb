@@ -1,8 +1,8 @@
 control 'SV-257922' do
-  title 'RHEL 9 library directories must be owned by root.'
-  desc 'If RHEL 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+  title 'Rocky Linux 9 library directories must be owned by root.'
+  desc 'If Rocky Linux 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
 
-This requirement applies to RHEL 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
+This requirement applies to Rocky Linux 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
   desc 'check', 'Verify the systemwide shared library directories are owned by "root" with the following command:
 
 $ sudo find /lib /lib64 /usr/lib /usr/lib64 ! -user root -type d -exec stat -c "%U %n" {} \\;

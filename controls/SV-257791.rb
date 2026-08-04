@@ -1,5 +1,5 @@
 control 'SV-257791' do
-  title 'RHEL 9 /boot/grub2/grub.cfg file must be owned by root.'
+  title 'Rocky Linux 9 /boot/grub2/grub.cfg file must be owned by root.'
   desc 'The " /boot/grub2/grub.cfg" file stores sensitive system configuration. Protection of this file is critical for system security.'
   desc 'check', 'Verify the ownership of the "/boot/grub2/grub.cfg" file with the following command:
 

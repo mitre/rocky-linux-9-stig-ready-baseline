@@ -1,7 +1,7 @@
 control 'SV-257839' do
-  title 'RHEL 9 must have the gnutls-utils package installed.'
+  title 'Rocky Linux 9 must have the gnutls-utils package installed.'
   desc 'GnuTLS is a secure communications library implementing the SSL, TLS and DTLS protocols and technologies around them. It provides a simple C language application programming interface (API) to access the secure communications protocols as well as APIs to parse and write X.509, PKCS #12, OpenPGP and other required structures. This package contains command line TLS client and server and certificate manipulation tools.'
-  desc 'check', 'Verify that RHEL 9 has the gnutls-utils package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the gnutls-utils package installed with the following command:
 
 $ dnf list --installed gnutls-utils
 

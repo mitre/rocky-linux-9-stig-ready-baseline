@@ -1,7 +1,7 @@
 control 'SV-258213' do
-  title 'Successful/unsuccessful uses of the reboot command in RHEL 9 must generate an audit record.'
+  title 'Successful/unsuccessful uses of the reboot command in Rocky Linux 9 must generate an audit record.'
   desc 'Misuse of the reboot command may cause availability issues for the system.'
-  desc 'check', 'Verify that RHEL 9 is configured to audit the execution of the "reboot" command with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 is configured to audit the execution of the "reboot" command with the following command:
 
 $ sudo auditctl -l | grep reboot
 

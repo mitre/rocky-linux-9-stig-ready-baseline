@@ -1,7 +1,7 @@
 control 'SV-258144' do
-  title 'All RHEL 9 remote access methods must be monitored.'
+  title 'All Rocky Linux 9 remote access methods must be monitored.'
   desc 'Logging remote access methods can be used to trace the decrease in the risks associated with remote user access management. It can also be used to spot cyberattacks and ensure ongoing compliance with organizational policies surrounding the use of remote access methods.'
-  desc 'check', %q(Verify that RHEL 9 monitors all remote access methods.
+  desc 'check', %q(Verify that Rocky Linux 9 monitors all remote access methods.
 
 Check that remote access methods are being logged by running the following command:
 
@@ -29,7 +29,7 @@ $ sudo systemctl restart rsyslog.service'
   tag 'host'
   tag 'container-conditional'
 
-  only_if('Control not applicable; remote access not configured within containerized RHEL', impact: 0.0) {
+  only_if('Control not applicable; remote access is not configured within a containerized Rocky Linux system', impact: 0.0) {
     !%w[docker podman kubepods lxc].include?(virtualization.system) || file('/etc/ssh/sshd_config').exist?
   }
 

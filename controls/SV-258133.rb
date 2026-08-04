@@ -1,5 +1,5 @@
 control 'SV-258133' do
-  title 'RHEL 9 must prohibit the use of cached authenticators after one day.'
+  title 'Rocky Linux 9 must prohibit the use of cached authenticators after one day.'
   desc 'If cached authentication information is out-of-date, the validity of the authentication information may be questionable.'
   desc 'check', 'Verify that the System Security Services Daemon (SSSD) prohibits the use of cached authentications after one day.
 

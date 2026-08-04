@@ -1,5 +1,5 @@
 control 'SV-257810' do
-  title 'RHEL 9 must disable access to network bpf system call from nonprivileged processes.'
+  title 'Rocky Linux 9 must disable access to network bpf system call from nonprivileged processes.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore, may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
 
 The sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographical order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.
@@ -10,7 +10,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 prevents privilege escalation through the kernel by disabling access to the bpf system call.
+  desc 'check', 'Verify Rocky Linux 9 prevents privilege escalation through the kernel by disabling access to the bpf system call.
 
 Check the status of the "kernel.unprivileged_bpf_disabled" kernel parameter with the following command:
 
@@ -18,7 +18,7 @@ $ sysctl kernel.unprivileged_bpf_disabled
 kernel.unprivileged_bpf_disabled = 1
 
 If "kernel.unprivileged_bpf_disabled" is not set to "1", or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to prevent privilege escalation through the kernel by disabling access to the bpf system call.
+  desc 'fix', 'Configure Rocky Linux 9 to prevent privilege escalation through the kernel by disabling access to the bpf system call.
 
 Create the drop-in file if it does not already exist:
 

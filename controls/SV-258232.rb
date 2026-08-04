@@ -1,5 +1,5 @@
 control 'SV-258232' do
-  title 'RHEL 9 IP tunnels must use FIPS 140-3 approved cryptographic algorithms.'
+  title 'Rocky Linux 9 IP tunnels must use FIPS 140-3 approved cryptographic algorithms.'
   desc 'Overriding the system crypto policy makes the behavior of the Libreswan service violate expectations, and makes system configuration more fragmented.'
   desc 'check', 'Verify that the IPsec service uses the system crypto policy with the following command:
 
@@ -36,7 +36,7 @@ include /etc/crypto-policies/back-ends/libreswan.config'
 
   setting_check = command('grep include /etc/ipsec.conf /etc/ipsec.d/*.conf').stdout.strip.match?(/^.*:?[^#]include\s*#{expected_value}$/)
 
-  describe 'RHEL9 IPsec config' do
+  describe 'Rocky Linux 9 IPsec config' do
     it "should include the conf file '#{expected_value}'" do
       expect(setting_check).to eq(true), "Conf file '#{expected_value}' not included in ipsec config"
     end

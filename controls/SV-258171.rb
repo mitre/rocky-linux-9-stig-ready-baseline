@@ -1,5 +1,5 @@
 control 'SV-258171' do
-  title 'RHEL 9 must allow only the information system security manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.'
+  title 'Rocky Linux 9 must allow only the information system security manager (ISSM) (or individuals or roles appointed by the ISSM) to select which auditable events are to be audited.'
   desc "Without the capability to restrict the roles and individuals that can
 select which events are audited, unauthorized personnel may be able to prevent
 the auditing of critical events. Misconfigured audits may degrade the system's

@@ -1,18 +1,18 @@
 control 'SV-258033' do
-  title 'RHEL 9 must disable the user list at logon for graphical user interfaces.'
+  title 'Rocky Linux 9 must disable the user list at logon for graphical user interfaces.'
   desc 'Leaving the user list enabled is a security risk since it allows
 anyone with physical access to the system to enumerate known user accounts
 without authenticated access to the system.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify that RHEL 9 disables the user logon list for graphical user interfaces with the following command:
+Verify that Rocky Linux 9 disables the user logon list for graphical user interfaces with the following command:
 
 $ gsettings get org.gnome.login-screen disable-user-list
 
 true
 
 If the setting is "false", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable the user list at logon for graphical user interfaces.
+  desc 'fix', 'Configure Rocky Linux 9 to disable the user list at logon for graphical user interfaces.
 
 Create a database to contain the systemwide screensaver settings (if it does not already exist) with the following command:
 Note: The example below is using the database "local" for the system. If the system is using another database in "/etc/dconf/profile/user", the file should be created under the appropriate subdirectory.

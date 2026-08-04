@@ -1,7 +1,7 @@
 control 'SV-257984' do
-  title 'RHEL 9 SSHD must not allow blank passwords.'
+  title 'Rocky Linux 9 SSHD must not allow blank passwords.'
   desc 'If an account has an empty password, anyone could log on and run commands with the privileges of that account. Accounts with empty passwords should never be used in operational environments.'
-  desc 'check', %q(Verify that RHEL 9 remote access using SSH prevents logging on with a blank password with the following command:
+  desc 'check', %q(Verify that Rocky Linux 9 remote access using SSH prevents logging on with a blank password with the following command:
 
 $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs sudo grep -iH '^\s*permitemptypasswords'
 

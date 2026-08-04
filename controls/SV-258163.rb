@@ -1,5 +1,5 @@
 control 'SV-258163' do
-  title 'RHEL 9 System Administrator (SA) and/or information system security officer (ISSO) (at a minimum) must be alerted of an audit processing failure event.'
+  title 'Rocky Linux 9 System Administrator (SA) and/or information system security officer (ISSO) (at a minimum) must be alerted of an audit processing failure event.'
   desc 'It is critical for the appropriate personnel to be aware if a system
 is at risk of failing to process audit logs as required. Without this
 notification, the security personnel may be unaware of an impending failure of
@@ -13,7 +13,7 @@ exceeded.
 distinct information system component where audit records are stored), the
 centralized audit storage capacity of organizations (i.e., all audit data
 storage repositories combined), or both.'
-  desc 'check', 'Verify that RHEL 9 is configured to notify the SA and/or ISSO (at a minimum) in the event of an audit processing failure with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 is configured to notify the SA and/or ISSO (at a minimum) in the event of an audit processing failure with the following command:
 
 $ sudo grep action_mail_acct /etc/audit/auditd.conf
 

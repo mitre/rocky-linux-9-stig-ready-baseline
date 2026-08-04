@@ -1,11 +1,11 @@
 control 'SV-258105' do
-  title 'RHEL 9 passwords must have a 24 hours minimum password lifetime restriction in /etc/shadow.'
+  title 'Rocky Linux 9 passwords must have a 24 hours minimum password lifetime restriction in /etc/shadow.'
   desc "Enforcing a minimum password lifetime helps to prevent repeated
 password changes to defeat the password reuse or history enforcement
 requirement. If users are allowed to immediately and continually change their
 password, the password could be repeatedly changed in a short period of time to
 defeat the organization's policy regarding password reuse."
-  desc 'check', %q(Verify that RHEL 9 has configured the minimum time period between password changes for each user account as one day or greater with the following command:
+  desc 'check', %q(Verify that Rocky Linux 9 has configured the minimum time period between password changes for each user account as one day or greater with the following command:
 
 $ sudo awk -F: '$4 < 1 {printf "%s %d\n", $1, $4}' /etc/shadow
 

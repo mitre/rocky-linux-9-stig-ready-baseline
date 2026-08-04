@@ -1,7 +1,7 @@
 control 'SV-257956' do
-  title 'There must be no .shosts files on RHEL 9.'
+  title 'There must be no .shosts files on Rocky Linux 9.'
   desc 'The .shosts files are used to configure host-based authentication for individual users or the system via SSH. Host-based authentication is not sufficient for preventing unauthorized access to the system, as it does not require interactive identification and authentication of a connection request, or for the use of two-factor authentication.'
-  desc 'check', 'Verify there are no ".shosts" files on RHEL 9 with the following command:
+  desc 'check', 'Verify there are no ".shosts" files on Rocky Linux 9 with the following command:
 
 $ sudo find / -name .shosts
 

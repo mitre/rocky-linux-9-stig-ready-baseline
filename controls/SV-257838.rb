@@ -1,9 +1,9 @@
 control 'SV-257838' do
-  title 'RHEL 9 must have the openssl-pkcs11 package installed.'
+  title 'Rocky Linux 9 must have the openssl-pkcs11 package installed.'
   desc 'Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. Multifactor authentication requires using two or more factors to achieve authentication. A privileged account is defined as an information system account with authorizations of a privileged user. The DOD common access card (CAC) with DOD-approved PKI is an example of multifactor authentication.'
   desc 'check', 'Note: If the system administrator demonstrates the use of an approved alternate multifactor authentication method, this requirement is Not Applicable.
 
-Verify that RHEL 9 has the openssl-pkcs11 package installed with the following command:
+Verify that Rocky Linux 9 has the openssl-pkcs11 package installed with the following command:
 
 $ dnf list --installed openssl-pkcs11
 

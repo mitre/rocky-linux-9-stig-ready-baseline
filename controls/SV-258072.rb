@@ -1,5 +1,5 @@
 control 'SV-258072' do
-  title 'RHEL 9 must define default permissions for the bash shell.'
+  title 'Rocky Linux 9 must define default permissions for the bash shell.'
   desc 'The umask controls the default access mode assigned to newly created files. A umask of 077 limits new files to mode 600 or less permissive. Although umask can be represented as a four-digit number, the first digit representing special access modes is typically ignored or required to be "0". This requirement applies to the globally configured system defaults and the local interactive user defaults for each account on the system.'
   desc 'check', 'Verify the "umask" setting is configured correctly in the "/etc/bashrc" file with the following command:
 
@@ -10,7 +10,7 @@ $ grep umask /etc/bashrc
 [ `umask` -eq 0 ] && umask 077
 
 If the value for the "umask" parameter is not "077", or the "umask" parameter is missing or is commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to define default permissions for all authenticated users using the bash shell.
+  desc 'fix', 'Configure Rocky Linux 9 to define default permissions for all authenticated users using the bash shell.
 
 Add or edit the lines for the "umask" parameter in the "/etc/bashrc" file to "077":
 

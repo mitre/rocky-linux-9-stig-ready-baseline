@@ -1,5 +1,5 @@
 control 'SV-257809' do
-  title 'RHEL 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.'
+  title 'Rocky Linux 9 must implement address space layout randomization (ASLR) to protect its memory from unauthorized code execution.'
   desc 'Some adversaries launch attacks with the intent of executing code in nonexecutable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can be either hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.
 
 Examples of attacks are buffer overflow attacks.
@@ -12,7 +12,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 is implementing ASLR.
+  desc 'check', 'Verify Rocky Linux 9 is implementing ASLR.
 
 Check the status of the "kernel.randomize_va_space" kernel parameter with the following command:
 
@@ -20,7 +20,7 @@ $ sudo sysctl kernel.randomize_va_space
 kernel.randomize_va_space = 2
 
 If "kernel.randomize_va_space" is not set to "2" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to implement ASLR.
+  desc 'fix', 'Configure Rocky Linux 9 to implement ASLR.
 
 Create the drop-in if it does not already exist:
 

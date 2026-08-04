@@ -1,5 +1,5 @@
 control 'SV-257835' do
-  title 'The Trivial File Transfer Protocol (TFTP) server must not be installed unless it is required, and if required, the RHEL 9 TFTP daemon must be configured to operate in secure mode.'
+  title 'The Trivial File Transfer Protocol (TFTP) server must not be installed unless it is required, and if required, the Rocky Linux 9 TFTP daemon must be configured to operate in secure mode.'
   desc 'Removing the "tftp-server" package decreases the risk of the accidental (or intentional) activation of tftp services.
 
 If TFTP is required for operational support (such as transmission of router configurations), its use must be documented with the information systems security manager (ISSM), restricted to only authorized personnel, and have access control rules established.
@@ -15,7 +15,7 @@ $ sudo dnf list --installed tftp-server
 
 Updating Subscription Management repositories.
 Installed Packages
-tftp-server.x86_64                             5.2-38.el9                              @rhel-9-for-x86_64-appstream-rpms
+tftp-server.x86_64                             5.2-38.el9                              @appstream
 
 Verify the TFTP daemon, if tftp.server is installed, is configured to operate in secure mode with the following command:
 
@@ -23,7 +23,7 @@ $ grep -i execstart /usr/lib/systemd/system/tftp.service
 ExecStart=/usr/sbin/in.tftpd -s /var/lib/tftpboot
 
 Note: The "-s" option ensures the TFTP server only serves files from the specified directory, which is a security measure to prevent unauthorized access to other parts of the file system.'
-  desc 'fix', 'Configure RHEL 9 so that TFTP operates in secure mode if installed.
+  desc 'fix', 'Configure Rocky Linux 9 so that TFTP operates in secure mode if installed.
 
 If TFTP server is not required, remove it with the following command:
 $ sudo dnf -y remove tftp-server

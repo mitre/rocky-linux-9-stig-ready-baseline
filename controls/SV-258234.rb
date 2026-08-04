@@ -1,7 +1,7 @@
 control 'SV-258234' do
-  title 'RHEL 9 must have the crypto-policies package installed.'
+  title 'Rocky Linux 9 must have the crypto-policies package installed.'
   desc 'Centralized cryptographic policies simplify applying secure ciphers across an operating system and the applications that run on that operating system. Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data.'
-  desc 'check', 'Verify that the RHEL 9 crypto-policies package is installed with the following command:
+  desc 'check', 'Verify that the Rocky Linux 9 crypto-policies package is installed with the following command:
 
 $ dnf list --installed crypto-policies
 

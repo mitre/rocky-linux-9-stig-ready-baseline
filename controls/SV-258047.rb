@@ -1,5 +1,5 @@
 control 'SV-258047' do
-  title 'RHEL 9 must automatically expire temporary accounts within 72 hours.'
+  title 'Rocky Linux 9 must automatically expire temporary accounts within 72 hours.'
   desc 'Temporary accounts are privileged or nonprivileged accounts that are
     established during pressing circumstances, such as new software or hardware
     configuration or an incident response, where the need for prompt account

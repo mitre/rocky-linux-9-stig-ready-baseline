@@ -1,5 +1,5 @@
 control 'SV-257845' do
-  title 'RHEL 9 must use a separate file system for /var.'
+  title 'Rocky Linux 9 must use a separate file system for /var.'
   desc 'Ensuring that "/var" is mounted on its own partition enables the setting of more restrictive mount options. This helps protect system services such as daemons or other programs which use it. It is not uncommon for the "/var" directory to contain world-writable directories installed by other software packages.'
   desc 'check', 'Verify that a separate file system/partition has been created for "/var" with the following command:
 

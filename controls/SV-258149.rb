@@ -1,10 +1,10 @@
 control 'SV-258149' do
-  title 'RHEL 9 must be configured to forward audit records via TCP to a different system or media from the system being audited via rsyslog.'
+  title 'Rocky Linux 9 must be configured to forward audit records via TCP to a different system or media from the system being audited via rsyslog.'
   desc 'Information stored in one location is vulnerable to accidental or incidental deletion or alteration.
 
 Off-loading is a common process in information systems with limited audit storage capacity.
 
-RHEL 9 installation media provides "rsyslogd", a system utility providing support for message logging. Support for both internet and Unix domain sockets enables this utility to support both local and remote logging. Coupling this utility with "gnutls" (a secure communications library implementing the SSL, TLS and DTLS protocols) creates a method to securely encrypt and off-load auditing.
+Rocky Linux 9 installation media provides "rsyslogd", a system utility providing support for message logging. Support for both internet and Unix domain sockets enables this utility to support both local and remote logging. Coupling this utility with "gnutls" (a secure communications library implementing the SSL, TLS and DTLS protocols) creates a method to securely encrypt and off-load auditing.
 
 Rsyslog provides three ways to forward message: the traditional UDP transport, which is extremely lossy but standard; the plain TCP based transport, which loses messages only during certain situations but is widely available; and the RELP transport, which does not lose messages but is currently available only as part of the rsyslogd 3.15.0 and above.
 
@@ -13,7 +13,7 @@ UDP *.* @remotesystemname
 TCP *.* @@remotesystemname
 RELP *.* :omrelp:remotesystemname:2514
 Note that a port number was given as there is no standard port for RELP.'
-  desc 'check', %q(Verify RHEL 9 audit system off-loads audit records onto a different system or media from the system being audited via rsyslog using TCP with the following commands:
+  desc 'check', %q(Verify Rocky Linux 9 audit system off-loads audit records onto a different system or media from the system being audited via rsyslog using TCP with the following commands:
 
 To check for legacy configuration syntax, perform the following:
 $ sudo grep -ir '@@' /etc/rsyslog.conf /etc/rsyslog.d/

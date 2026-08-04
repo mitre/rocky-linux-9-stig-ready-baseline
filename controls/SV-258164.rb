@@ -1,16 +1,16 @@
 control 'SV-258164' do
-  title 'RHEL 9 audit system must audit local events.'
+  title 'Rocky Linux 9 audit system must audit local events.'
   desc %q(Without establishing what type of events occurred, the source of events, where events occurred, and the outcome of events, it would be difficult to establish, correlate, and investigate the events leading up to an outage or attack.
 
 If option "local_events" isn't set to "yes" only events from network will be aggregated.)
-  desc 'check', %q(Verify that the RHEL 9 audit system is configured to audit local events with the following command:
+  desc 'check', %q(Verify that the Rocky Linux 9 audit system is configured to audit local events with the following command:
 
 $ sudo grep local_events /etc/audit/auditd.conf
 
 local_events = yes
 
 If "local_events" isn't set to "yes", if the command does not return a line, or the line is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to generate audit records for local events by adding or updating the following line in "/etc/audit/auditd.conf":
+  desc 'fix', 'Configure Rocky Linux 9 to generate audit records for local events by adding or updating the following line in "/etc/audit/auditd.conf":
 
 local_events = yes
 

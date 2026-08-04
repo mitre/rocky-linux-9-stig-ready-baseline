@@ -1,5 +1,5 @@
 control 'SV-258227' do
-  title 'RHEL 9 must take appropriate action when a critical audit processing failure occurs.'
+  title 'Rocky Linux 9 must take appropriate action when a critical audit processing failure occurs.'
   desc 'It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.
 
 Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.'
@@ -10,7 +10,7 @@ $ sudo grep "\\-f" /etc/audit/audit.rules
 -f 2
 
 If the value for "-f" is not "2", and availability is not documented as an overriding concern, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to shut down when auditing failures occur.
+  desc 'fix', 'Configure Rocky Linux 9 to shut down when auditing failures occur.
 
 Add the following line to the bottom of the /etc/audit/rules.d/audit.rules file:
 

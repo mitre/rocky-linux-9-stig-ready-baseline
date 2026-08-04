@@ -1,5 +1,5 @@
 control 'SV-257788' do
-  title 'RHEL 9 must disable the ability of systemd to spawn an interactive boot process.'
+  title 'Rocky Linux 9 must disable the ability of systemd to spawn an interactive boot process.'
   desc 'Using interactive or recovery boot, the console user could disable auditing, firewalls, or other services, weakening system security.'
   desc 'check', "Verify that GRUB 2 is configured to disable interactive boot.
 

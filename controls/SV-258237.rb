@@ -1,5 +1,5 @@
 control 'SV-258237' do
-  title 'RHEL 9 must use mechanisms meeting the requirements of applicable federal laws, executive orders, directives, policies, regulations, standards, and guidance for authentication to a cryptographic module.'
+  title 'Rocky Linux 9 must use mechanisms meeting the requirements of applicable federal laws, executive orders, directives, policies, regulations, standards, and guidance for authentication to a cryptographic module.'
   desc 'Overriding the system crypto policy makes the behavior of Kerberos violate expectations and makes system configuration more fragmented.'
   desc 'check', 'Verify that the symlink exists and targets the correct Kerberos cryptographic policy with the following command:
 

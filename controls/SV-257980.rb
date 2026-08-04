@@ -1,7 +1,7 @@
 control 'SV-257980' do
-  title 'RHEL 9 must have the openssh-clients package installed.'
+  title 'Rocky Linux 9 must have the openssh-clients package installed.'
   desc 'This package includes utilities to make encrypted connections and transfer files securely to SSH servers.'
-  desc 'check', 'Verify that RHEL 9 has the openssh-clients package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the openssh-clients package installed with the following command:
 
 $ dnf list --installed openssh-clients
 

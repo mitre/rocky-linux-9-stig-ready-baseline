@@ -1,5 +1,5 @@
 control 'SV-257843' do
-  title 'A separate RHEL 9 file system must be used for user home directories (such as /home or an equivalent).'
+  title 'A separate Rocky Linux 9 file system must be used for user home directories (such as /home or an equivalent).'
   desc 'Ensuring that "/home" is mounted on its own partition enables the setting of more restrictive mount options, and also helps ensure that users cannot trivially fill partitions used for log or audit data storage.'
   desc 'check', 'Verify that a separate file system/partition has been created for "/home" with the following command:
 

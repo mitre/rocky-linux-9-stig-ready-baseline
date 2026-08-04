@@ -1,5 +1,5 @@
 control 'SV-257799' do
-  title 'RHEL 9 must prevent the loading of a new kernel for later execution.'
+  title 'Rocky Linux 9 must prevent the loading of a new kernel for later execution.'
   desc 'Changes to any software components can have significant effects on the overall security of the operating system. This requirement ensures the software has not been tampered with and that it has been provided by a trusted vendor.
 
 Disabling kexec_load prevents an unsigned kernel image (that could be a windows kernel or modified vulnerable kernel) from being loaded. Kexec can be used subvert the entire secureboot process and should be avoided at all costs especially since it can load unsigned kernel images.
@@ -12,7 +12,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 is configured to disable kernel image loading.
+  desc 'check', 'Verify Rocky Linux 9 is configured to disable kernel image loading.
 
 Check the status of the "kernel.kexec_load_disabled" kernel parameter with the following command:
 
@@ -20,7 +20,7 @@ $ sudo sysctl kernel.kexec_load_disabled
 kernel.kexec_load_disabled = 1
 
 If "kernel.kexec_load_disabled" is not set to "1" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable kernel image loading.
+  desc 'fix', 'Configure Rocky Linux 9 to disable kernel image loading.
 
 Create a drop-in if it does not already exist:
 

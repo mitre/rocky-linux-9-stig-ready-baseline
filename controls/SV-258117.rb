@@ -1,5 +1,5 @@
 control 'SV-258117' do
-  title 'RHEL 9 must be configured to use the shadow file to store only encrypted representations of passwords.'
+  title 'Rocky Linux 9 must be configured to use the shadow file to store only encrypted representations of passwords.'
   desc 'Passwords need to be protected at all times, and encryption is the standard method for protecting passwords. If passwords are not encrypted, they can be plainly read (i.e., clear text) and easily compromised. Passwords that are encrypted with a weak algorithm are no more protected than if they are kept in plain text.
 
 This setting ensures user and group account administration utilities are configured to store only encrypted representations of passwords. Additionally, the "crypt_style" configuration option ensures the use of a strong hashing algorithm that makes password cracking attacks more difficult.'
@@ -10,7 +10,7 @@ This setting ensures user and group account administration utilities are configu
 ENCRYPT_METHOD SHA512
 
 If "ENCRYPT_METHOD" does not have a value of "SHA512", or the line is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to store only SHA512 encrypted representations of passwords.
+  desc 'fix', 'Configure Rocky Linux 9 to store only SHA512 encrypted representations of passwords.
 
 Add or update the following line in the "/etc/login.defs" file:
 

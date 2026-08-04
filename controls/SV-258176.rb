@@ -1,12 +1,12 @@
 control 'SV-258176' do
-  title 'RHEL 9 must audit uses of the "execve" system call.'
+  title 'Rocky Linux 9 must audit uses of the "execve" system call.'
   desc 'Misuse of privileged functions, either intentionally or
 unintentionally by authorized users, or by unauthorized external entities that
 have compromised information system accounts, is a serious and ongoing concern
 and can have significant adverse impacts on organizations. Auditing the use of
 privileged functions is one way to detect such misuse and identify the risk
 from insider threats and the advanced persistent threat.'
-  desc 'check', 'Verify RHEL 9 is configured to audit the execution of the "execve" system call with the following command:
+  desc 'check', 'Verify Rocky Linux 9 is configured to audit the execution of the "execve" system call with the following command:
 
 $ sudo auditctl -l | grep execve
 
@@ -16,7 +16,7 @@ $ sudo auditctl -l | grep execve
 -a always,exit -F arch=b64 -S execve -C gid!=egid -F egid=0 -k execpriv
 
 If the command does not return all lines, or the lines are commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to audit the execution of the "execve" system call.
+  desc 'fix', 'Configure Rocky Linux 9 to audit the execution of the "execve" system call.
 
 Add or update the following file system rules to "/etc/audit/rules.d/audit.rules":
 

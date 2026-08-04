@@ -1,5 +1,5 @@
 control 'SV-270174' do
-  title 'RHEL 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a graphical user logon.'
+  title 'Rocky Linux 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a graphical user logon.'
   desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 System use notifications are required only for access via logon interfaces with human users and are not required when such human interfaces do not exist.
@@ -21,9 +21,9 @@ By using this IS (which includes any device attached to this IS), you consent to
 -Notwithstanding the above, using this IS does not constitute consent to PM, LE or CI investigative searching or monitoring of the content of privileged communications, or work product, related to personal representation or services by attorneys, psychotherapists, or clergy, and their assistants. Such communications and work product are private and confidential. See User Agreement for details."
 
 '
-  desc 'check', %q(Note: This requirement assumes the use of the RHEL 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', %q(Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the operating system via a graphical user logon.
+Verify Rocky Linux 9 displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the operating system via a graphical user logon.
 
 Check that the operating system displays the exact Standard Mandatory DOD Notice and Consent Banner text with the command:
 

@@ -1,5 +1,5 @@
 control 'SV-257836' do
-  title 'RHEL 9 must not have the quagga package installed.'
+  title 'Rocky Linux 9 must not have the quagga package installed.'
   desc 'Quagga is a network routing software suite providing implementations of Open Shortest Path First (OSPF), Routing Information Protocol (RIP), Border Gateway Protocol (BGP) for Unix and Linux platforms.
 
 If there is no need to make the router software available, removing it provides a safeguard against its activation.'

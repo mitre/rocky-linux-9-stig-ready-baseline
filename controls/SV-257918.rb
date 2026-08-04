@@ -1,8 +1,8 @@
 control 'SV-257918' do
-  title 'RHEL 9 system commands must be owned by root.'
-  desc 'If RHEL 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+  title 'Rocky Linux 9 system commands must be owned by root.'
+  desc 'If Rocky Linux 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
 
-This requirement applies to RHEL 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
+This requirement applies to Rocky Linux 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
   desc 'check', 'Verify the system commands contained in the following directories are owned by "root" with the following command:
 
 $ sudo find -L /bin /sbin /usr/bin /usr/sbin /usr/libexec /usr/local/bin /usr/local/sbin ! -user root -exec stat -L -c "%U %n" {} \\;

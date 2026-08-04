@@ -1,5 +1,5 @@
 control 'SV-257911' do
-  title 'RHEL 9 /etc/shadow file must be group-owned by root.'
+  title 'Rocky Linux 9 /etc/shadow file must be group-owned by root.'
   desc 'The "/etc/shadow" file stores password hashes. Protection of this file is critical for system security.'
   desc 'check', 'Verify the group ownership of the "/etc/shadow" file with the following command:
 

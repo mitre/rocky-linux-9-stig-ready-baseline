@@ -1,7 +1,7 @@
 control 'SV-258077' do
-  title 'RHEL 9 must terminate idle user sessions.'
+  title 'Rocky Linux 9 must terminate idle user sessions.'
   desc 'Terminating an idle session within a short time period reduces the window of opportunity for unauthorized personnel to take control of a management session enabled on the console or console port that has been left unattended.'
-  desc 'check', 'Verify RHEL 9 logs out sessions that are idle for 10 minutes with the following command:
+  desc 'check', 'Verify Rocky Linux 9 logs out sessions that are idle for 10 minutes with the following command:
 
 $ systemd-analyze cat-config systemd/logind.conf | grep StopIdleSessionSec
 
@@ -9,7 +9,7 @@ $ systemd-analyze cat-config systemd/logind.conf | grep StopIdleSessionSec
 StopIdleSessionSec=600
 
 If "StopIdleSessionSec" is not configured to "600" seconds, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to log out idle sessions.
+  desc 'fix', 'Configure Rocky Linux 9 to log out idle sessions.
 
 Create the directory if necessary:
 

@@ -1,14 +1,14 @@
 control 'SV-258068' do
-  title 'RHEL 9 must automatically exit interactive command shell user sessions after 10 minutes of inactivity.'
+  title 'Rocky Linux 9 must automatically exit interactive command shell user sessions after 10 minutes of inactivity.'
   desc 'Terminating an idle interactive command shell user session within a short time period reduces the window of opportunity for unauthorized personnel to take control of it when left unattended in a virtual terminal or physical console.'
-  desc 'check', %q(Verify RHEL 9 is configured to exit interactive command shell user sessions after 10 minutes of inactivity or less with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 is configured to exit interactive command shell user sessions after 10 minutes of inactivity or less with the following command:
 
 $ sudo grep -i tmout /etc/profile /etc/profile.d/*.sh
 
 /etc/profile.d/tmout.sh:declare -xr TMOUT=600
 
 If "TMOUT" is not set to "600" or less in a script located in the "/etc/'profile.d/ directory, is missing or is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to exit interactive command shell user sessions after 10 minutes of inactivity.
+  desc 'fix', 'Configure Rocky Linux 9 to exit interactive command shell user sessions after 10 minutes of inactivity.
 
 Add or edit the following line in "/etc/profile.d/tmout.sh":
 

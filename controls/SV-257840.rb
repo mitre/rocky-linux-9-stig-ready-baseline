@@ -1,7 +1,7 @@
 control 'SV-257840' do
-  title 'RHEL 9 must have the nss-tools package installed.'
+  title 'Rocky Linux 9 must have the nss-tools package installed.'
   desc 'Network Security Services (NSS) is a set of libraries designed to support cross-platform development of security-enabled client and server applications. Install the "nss-tools" package to install command-line tools to manipulate the NSS certificate and key database.'
-  desc 'check', 'Verify that RHEL 9 has the nss-tools package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the nss-tools package installed with the following command:
 
 $ dnf list --installed nss-tools
 

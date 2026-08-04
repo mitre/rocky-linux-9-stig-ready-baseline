@@ -1,5 +1,5 @@
 control 'SV-257794' do
-  title 'RHEL 9 must clear memory when it is freed to prevent use-after-free attacks.'
+  title 'Rocky Linux 9 must clear memory when it is freed to prevent use-after-free attacks.'
   desc 'Some adversaries launch attacks with the intent of executing code in nonexecutable regions of memory or in memory locations that are prohibited. Security safeguards employed to protect memory include, for example, data execution prevention and address space layout randomization. Data execution prevention safeguards can be either hardware-enforced or software-enforced with hardware providing the greater strength of mechanism.
 
 Poisoning writes an arbitrary value to freed pages, so any modification or reference to that page after being freed or before being initialized will be detected and prevented. This prevents many types of use-after-free vulnerabilities at little performance cost. Also prevents leak of data and detection of corrupted memory.
@@ -16,7 +16,7 @@ $ sudo grep -i grub_cmdline_linux /etc/default/grub
 GRUB_CMDLINE_LINUX="... init_on_free=1"
 
 If "init_on_free=1" is missing or commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to enable init_on_free with the following command:
+  desc 'fix', 'Configure Rocky Linux 9 to enable init_on_free with the following command:
 $ sudo grubby --update-kernel=ALL --args="init_on_free=1"
 
 Regenerate the GRUB configuration:

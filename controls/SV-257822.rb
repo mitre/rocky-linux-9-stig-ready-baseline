@@ -1,5 +1,5 @@
 control 'SV-257822' do
-  title 'RHEL 9 must have GPG signature verification enabled for all software repositories.'
+  title 'Rocky Linux 9 must have GPG signature verification enabled for all software repositories.'
   desc 'Changes to any software components can have significant effects on the overall security of the operating system. This requirement ensures the software has not been tampered with and that it has been provided by a trusted vendor.
 
 All software packages must be signed with a cryptographic key recognized and approved by the organization.
@@ -9,7 +9,7 @@ Verifying the authenticity of software prior to installation validates the integ
 
 $ grep -w gpgcheck /etc/yum.repos.d/*.repo | more
 
-/etc/yum.repos.d/redhat.repo:gpgcheck = 1
+/etc/yum.repos.d/rocky.repo:gpgcheck = 1
 
 For all listed repos, if "gpgcheck" is not set to "1", or if the option is missing or commented out, ask the system administrator how the GPG signatures of local software packages are being verified.
 

@@ -1,5 +1,5 @@
 control 'SV-257831' do
-  title 'RHEL 9 must not have the telnet-server package installed.'
+  title 'Rocky Linux 9 must not have the telnet-server package installed.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities are often overlooked and therefore, may remain unsecure. They increase the risk to the platform by providing additional attack vectors.
 
 The telnet service provides an unencrypted remote access service, which does not provide for the confidentiality and integrity of user passwords or the remote session. If a privileged user were to login using this service, the privileged user password could be compromised.

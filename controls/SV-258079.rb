@@ -1,16 +1,16 @@
 control 'SV-258079' do
-  title 'RHEL 9 must enable the SELinux targeted policy.'
+  title 'Rocky Linux 9 must enable the SELinux targeted policy.'
   desc 'Setting the SELinux policy to "targeted" or a more specialized policy ensures the system will confine processes that are likely to be targeted for exploitation, such as network or system services.
 
 Note: During the development or debugging of SELinux modules, it is common to temporarily place nonproduction systems in "permissive" mode. In such temporary cases, SELinux policies should be developed, and once work is completed, the system should be reconfigured to "targeted".'
-  desc 'check', 'Verify the SELINUX on RHEL 9 is using the targeted policy with the following command:
+  desc 'check', 'Verify the SELINUX on Rocky Linux 9 is using the targeted policy with the following command:
 
 $ sestatus | grep "policy name"
 
 Loaded policy name:             targeted
 
 If the loaded policy name is not "targeted", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to use the targetd SELINUX policy.
+  desc 'fix', 'Configure Rocky Linux 9 to use the targetd SELINUX policy.
 
 Edit the file "/etc/selinux/config" and add or modify the following line:
 

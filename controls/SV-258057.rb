@@ -1,14 +1,14 @@
 control 'SV-258057' do
-  title 'RHEL 9 must maintain an account lock until the locked account is released by an administrator.'
+  title 'Rocky Linux 9 must maintain an account lock until the locked account is released by an administrator.'
   desc 'By limiting the number of failed logon attempts the risk of unauthorized system access via user password guessing, otherwise known as brute-forcing, is reduced. Limits are imposed by locking the account.'
-  desc 'check', 'Verify RHEL 9 is configured to lock an account until released by an administrator after three unsuccessful logon attempts with the command:
+  desc 'check', 'Verify Rocky Linux 9 is configured to lock an account until released by an administrator after three unsuccessful logon attempts with the command:
 
 $ sudo grep -w unlock_time /etc/security/faillock.conf
 
 unlock_time = 0
 
 If the "unlock_time" option is not set to "0" or the line is missing or commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to lock an account until released by an administrator after three unsuccessful logon attempts with the command:
+  desc 'fix', 'Configure Rocky Linux 9 to lock an account until released by an administrator after three unsuccessful logon attempts with the command:
 
 $ sudo authselect enable-feature with-faillock
 

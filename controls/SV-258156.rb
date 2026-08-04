@@ -1,14 +1,14 @@
 control 'SV-258156' do
-  title 'RHEL 9 must take action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity.'
+  title 'Rocky Linux 9 must take action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity.'
   desc "If security personnel are not notified immediately when storage volume reaches a maximum of 75 percent utilization, they are unable to plan for audit record storage capacity expansion. The notification can be set to trigger at lower utilization thresholds at the information system security officer's (ISSO's) discretion."
-  desc 'check', 'Verify RHEL 9 takes action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity with the following command:
+  desc 'check', 'Verify Rocky Linux 9 takes action when allocated audit record storage volume reaches 75 percent of the repository maximum audit record storage capacity with the following command:
 
 $ sudo grep -w space_left /etc/audit/auditd.conf
 
 space_left = 25%
 
 If the value of the "space_left" keyword is not set to 25 percent or greater of the storage volume allocated to audit logs, or if the line is commented out, ask the system administrator (SA) to indicate how the system is providing real-time alerts to the SA and ISSO. If the "space_left" value is not configured to the value 25 percent or more, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to initiate an action to notify the SA and ISSO (at a minimum) when allocated audit record storage volume reaches (at most) 75 percent of the repository maximum audit record storage capacity by adding/modifying the following line in the /etc/audit/auditd.conf file.
+  desc 'fix', 'Configure Rocky Linux 9 to initiate an action to notify the SA and ISSO (at a minimum) when allocated audit record storage volume reaches (at most) 75 percent of the repository maximum audit record storage capacity by adding/modifying the following line in the /etc/audit/auditd.conf file.
 
 space_left  = 25%'
   impact 0.5

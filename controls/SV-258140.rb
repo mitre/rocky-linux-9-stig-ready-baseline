@@ -1,7 +1,7 @@
 control 'SV-258140' do
-  title 'RHEL 9 must have the rsyslog package installed.'
+  title 'Rocky Linux 9 must have the rsyslog package installed.'
   desc 'rsyslogd is a system utility providing support for message logging. Support for both internet and Unix domain sockets enables this utility to support both local and remote logging. Couple this utility with "gnutls" (which is a secure communications library implementing the SSL, TLS, and DTLS protocols), to create a method to securely encrypt and offload auditing.'
-  desc 'check', 'Verify RHEL 9 has the rsyslog package installed with the following command:
+  desc 'check', 'Verify Rocky Linux 9 has the rsyslog package installed with the following command:
 
 $ dnf list --installed rsyslog
 

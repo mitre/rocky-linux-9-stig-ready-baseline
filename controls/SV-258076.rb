@@ -1,5 +1,5 @@
 control 'SV-258076' do
-  title 'RHEL 9 must display the date and time of the last successful account logon upon logon.'
+  title 'Rocky Linux 9 must display the date and time of the last successful account logon upon logon.'
   desc 'Users need to be aware of activity that occurs regarding their account. Providing users with information regarding the number of unsuccessful attempts that were made to login to their account allows the user to determine if any unauthorized activity has occurred and gives them an opportunity to notify administrators.'
   desc 'check', 'Verify users are provided with feedback on when account accesses last
 occurred with the following command:
@@ -10,7 +10,7 @@ occurred with the following command:
 
     If "pam_lastlog" is missing from "/etc/pam.d/postlogin" file, or the
 silent option is present, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to provide users with feedback on when account accesses last occurred by setting the required configuration options in "/etc/pam.d/postlogin".
+  desc 'fix', 'Configure Rocky Linux 9 to provide users with feedback on when account accesses last occurred by setting the required configuration options in "/etc/pam.d/postlogin".
 
 Add the following line to the top of "/etc/pam.d/postlogin":
 

@@ -1,6 +1,6 @@
 control 'SV-258167' do
-  title 'RHEL 9 audit logs file must have mode 0600 or less permissive to prevent unauthorized access to the audit log.'
-  desc "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the RHEL 9 system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.
+  title 'Rocky Linux 9 audit logs file must have mode 0600 or less permissive to prevent unauthorized access to the audit log.'
+  desc "Only authorized personnel should be aware of errors and the details of the errors. Error messages are an indicator of an organization's operational state or can identify the Rocky Linux 9 system or platform. Additionally, Personally Identifiable Information (PII) and operational information must not be revealed through error messages to unauthorized personnel or their designated representatives.
 
 The structure and content of error messages must be carefully considered by the organization and development team. The extent to which the information system is able to identify and handle error conditions is guided by organizational policy and operational requirements."
   desc 'check', %q(Verify the audit logs have a mode of "0600".

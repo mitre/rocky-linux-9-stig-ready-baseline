@@ -1,5 +1,5 @@
 control 'SV-257892' do
-  title 'RHEL 9 /etc/group- file must have mode 0644 or less permissive to prevent unauthorized access.'
+  title 'Rocky Linux 9 /etc/group- file must have mode 0644 or less permissive to prevent unauthorized access.'
   desc 'The "/etc/group-" file is a backup file of "/etc/group", and as such, contains information regarding groups that are configured on the system. Protection of this file is important for system security.'
   desc 'check', 'Verify that the "/etc/group-" file has mode "0644" or less permissive with the following command:
 

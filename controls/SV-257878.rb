@@ -1,5 +1,5 @@
 control 'SV-257878' do
-  title 'RHEL 9 must mount /var/tmp with the nosuid option.'
+  title 'Rocky Linux 9 must mount /var/tmp with the nosuid option.'
   desc 'The "nosuid" mount option causes the system to not execute "setuid" and "setgid" files with owner privileges. This option must be used for mounting any file system not containing approved "setuid" and "setguid" files. Executing files from untrusted file systems increases the opportunity for nonprivileged users to attain unauthorized administrative access.'
   desc 'check', 'Verify "/var/tmp" is mounted with the "nosuid" option:
 

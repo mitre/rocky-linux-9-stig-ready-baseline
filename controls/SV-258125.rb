@@ -1,5 +1,5 @@
 control 'SV-258125' do
-  title 'The pcscd service on RHEL 9 must be active.'
+  title 'The pcscd service on Rocky Linux 9 must be active.'
   desc 'The information system ensures that even if the information system is compromised, that compromise will not affect credentials stored on the authentication device.
 
 The daemon program for pcsc-lite and the MuscleCard framework is pcscd. It is a resource manager that coordinates communications with smart card readers and smart cards and cryptographic tokens that are connected to the system.'

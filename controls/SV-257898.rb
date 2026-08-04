@@ -1,5 +1,5 @@
 control 'SV-257898' do
-  title 'RHEL 9 /etc/group file must be owned by root.'
+  title 'Rocky Linux 9 /etc/group file must be owned by root.'
   desc 'The "/etc/group" file contains information regarding groups that are configured on the system. Protection of this file is important for system security.'
   desc 'check', 'Verify the ownership of the "/etc/group" file with the following command:
 

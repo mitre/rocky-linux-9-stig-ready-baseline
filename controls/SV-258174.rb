@@ -1,5 +1,5 @@
 control 'SV-258174' do
-  title 'RHEL 9 must have mail aliases to notify the information system security officer (ISSO) and system administrator (SA) (at a minimum) in the event of an audit processing failure.'
+  title 'Rocky Linux 9 must have mail aliases to notify the information system security officer (ISSO) and system administrator (SA) (at a minimum) in the event of an audit processing failure.'
   desc 'It is critical for the appropriate personnel to be aware if a system
 is at risk of failing to process audit logs as required. Without this
 notification, the security personnel may be unaware of an impending failure of
@@ -13,7 +13,7 @@ exceeded.
 distinct information system component where audit records are stored), the
 centralized audit storage capacity of organizations (i.e., all audit data
 storage repositories combined), or both.'
-  desc 'check', 'Verify that RHEL 9 is configured to notify the appropriate interactive users in the event of an audit processing failure.
+  desc 'check', 'Verify that Rocky Linux 9 is configured to notify the appropriate interactive users in the event of an audit processing failure.
 
 Find the alias maps that are being used with the following command:
 

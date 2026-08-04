@@ -1,12 +1,12 @@
 control 'SV-258002' do
-  title 'RHEL 9 SSH daemon must not allow compression or must only allow compression after successful authentication.'
+  title 'Rocky Linux 9 SSH daemon must not allow compression or must only allow compression after successful authentication.'
   desc 'If compression is allowed in an SSH connection prior to authentication, vulnerabilities in the compression software could result in compromise of the system from an unauthenticated connection, potentially with root privileges.
 
 Compression options are:
 no - disables compression
 delayed - allow compression only after authentication
 yes - enables compression before authentication, which can leak sensitive metadata and is not recommended'
-  desc 'check', %q(Verify the RHEL 9 SSH daemon performs compression after a user successfully authenticates with the following command:
+  desc 'check', %q(Verify the Rocky Linux 9 SSH daemon performs compression after a user successfully authenticates with the following command:
 
 $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs sudo grep -iH '^\s*compression'
 /etc/ssh/sshd_config:Compression no

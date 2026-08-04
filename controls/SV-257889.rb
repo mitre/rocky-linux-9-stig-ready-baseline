@@ -1,5 +1,5 @@
 control 'SV-257889' do
-  title 'All RHEL 9 local initialization files must have mode 0740 or less permissive.'
+  title 'All Rocky Linux 9 local initialization files must have mode 0740 or less permissive.'
   desc "Local initialization files are used to configure the user's shell
 environment upon logon. Malicious modification of these files could compromise
 accounts upon logon."
@@ -42,7 +42,7 @@ $ sudo chmod 0740 /home/wadea/.<INIT_FILE>'
   expected_mode = input('initialization_file_mode')
   failing_files = ifiles.select { |ifile| !exempt_ini_files.include?(ifile) && file(ifile).more_permissive_than?(expected_mode) }
 
-  describe 'All RHEL 9 local initialization files' do
+  describe 'All Rocky Linux 9 local initialization files' do
     it "must have mode '#{expected_mode}' or less permissive" do
       expect(failing_files).to be_empty, "Failing files:\n\t- #{failing_files.join("\n\t- ")}"
     end

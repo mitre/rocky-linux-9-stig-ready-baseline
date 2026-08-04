@@ -1,11 +1,11 @@
 control 'SV-257830' do
-  title 'RHEL 9 must not install packages from the Extra Packages for Enterprise Linux (EPEL) repository.'
+  title 'Rocky Linux 9 must not install packages from the Extra Packages for Enterprise Linux (EPEL) repository.'
   desc 'The EPEL is a repository of high-quality open-source packages for enterprise-class Linux distributions such as RHEL, CentOS, AlmaLinux, Rocky Linux, and Oracle Linux. These packages are not part of the official distribution but are built using the same Fedora build system to ensure compatibility and maintain quality standards.'
-  desc 'check', 'Verify that RHEL 9 is not able to install packages from the EPEL with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 is not able to install packages from the EPEL with the following command:
 
 $ dnf repolist
-rhel-9-for-x86_64-appstream-rpms                Red Hat Enterprise Linux 9 for x86_64 - AppStream (RPMs)
-rhel-9-for-x86_64-baseos-rpms                   Red Hat Enterprise Linux 9 for x86_64 - BaseOS (RPMs)
+appstream                                      Rocky Linux 9 - AppStream
+baseos                                         Rocky Linux 9 - BaseOS
 
 If any repositories containing the word "epel" in the name exist, this is a finding.'
   desc 'fix', 'The repo package can be manually removed with the following command:

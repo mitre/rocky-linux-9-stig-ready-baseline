@@ -1,7 +1,7 @@
 control 'SV-257981' do
-  title 'RHEL 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a SSH logon.'
+  title 'Rocky Linux 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a SSH logon.'
   desc 'The warning message reinforces policy awareness during the logon process and facilitates possible legal action against attackers. Alternatively, systems whose ownership should not be obvious should ensure usage of a banner that does not provide easy attribution.'
-  desc 'check', %q(Verify any SSH connection to RHEL 9 displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.
+  desc 'check', %q(Verify any SSH connection to Rocky Linux 9 displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the system.
 
 Check for the location of the banner file being used with the following command:
 
@@ -11,7 +11,7 @@ $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '
 This command will return the banner keyword and the name of the file that contains the SSH banner (in this case "/etc/issue").
 
 If the line is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via ssh.
+  desc 'fix', 'Configure Rocky Linux 9 to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via ssh.
 
 Edit the "etc/ssh/sshd_config" file or a file in "/etc/ssh/sshd_config.d" to uncomment the banner keyword and configure it to point to a file that will contain the logon banner (this file may be named differently or be in a different location if using a version of SSH that is provided by a third-party vendor).
 
@@ -31,7 +31,7 @@ Banner /etc/issue'
   tag 'host'
   tag 'container-conditional'
 
-  only_if('Control not applicable - SSH is not installed within containerized RHEL', impact: 0.0) {
+  only_if('Control not applicable - SSH is not installed within a containerized Rocky Linux system', impact: 0.0) {
     !%w[docker podman kubepods lxc].include?(virtualization.system) || file('/etc/ssh/sshd_config').exist?
   }
 

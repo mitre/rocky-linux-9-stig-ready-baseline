@@ -1,5 +1,5 @@
 control 'SV-257818' do
-  title 'The kdump service on RHEL 9 must be disabled.'
+  title 'The kdump service on Rocky Linux 9 must be disabled.'
   desc 'Kernel core dumps may contain the full contents of system memory at the time of the crash. Kernel core dumps consume a considerable amount of disk space and may result in denial of service by exhausting the available space on the target file system partition. Unless the system is used for kernel development or testing, there is little need to run the kdump service.'
   desc 'check', 'Verify that the kdump service is disabled in system boot configuration with the following command:
 
@@ -21,7 +21,7 @@ LoadState=masked
 UnitFileState=masked
 
 If the "kdump" service is loaded or active, and is not masked, this is a finding.'
-  desc 'fix', 'Disable and mask the kdump service on RHEL 9.
+  desc 'fix', 'Disable and mask the kdump service on Rocky Linux 9.
 
 To disable the kdump service run the following command:
 

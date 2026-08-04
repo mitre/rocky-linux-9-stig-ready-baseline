@@ -1,9 +1,9 @@
 control 'SV-258014' do
-  title 'RHEL 9 must disable the graphical user interface automount function unless required.'
+  title 'Rocky Linux 9 must disable the graphical user interface automount function unless required.'
   desc 'Automatically mounting file systems permits easy introduction of unknown devices, thereby facilitating malicious activity.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 disables the graphical user interface automount function with the following command:
+Verify Rocky Linux 9 disables the graphical user interface automount function with the following command:
 
 $ gsettings get org.gnome.desktop.media-handling automount-open
 

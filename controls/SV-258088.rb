@@ -1,14 +1,14 @@
 control 'SV-258088' do
-  title 'RHEL 9 must restrict the use of the "su" command.'
+  title 'Rocky Linux 9 must restrict the use of the "su" command.'
   desc 'The "su" program allows to run commands with a substitute user and group ID. It is commonly used to run commands as the root user. Limiting access to such commands is considered a good security practice.'
-  desc 'check', 'Verify RHEL 9 includes users who require privilege escalation to be members of the "wheel" group with the following command:
+  desc 'check', 'Verify Rocky Linux 9 includes users who require privilege escalation to be members of the "wheel" group with the following command:
 
 $ sudo grep pam_wheel /etc/pam.d/su
 
 auth             required        pam_wheel.so use_uid
 
 If a line for "pam_wheel.so" does not exist, or the line is commented out, this is a finding.'
-  desc 'fix', %q(Configure RHEL 9 to require users to be in the "wheel" group to run "su" command.
+  desc 'fix', %q(Configure Rocky Linux 9 to require users to be in the "wheel" group to run "su" command.
 
 In file "/etc/pam.d/su", uncomment the following line:
 

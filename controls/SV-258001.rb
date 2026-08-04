@@ -1,5 +1,5 @@
 control 'SV-258001' do
-  title 'RHEL 9 SSH public host key files must have mode 0644 or less permissive.'
+  title 'Rocky Linux 9 SSH public host key files must have mode 0644 or less permissive.'
   desc 'If a public host key file is modified by an unauthorized user, the SSH
 service may be compromised.'
   desc 'check', 'Verify the SSH public host key files have a mode of "0644" or less permissive with the following command:

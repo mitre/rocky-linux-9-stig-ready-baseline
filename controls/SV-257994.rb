@@ -1,5 +1,5 @@
 control 'SV-257994' do
-  title 'RHEL 9 must force a frequent session key renegotiation for SSH connections to the server.'
+  title 'Rocky Linux 9 must force a frequent session key renegotiation for SSH connections to the server.'
   desc 'Without protection of the transmitted information, confidentiality and
 integrity may be compromised because unprotected communications can be
 intercepted and either read or altered.
@@ -26,7 +26,7 @@ $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '
 RekeyLimit 1G 1h
 
 If "RekeyLimit" does not have a maximum data amount and maximum time defined, is missing, or is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to force a frequent session key renegotiation for SSH connections to the server by adding or modifying the following line in the "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d":
+  desc 'fix', 'Configure Rocky Linux 9 to force a frequent session key renegotiation for SSH connections to the server by adding or modifying the following line in the "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d":
 
 RekeyLimit 1G 1h
 

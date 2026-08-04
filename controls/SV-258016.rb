@@ -1,9 +1,9 @@
 control 'SV-258016' do
-  title 'RHEL 9 must disable the graphical user interface autorun function unless required.'
+  title 'Rocky Linux 9 must disable the graphical user interface autorun function unless required.'
   desc 'Allowing autorun commands to execute may introduce malicious code to a system. Configuring this setting prevents autorun commands from executing.'
-  desc 'check', 'Verify RHEL 9 disables the graphical user interface autorun function with the following command:
+  desc 'check', 'Verify Rocky Linux 9 disables the graphical user interface autorun function with the following command:
 
-Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
 $ gsettings get org.gnome.desktop.media-handling autorun-never
 

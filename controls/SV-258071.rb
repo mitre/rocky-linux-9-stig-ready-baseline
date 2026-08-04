@@ -1,14 +1,14 @@
 control 'SV-258071' do
-  title 'RHEL 9 must enforce a delay of at least four seconds between logon prompts following a failed logon attempt.'
+  title 'Rocky Linux 9 must enforce a delay of at least four seconds between logon prompts following a failed logon attempt.'
   desc 'Increasing the time between a failed authentication attempt and reprompting to enter credentials helps to slow a single-threaded brute force attack.'
-  desc 'check', 'Verify RHEL 9 enforces a delay of at least four seconds between console logon prompts following a failed logon attempt with the following command:
+  desc 'check', 'Verify Rocky Linux 9 enforces a delay of at least four seconds between console logon prompts following a failed logon attempt with the following command:
 
 $ grep -i fail_delay /etc/login.defs
 
 FAIL_DELAY 4
 
 If the value of "FAIL_DELAY" is not set to "4" or greater, or the line is commented out, this is a finding.'
-  desc 'fix', 'Configure the RHEL 9 to enforce a delay of at least four seconds between logon prompts following a failed console logon attempt.
+  desc 'fix', 'Configure the Rocky Linux 9 to enforce a delay of at least four seconds between logon prompts following a failed console logon attempt.
 
 Modify the "/etc/login.defs" file to set the "FAIL_DELAY" parameter to 4 or greater:
 

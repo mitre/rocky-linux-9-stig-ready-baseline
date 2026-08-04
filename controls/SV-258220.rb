@@ -1,14 +1,14 @@
 control 'SV-258220' do
-  title 'RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/gshadow.'
+  title 'Rocky Linux 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/gshadow.'
   desc 'In addition to auditing new user and group accounts, these watches will alert the system administrator(s) to any modifications. Any unexpected users, groups, or modifications should be investigated for legitimacy.'
-  desc 'check', %q(Verify RHEL 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/etc/gshadow" with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/etc/gshadow" with the following command:
 
 $ sudo auditctl -l | egrep '(/etc/gshadow)'
 
 -w /etc/gshadow -p wa -k identity
 
 If the command does not return a line, or the line is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/etc/gshadow".
+  desc 'fix', 'Configure Rocky Linux 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/etc/gshadow".
 
 Add or update the following file system rule to "/etc/audit/rules.d/audit.rules":
 

@@ -1,11 +1,11 @@
 control 'SV-258012' do
-  title 'RHEL 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a graphical user logon.'
+  title 'Rocky Linux 9 must display the Standard Mandatory DOD Notice and Consent Banner before granting local or remote access to the system via a graphical user logon.'
   desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 For U.S. Government systems, system use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.'
-  desc 'check', 'Verify RHEL 9 displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the operating system via a graphical user logon.
+  desc 'check', 'Verify Rocky Linux 9 displays the Standard Mandatory DOD Notice and Consent Banner before granting access to the operating system via a graphical user logon.
 
-Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
 Determine if the operating system displays a banner at the logon screen with the following command:
 
@@ -14,7 +14,7 @@ $ gsettings get org.gnome.login-screen banner-message-enable
 true
 
 If the result is "false", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via a graphical user logon.
+  desc 'fix', 'Configure Rocky Linux 9 to display the Standard Mandatory DOD Notice and Consent Banner before granting access to the system via a graphical user logon.
 
 Create a database to contain the system-wide graphical user logon settings (if it does not already exist) with the following command:
 

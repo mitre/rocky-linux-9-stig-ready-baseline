@@ -1,5 +1,5 @@
 control 'SV-257973' do
-  title 'RHEL 9 must not forward IPv6 source-routed packets.'
+  title 'Rocky Linux 9 must not forward IPv6 source-routed packets.'
   desc 'Source-routed packets allow the source of the packet to suggest that routers forward the packet along a different path than configured on the router, which can be used to bypass network security measures. This requirement applies only to the forwarding of source-routed traffic, such as when forwarding is enabled and the system is functioning as a router.
 
 The sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographical order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.
@@ -10,7 +10,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 does not accept IPv6 source-routed packets.
+  desc 'check', 'Verify Rocky Linux 9 does not accept IPv6 source-routed packets.
 
 Note: If IPv6 is disabled on the system, this requirement is Not Applicable.
 
@@ -20,7 +20,7 @@ $ sudo sysctl net.ipv6.conf.all.accept_source_route
 net.ipv6.conf.all.accept_source_route = 0
 
 If "net.ipv6.conf.all.accept_source_route" is not set to "0" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to not accept IPv6 source-routed packets.
+  desc 'fix', 'Configure Rocky Linux 9 to not accept IPv6 source-routed packets.
 
 Create a configuration file if it does not already exist:
 

@@ -1,5 +1,5 @@
 control 'SV-258021' do
-  title 'RHEL 9 must enable a user session lock until that user re-establishes access using established identification and authentication procedures for graphical user sessions.'
+  title 'Rocky Linux 9 must enable a user session lock until that user re-establishes access using established identification and authentication procedures for graphical user sessions.'
   desc 'A session lock is a temporary action taken when a user stops work and
 moves away from the immediate physical vicinity of the information system but
 does not want to log out because of the temporary nature of the absence.
@@ -10,16 +10,16 @@ determined.
     Regardless of where the session lock is determined and implemented, once
 invoked, the session lock must remain in place until the user reauthenticates.
 No other activity aside from reauthentication must unlock the system.'
-  desc 'check', %q(Verify RHEL 9 enables a user's session lock until that user re-establishes access using established identification and authentication procedures with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 enables a user's session lock until that user re-establishes access using established identification and authentication procedures with the following command:
 
-Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
 $ gsettings get org.gnome.desktop.screensaver lock-enabled
 
 true
 
 If the setting is "false", this is a finding.)
-  desc 'fix', %q(Configure RHEL 9 to enable a user's session lock until that user re-establishes access using established identification and authentication procedures.
+  desc 'fix', %q(Configure Rocky Linux 9 to enable a user's session lock until that user re-establishes access using established identification and authentication procedures.
 
 Create a database to contain the system-wide screensaver settings (if it does not already exist) with the following example:
 

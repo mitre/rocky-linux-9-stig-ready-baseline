@@ -1,7 +1,7 @@
 control 'SV-257805' do
-  title 'RHEL 9 must be configured to disable the Controller Area Network kernel module.'
+  title 'Rocky Linux 9 must be configured to disable the Controller Area Network kernel module.'
   desc 'Disabling Controller Area Network (CAN) protects the system against exploitation of any flaws in its implementation.'
-  desc 'check', 'Verify that RHEL 9 disables the ability to load the CAN kernel module with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 disables the ability to load the CAN kernel module with the following command:
 
 $ grep -r can /etc/modprobe.conf /etc/modprobe.d/*
 

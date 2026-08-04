@@ -1,5 +1,5 @@
 control 'SV-257945' do
-  title 'RHEL 9 must securely compare internal information system clocks at least every 24 hours.'
+  title 'Rocky Linux 9 must securely compare internal information system clocks at least every 24 hours.'
   desc 'Inaccurate time stamps make it more difficult to correlate events and can lead to an inaccurate analysis. Determining the correct time a particular event occurred on a system is critical when conducting forensic analysis and investigating system events. Sources outside the configured acceptable allowance (drift) may be inaccurate.
 
 Synchronizing internal information system clocks provides uniformity of time stamps for information systems with multiple system clocks and systems connected over a network.
@@ -7,7 +7,7 @@ Synchronizing internal information system clocks provides uniformity of time sta
 Depending on the infrastructure being used the "pool" directive may not be supported.
 
 Authoritative time sources include the United States Naval Observatory (USNO) time servers, a time server designated for the appropriate DOD network (NIPRNet/SIPRNet), and/or the Global Positioning System (GPS).'
-  desc 'check', 'Verify RHEL 9 is securely comparing internal information system clocks at least every 24 hours with an NTP server with the following commands:
+  desc 'check', 'Verify Rocky Linux 9 is securely comparing internal information system clocks at least every 24 hours with an NTP server with the following commands:
 
 $ sudo grep maxpoll /etc/chrony.conf
 
@@ -21,7 +21,7 @@ $ sudo grep -i server /etc/chrony.conf
 server 0.us.pool.ntp.mil
 
 If the parameter "server" is not set or is not set to an authoritative DOD time source, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to securely compare internal information system clocks at least every 24 hours with an NTP server by adding/modifying the following line in the /etc/chrony.conf file.
+  desc 'fix', 'Configure Rocky Linux 9 to securely compare internal information system clocks at least every 24 hours with an NTP server by adding/modifying the following line in the /etc/chrony.conf file.
 
 server [ntp.server.name] iburst maxpoll 16'
   impact 0.5

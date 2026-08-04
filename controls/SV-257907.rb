@@ -1,5 +1,5 @@
 control 'SV-257907' do
-  title 'RHEL 9 /etc/passwd file must be group-owned by root.'
+  title 'Rocky Linux 9 /etc/passwd file must be group-owned by root.'
   desc 'The "/etc/passwd" file contains information about the users that are configured on the system. Protection of this file is critical for system security.'
   desc 'check', 'Verify the group ownership of the "/etc/passwd" file with the following command:
 

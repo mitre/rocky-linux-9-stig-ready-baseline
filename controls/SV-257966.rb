@@ -1,5 +1,5 @@
 control 'SV-257966' do
-  title 'RHEL 9 must not respond to Internet Control Message Protocol (ICMP) echoes sent to a broadcast address.'
+  title 'Rocky Linux 9 must not respond to Internet Control Message Protocol (ICMP) echoes sent to a broadcast address.'
   desc 'Responding to broadcast (ICMP) echoes facilitates network mapping and provides a vector for amplification attacks.
 
 Ignoring ICMP echo requests (pings) sent to broadcast or multicast addresses makes the system slightly more difficult to enumerate on the network.
@@ -14,7 +14,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 ignores ICMP echoes sent to a broadcast address.
+  desc 'check', 'Verify Rocky Linux 9 ignores ICMP echoes sent to a broadcast address.
 
 Check the value of the "icmp_echo_ignore_broadcasts" variable with the following command:
 
@@ -22,7 +22,7 @@ $ sudo sysctl net.ipv4.icmp_echo_ignore_broadcasts
 net.ipv4.icmp_echo_ignore_broadcasts = 1
 
 If "net.ipv4.icmp_echo_ignore_broadcasts" is not set to "1" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to ignore IPv4 ICMP echoes sent to a broadcast address.
+  desc 'fix', 'Configure Rocky Linux 9 to ignore IPv4 ICMP echoes sent to a broadcast address.
 
 Create a configuration file if it does not already exist:
 

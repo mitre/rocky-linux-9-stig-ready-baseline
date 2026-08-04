@@ -1,10 +1,10 @@
 control 'SV-258242' do
-  title 'RHEL 9 must implement DOD-approved encryption in the bind package.'
+  title 'Rocky Linux 9 must implement DOD-approved encryption in the bind package.'
   desc 'Without cryptographic integrity protections, information can be altered by unauthorized users without detection.
 
 Cryptographic mechanisms used for protecting the integrity of information include, for example, signed hash functions using asymmetric cryptography enabling distribution of the public key to verify the hash information while maintaining the confidentiality of the secret key used to generate the hash.
 
-RHEL 9 incorporates system-wide crypto policies by default. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/ directory.'
+Rocky Linux 9 incorporates system-wide crypto policies by default. The employed algorithms can be viewed in the /etc/crypto-policies/back-ends/ directory.'
   desc 'check', %q(Verify that BIND uses the system crypto policy with the following command:
 
 Note: If the "bind" package is not installed, this requirement is Not Applicable.

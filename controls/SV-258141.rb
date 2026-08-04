@@ -1,7 +1,7 @@
 control 'SV-258141' do
-  title 'RHEL 9 must have the packages required for encrypting offloaded audit logs installed.'
+  title 'Rocky Linux 9 must have the packages required for encrypting offloaded audit logs installed.'
   desc 'The rsyslog-gnutls package provides Transport Layer Security (TLS) support for the rsyslog daemon, which enables secure remote logging.'
-  desc 'check', 'Verify that RHEL 9 has the rsyslog-gnutls package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the rsyslog-gnutls package installed with the following command:
 
 $ dnf list --installed rsyslog-gnutls
 

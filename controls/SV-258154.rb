@@ -1,16 +1,16 @@
 control 'SV-258154' do
-  title 'RHEL 9 audit system must take appropriate action when the audit storage volume is full.'
+  title 'Rocky Linux 9 audit system must take appropriate action when the audit storage volume is full.'
   desc 'It is critical that when the operating system is at risk of failing to process audit logs as required, it takes action to mitigate the failure. Audit processing failures include software/hardware errors; failures in the audit capturing mechanisms; and audit storage capacity being reached or exceeded. Responses to audit failure depend upon the nature of the failure mode.'
-  desc 'check', 'Verify RHEL 9 takes the appropriate action when the audit storage volume is full.
+  desc 'check', 'Verify Rocky Linux 9 takes the appropriate action when the audit storage volume is full.
 
-Check that RHEL 9 takes the appropriate action when the audit storage volume is full with the following command:
+Check that Rocky Linux 9 takes the appropriate action when the audit storage volume is full with the following command:
 
 $ sudo grep disk_full_action /etc/audit/auditd.conf
 
 disk_full_action = HALT
 
 If the value of the "disk_full_action" option is not "SYSLOG", "SINGLE", or "HALT", or the line is commented out, ask the system administrator (SA) to indicate how the system takes appropriate action when an audit storage volume is full. If there is no evidence of appropriate action, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to shut down by default upon audit failure (unless availability is an overriding concern).
+  desc 'fix', 'Configure Rocky Linux 9 to shut down by default upon audit failure (unless availability is an overriding concern).
 
 Add or update the following line (depending on configuration "disk_full_action" can be set to "SYSLOG" or "SINGLE" depending on configuration) in "/etc/audit/auditd.conf" file:
 

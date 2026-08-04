@@ -1,7 +1,7 @@
 control 'SV-257950' do
-  title 'RHEL 9 must not have unauthorized IP tunnels configured.'
+  title 'Rocky Linux 9 must not have unauthorized IP tunnels configured.'
   desc 'IP tunneling mechanisms can be used to bypass network filtering. If tunneling is required, it must be documented with the information system security officer (ISSO).'
-  desc 'check', 'Verify that RHEL 9 does not have unauthorized IP tunnels configured.
+  desc 'check', 'Verify that Rocky Linux 9 does not have unauthorized IP tunnels configured.
 
 Determine if the "IPsec" service is active with the following command:
 

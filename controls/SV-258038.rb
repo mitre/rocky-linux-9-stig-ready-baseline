@@ -1,5 +1,5 @@
 control 'SV-258038' do
-  title 'RHEL 9 must block unauthorized peripherals before establishing a connection.'
+  title 'Rocky Linux 9 must block unauthorized peripherals before establishing a connection.'
   desc 'The USBguard-daemon is the main component of the USBGuard software framework. It runs as a service in the background and enforces the USB device authorization policy for all USB devices. The policy is defined by a set of rules using a rule language described in the usbguard-rules.conf file. The policy and the authorization state of USB devices can be modified during runtime using the usbguard tool.
 
 The system administrator (SA) must work with the site information system security officer (ISSO) to determine a list of authorized peripherals and establish rules within the USBGuard software framework to allow only authorized devices.'

@@ -1,5 +1,5 @@
 control 'SV-257998' do
-  title 'The RHEL 9 SSH server configuration file must be owned by root.'
+  title 'The Rocky Linux 9 SSH server configuration file must be owned by root.'
   desc 'Service configuration files enable or disable features of their respective services, which if configured incorrectly, can lead to insecure and vulnerable configurations. Therefore, service configuration files must be owned by the correct group to prevent unauthorized changes.'
   desc 'check', 'Verify the ownership of the "/etc/ssh/sshd_config" file and the contents of "/etc/ssh/sshd_config.d" with the following command:
 

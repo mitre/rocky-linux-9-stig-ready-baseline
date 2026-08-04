@@ -1,5 +1,5 @@
 control 'SV-257798' do
-  title 'RHEL 9 must prevent kernel profiling by nonprivileged users.'
+  title 'Rocky Linux 9 must prevent kernel profiling by nonprivileged users.'
   desc 'Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.
 
 This requirement generally applies to the design of an information technology product, but it can also apply to the configuration of particular information system components that are, or use, such products. This can be verified by acceptance/validation processes in DOD or other government agencies.
@@ -16,7 +16,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 is configured to prevent kernel profiling by nonprivileged users.
+  desc 'check', 'Verify Rocky Linux 9 is configured to prevent kernel profiling by nonprivileged users.
 
 Check the status of the "kernel.perf_event_paranoid" kernel parameter.
 
@@ -24,7 +24,7 @@ $ sudo sysctl kernel.perf_event_paranoid
 kernel.perf_event_paranoid = 2
 
 If "kernel.perf_event_paranoid" is not set to "2" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to prevent kernel profiling by nonprivileged users.
+  desc 'fix', 'Configure Rocky Linux 9 to prevent kernel profiling by nonprivileged users.
 
 Create a drop-in if it does not already exist:
 

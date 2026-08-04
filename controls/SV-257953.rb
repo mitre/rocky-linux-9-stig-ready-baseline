@@ -1,5 +1,5 @@
 control 'SV-257953' do
-  title 'RHEL 9 must forward mail from postmaster to the root account using a postfix alias.'
+  title 'Rocky Linux 9 must forward mail from postmaster to the root account using a postfix alias.'
   desc 'It is critical for the appropriate personnel to be aware if a system is at risk of failing to process audit logs as required. Without this notification, the security personnel may be unaware of an impending failure of the audit capability, and system operation may be adversely affected.
 
 Audit processing failures include software/hardware errors, failures in the audit capturing mechanisms, and audit storage capacity being reached or exceeded.'

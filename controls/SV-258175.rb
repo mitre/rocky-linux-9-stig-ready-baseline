@@ -1,7 +1,7 @@
 control 'SV-258175' do
-  title 'RHEL 9 audispd-plugins package must be installed.'
+  title 'Rocky Linux 9 audispd-plugins package must be installed.'
   desc '"audispd-plugins" provides plugins for the real-time interface to the audit subsystem, "audispd". These plugins can do things like relay events to remote machines or analyze events for suspicious behavior.'
-  desc 'check', 'Verify that RHEL 9 has the audispd-plugins package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the audispd-plugins package installed with the following command:
 
 $ dnf list --installed audispd-plugins
 

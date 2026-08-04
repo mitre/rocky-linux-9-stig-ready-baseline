@@ -1,5 +1,5 @@
 control 'SV-258085' do
-  title %q(RHEL 9 must use the invoking user's password for privilege escalation when using "sudo".)
+  title %q(Rocky Linux 9 must use the invoking user's password for privilege escalation when using "sudo".)
   desc 'If the rootpw, targetpw, or runaspw flags are defined and not disabled, by default the operating system will prompt the invoking user for the "root" user password.'
   desc 'check', %q(Verify that the sudoers security policy is configured to use the invoking user's password for privilege escalation with the following command:
 

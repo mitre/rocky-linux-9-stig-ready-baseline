@@ -1,11 +1,11 @@
 control 'SV-258013' do
-  title 'RHEL 9 must prevent a user from overriding the banner-message-enable setting for the graphical user interface.'
+  title 'Rocky Linux 9 must prevent a user from overriding the banner-message-enable setting for the graphical user interface.'
   desc 'Display of a standardized and approved use notification before granting access to the operating system ensures privacy and security notification verbiage used is consistent with applicable federal laws, Executive Orders, directives, policies, regulations, standards, and guidance.
 
 For U.S. Government systems, system use notifications are required only for access via login interfaces with human users and are not required when such human interfaces do not exist.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 prevents a user from overriding settings for graphical user interfaces.
+Verify Rocky Linux 9 prevents a user from overriding settings for graphical user interfaces.
 
 Determine if the org.gnome.login-screen banner-message-enable key is writable with the following command:
 
@@ -14,7 +14,7 @@ $ gsettings writable org.gnome.login-screen banner-message-enable
 false
 
 If "banner-message-enable" is writable or the result is "true", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to prevent a user from overriding the banner setting for graphical user interfaces.
+  desc 'fix', 'Configure Rocky Linux 9 to prevent a user from overriding the banner setting for graphical user interfaces.
 
 Create a database to contain the systemwide graphical user logon settings (if it does not already exist) with the following command:
 

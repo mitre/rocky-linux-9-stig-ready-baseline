@@ -1,5 +1,5 @@
 control 'SV-257834' do
-  title 'RHEL 9 must not have the tuned package installed.'
+  title 'Rocky Linux 9 must not have the tuned package installed.'
   desc 'It is detrimental for operating systems to provide, or install by
 default, functionality exceeding requirements or mission objectives. These
 unnecessary capabilities or services are often overlooked and therefore may

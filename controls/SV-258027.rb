@@ -1,7 +1,7 @@
 control 'SV-258027' do
-  title 'RHEL 9 must conceal, via the session lock, information previously visible on the display with a publicly viewable image.'
+  title 'Rocky Linux 9 must conceal, via the session lock, information previously visible on the display with a publicly viewable image.'
   desc 'Setting the screensaver mode to blank-only conceals the contents of the display from passersby.'
-  desc 'check', 'Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', 'Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
 To ensure the screensaver is configured to be blank, run the following command:
 
@@ -10,7 +10,7 @@ $ gsettings writable org.gnome.desktop.screensaver picture-uri
 false
 
 If "picture-uri" is writable and the result is "true", this is a finding.'
-  desc 'fix', %q(Configure RHEL 9 to prevent a user from overriding the picture-uri setting for graphical user interfaces.
+  desc 'fix', %q(Configure Rocky Linux 9 to prevent a user from overriding the picture-uri setting for graphical user interfaces.
 
 In the file "/etc/dconf/db/local.d/00-security-settings", add or update the following lines:
 

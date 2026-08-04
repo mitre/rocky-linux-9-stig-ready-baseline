@@ -1,16 +1,16 @@
 control 'SV-257849' do
-  title 'RHEL 9 file system automount function must be disabled unless required.'
+  title 'Rocky Linux 9 file system automount function must be disabled unless required.'
   desc 'An authentication process resists replay attacks if it is impractical to achieve a successful authentication by recording and replaying a previous authentication message.'
   desc 'check', 'Note: If the autofs service is not installed, this requirement is Not Applicable.
 
-Verify that the RHEL 9 file system automount function has been disabled with the following command:
+Verify that the Rocky Linux 9 file system automount function has been disabled with the following command:
 
 $ systemctl is-enabled  autofs
 
 masked
 
 If the returned value is not "masked", "disabled", or "Failed to get unit file state for autofs.service for autofs" and is not documented as an operational requirement with the information system security officer (ISSO), this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable the ability to automount devices.
+  desc 'fix', 'Configure Rocky Linux 9 to disable the ability to automount devices.
 
 The autofs service can be disabled with the following command:
 

@@ -1,5 +1,5 @@
 control 'SV-258044' do
-  title 'RHEL 9 must set the umask value to 077 for all local interactive user accounts.'
+  title 'Rocky Linux 9 must set the umask value to 077 for all local interactive user accounts.'
   desc 'The umask controls the default access mode assigned to newly created
 files. A umask of 077 limits new files to mode 600 or less permissive. Although
 umask can be represented as a four-digit number, the first digit representing

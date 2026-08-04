@@ -1,5 +1,5 @@
 control 'SV-257961' do
-  title 'RHEL 9 must log IPv4 packets with impossible addresses by default.'
+  title 'Rocky Linux 9 must log IPv4 packets with impossible addresses by default.'
   desc 'The presence of "martian" packets (which have impossible addresses) as well as spoofed packets, source-routed packets, and redirects could be a sign of nefarious network activity. Logging these packets enables this activity to be detected.
 
 Preventing unauthorized information transfers mitigates the risk of information, including encrypted representations of information, produced by the actions of prior users/roles (or the actions of processes acting on behalf of prior users/roles) from being available to any current users/roles (or current processes) that obtain access to shared system resources (e.g., registers, main memory, hard disks) after those resources have been released back to information systems. The control of information in shared resources is also commonly referred to as object reuse and residual information protection.
@@ -18,7 +18,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 logs IPv4 martian packets by default.
+  desc 'check', 'Verify Rocky Linux 9 logs IPv4 martian packets by default.
 
 Check the value of the "default.log_martians" variable with the following command:
 
@@ -26,7 +26,7 @@ $ sudo sysctl net.ipv4.conf.default.log_martians
 net.ipv4.conf.default.log_martians = 1
 
 If "net.ipv4.conf.default.log_martians" is not set to "1" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to log martian packets on IPv4 interfaces by default.
+  desc 'fix', 'Configure Rocky Linux 9 to log martian packets on IPv4 interfaces by default.
 
 Create a configuration file if it does not already exist:
 

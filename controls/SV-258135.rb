@@ -1,5 +1,5 @@
 control 'SV-258135' do
-  title 'RHEL 9 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered.'
+  title 'Rocky Linux 9 must routinely check the baseline configuration for unauthorized changes and notify the system administrator when anomalies in the operation of any security functions are discovered.'
   desc "Unauthorized changes to the baseline configuration could make the system vulnerable to various attacks or allow unauthorized access to the operating system. Changes to operating system configurations can have unintended side effects, some of which may be relevant to security.
 
 Detecting such changes and providing an automated response can help avoid unintended, negative consequences that could ultimately affect the security state of the operating system. The operating system's information management officer (IMO)/information system security officer (ISSO) and system administrators (SAs) must be notified via email and/or monitoring system trap when there is an unauthorized modification of a configuration item.
@@ -7,7 +7,7 @@ Detecting such changes and providing an automated response can help avoid uninte
 Notifications provided by information systems include messages to local computer consoles, and/or hardware indications, such as lights.
 
 This capability must take into account operational requirements for availability for selecting an appropriate response. The organization may choose to shut down or restart the information system upon security function anomaly detection."
-  desc 'check', 'Verify that RHEL 9 routinely executes a file integrity scan for changes to the system baseline. The command used in the example will use a daily occurrence.
+  desc 'check', 'Verify that Rocky Linux 9 routinely executes a file integrity scan for changes to the system baseline. The command used in the example will use a daily occurrence.
 
 Check the cron directories for scripts controlling the execution and notification of results of the file integrity application. For example, if AIDE is installed on the system, use the following commands:
 

@@ -1,5 +1,5 @@
 control 'SV-257908' do
-  title 'RHEL 9 /etc/passwd- file must be owned by root.'
+  title 'Rocky Linux 9 /etc/passwd- file must be owned by root.'
   desc 'The "/etc/passwd-" file is a backup file of "/etc/passwd", and as such, contains information about the users that are configured on the system. Protection of this file is critical for system security.'
   desc 'check', 'Verify the ownership of the "/etc/passwd-" file with the following command:
 

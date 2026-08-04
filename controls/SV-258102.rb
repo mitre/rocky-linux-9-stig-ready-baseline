@@ -1,9 +1,9 @@
 control 'SV-258102' do
-  title 'RHEL 9 must enforce password complexity by requiring that at least one lowercase character be used.'
+  title 'Rocky Linux 9 must enforce password complexity by requiring that at least one lowercase character be used.'
   desc 'Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks.
 
 Password complexity is one factor of several that determines how long it takes to crack a password. The more complex the password, the greater the number of possible combinations that need to be tested before the password is compromised. Requiring a minimum number of lowercase characters makes password guessing attacks more difficult by ensuring a larger search space.'
-  desc 'check', 'Verify that RHEL 9 enforces password complexity by requiring at least one lowercase character.
+  desc 'check', 'Verify that Rocky Linux 9 enforces password complexity by requiring at least one lowercase character.
 
 Check the value for "lcredit" with the following command:
 
@@ -12,7 +12,7 @@ $ grep lcredit /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.con
 /etc/security/pwquality.conf:lcredit = -1
 
 If the value of "lcredit" is a positive number or is commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to enforce password complexity by requiring at least one lowercase character be used by setting the "lcredit" option.
+  desc 'fix', 'Configure Rocky Linux 9 to enforce password complexity by requiring at least one lowercase character be used by setting the "lcredit" option.
 
 Add or update the following line in the "/etc/security/pwquality.conf" file or a configuration file in the "/etc/security/pwquality.conf.d/" directory to contain the "lcredit" parameter:
 

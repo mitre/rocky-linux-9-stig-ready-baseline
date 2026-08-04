@@ -1,11 +1,11 @@
 control 'SV-257812' do
-  title 'RHEL 9 must disable core dump backtraces.'
+  title 'Rocky Linux 9 must disable core dump backtraces.'
   desc 'A core dump includes a memory image taken at the time the operating system terminates an application. The memory image could contain sensitive data and is generally useful only for developers or system operators trying to debug problems.
 
 Enabling core dumps on production systems is not recommended; however, there may be overriding operational requirements to enable advanced debugging. Permitting temporary enablement of core dumps during such situations must be reviewed through local needs and policy.'
   desc 'check', 'Note: If kernel dumps are disabled in accordance with RHEL-09-213040, this requirement is not applicable.
 
-Verify RHEL 9 disables core dump backtraces by issuing the following command:
+Verify Rocky Linux 9 disables core dump backtraces by issuing the following command:
 
 $ grep -i ProcessSizeMax /etc/systemd/coredump.conf
 

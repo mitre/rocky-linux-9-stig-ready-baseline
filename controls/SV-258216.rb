@@ -1,5 +1,5 @@
 control 'SV-258216' do
-  title 'Successful/unsuccessful uses of the umount2 system call in RHEL 9 must generate an audit record.'
+  title 'Successful/unsuccessful uses of the umount2 system call in Rocky Linux 9 must generate an audit record.'
   desc 'The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.'
   desc 'check', 'To determine if the system is configured to audit calls to the umount2 system call, run the following command:
 

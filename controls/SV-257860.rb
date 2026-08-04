@@ -1,5 +1,5 @@
 control 'SV-257860' do
-  title 'RHEL 9 must mount /boot with the nodev option.'
+  title 'Rocky Linux 9 must mount /boot with the nodev option.'
   desc 'The only legitimate location for device files is the "/dev" directory located on the root partition. The only exception to this is chroot jails.'
   desc 'check', %q(Verify that the "/boot" mount point has the "nodev" option with the following command:
 

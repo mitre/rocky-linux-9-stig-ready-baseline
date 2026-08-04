@@ -1,5 +1,5 @@
 control 'SV-257999' do
-  title "RHEL 9 SSH server configuration files' permissions must not be modified."
+  title "Rocky Linux 9 SSH server configuration files' permissions must not be modified."
   desc 'Service configuration files enable or disable features of their respective services, that if configured incorrectly, can lead to insecure and vulnerable configurations. Therefore, service configuration files must have correct permissions (owner, group owner, mode) to prevent unauthorized changes.'
   desc 'check', %q(Verify the permissions of the "/etc/ssh/sshd_config" file with the following command:
 

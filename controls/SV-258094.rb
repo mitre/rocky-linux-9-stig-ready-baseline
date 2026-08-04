@@ -1,5 +1,5 @@
 control 'SV-258094' do
-  title 'RHEL 9 must not allow blank or null passwords.'
+  title 'Rocky Linux 9 must not allow blank or null passwords.'
   desc 'If an account has an empty password, anyone could log in and run commands with the privileges of that account. Accounts with empty passwords should never be used in operational environments.'
   desc 'check', 'Verify that null passwords cannot be used with the following command:
 

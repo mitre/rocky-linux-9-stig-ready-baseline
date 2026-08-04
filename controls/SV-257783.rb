@@ -1,6 +1,6 @@
 control 'SV-257783' do
-  title 'RHEL 9 systemd-journald service must be enabled.'
-  desc 'In the event of a system failure, RHEL 9 must preserve any information necessary to determine cause of failure and any information necessary to return to operations with least disruption to system processes.'
+  title 'Rocky Linux 9 systemd-journald service must be enabled.'
+  desc 'In the event of a system failure, Rocky Linux 9 must preserve any information necessary to determine cause of failure and any information necessary to return to operations with least disruption to system processes.'
   desc 'check', 'Verify that "systemd-journald" is active with the following command:
 
 $ systemctl is-active systemd-journald

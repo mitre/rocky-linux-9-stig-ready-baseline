@@ -1,5 +1,5 @@
 control 'SV-257992' do
-  title 'RHEL 9 must not allow a noncertificate trusted host SSH logon to the system.'
+  title 'Rocky Linux 9 must not allow a noncertificate trusted host SSH logon to the system.'
   desc 'SSH trust relationships mean a compromise on one host can allow an attacker to move trivially to other hosts.'
   desc 'check', %q(Verify the operating system does not allow a noncertificate trusted host SSH logon to the system with the following command:
 
@@ -10,7 +10,7 @@ HostbasedAuthentication no
 If the "HostbasedAuthentication" keyword is not set to "no", is missing, or is commented out, this is a finding.
 
 If the required value is not set, this is a finding.)
-  desc 'fix', 'To configure RHEL 9 to not allow a noncertificate trusted host SSH logon to the system, add or modify the following line in "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d".
+  desc 'fix', 'To configure Rocky Linux 9 to not allow a noncertificate trusted host SSH logon to the system, add or modify the following line in "/etc/ssh/sshd_config" or in a file in "/etc/ssh/sshd_config.d".
 
 HostbasedAuthentication no
 

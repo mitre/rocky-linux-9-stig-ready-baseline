@@ -1,5 +1,5 @@
 control 'SV-258127' do
-  title 'RHEL 9, for PKI-based authentication, must enforce authorized access to the corresponding private key.'
+  title 'Rocky Linux 9, for PKI-based authentication, must enforce authorized access to the corresponding private key.'
   desc 'If the private key is discovered, an attacker can use the key to authenticate as an authorized user and gain access to the network infrastructure.
 
 The cornerstone of the PKI is the private key used to encrypt or digitally sign information.

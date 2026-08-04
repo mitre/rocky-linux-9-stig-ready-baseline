@@ -1,5 +1,5 @@
 control 'SV-258062' do
-  title 'Local RHEL 9 initialization files must not execute world-writable programs.'
+  title 'Local Rocky Linux 9 initialization files must not execute world-writable programs.'
   desc 'If user start-up files execute world-writable programs, especially in
 unprotected directories, they could be maliciously modified to destroy user
 files or otherwise compromise the system at the user level. If the system is

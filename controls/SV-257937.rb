@@ -1,9 +1,9 @@
 control 'SV-257937' do
-  title 'The RHEL 9 firewall must employ a deny-all, allow-by-exception policy for allowing connections to other systems.'
+  title 'The Rocky Linux 9 firewall must employ a deny-all, allow-by-exception policy for allowing connections to other systems.'
   desc 'Failure to restrict network connectivity only to authorized systems permits inbound connections from malicious systems. It also permits outbound connections that may facilitate exfiltration of DOD data.
 
-RHEL 9 incorporates the "firewalld" daemon, which allows for many different configurations. One of these configurations is zones. Zones can be utilized to a deny-all, allow-by-exception approach. The default "drop" zone will drop all incoming network packets unless it is explicitly allowed by the configuration file or is related to an outgoing network connection.'
-  desc 'check', 'Verify the RHEL 9 firewalld is configured to employ a deny-all, allow-by-exception policy for allowing connections to other systems with the following commands:
+Rocky Linux 9 incorporates the "firewalld" daemon, which allows for many different configurations. One of these configurations is zones. Zones can be utilized to a deny-all, allow-by-exception approach. The default "drop" zone will drop all incoming network packets unless it is explicitly allowed by the configuration file or is related to an outgoing network connection.'
+  desc 'check', 'Verify the Rocky Linux 9 firewalld is configured to employ a deny-all, allow-by-exception policy for allowing connections to other systems with the following commands:
 
 Ensure firewalld is running:
 $ sudo firewall-cmd --state
@@ -31,7 +31,7 @@ drop (active)
   icmp-blocks:
   rich rules:
 
-If no zones are active on the RHEL 9 interfaces or if runtime and permanent targets are set to a different option other than "DROP", this is a finding.'
+If no zones are active on the Rocky Linux 9 interfaces or if runtime and permanent targets are set to a different option other than "DROP", this is a finding.'
   desc 'fix', 'Configure the "firewalld" daemon to employ a deny-all, allow-by-exception policy with the following commands:
 
 Start by adding the exceptions that are required for mission functionality to the "drop" zone. If SSH access on port 22 is needed, for example, run the following: "sudo firewall-cmd --permanent --add-service=ssh --zone=drop"

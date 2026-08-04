@@ -1,14 +1,14 @@
 control 'SV-257824' do
-  title 'RHEL 9 must remove all software components after updated versions have been installed.'
+  title 'Rocky Linux 9 must remove all software components after updated versions have been installed.'
   desc 'Previous versions of software components that are not removed from the information system after updates have been installed may be exploited by some adversaries.'
-  desc 'check', 'Verify RHEL 9 removes all software components after updated versions have been installed with the following command:
+  desc 'check', 'Verify Rocky Linux 9 removes all software components after updated versions have been installed with the following command:
 
 $ grep -i clean_requirements_on_remove /etc/dnf/dnf.conf
 
 clean_requirements_on_remove=True
 
 If "clean_requirements_on_remove" is not set to "True", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to remove all software components after updated versions have been installed.
+  desc 'fix', 'Configure Rocky Linux 9 to remove all software components after updated versions have been installed.
 
 Edit the file /etc/dnf/dnf.conf by adding or editing the following line:
 

@@ -1,5 +1,5 @@
 control 'SV-258086' do
-  title 'RHEL 9 must require users to reauthenticate for privilege escalation.'
+  title 'Rocky Linux 9 must require users to reauthenticate for privilege escalation.'
   desc 'Without reauthentication, users may access resources or perform tasks for which they do not have authorization.
 
 When operating systems provide the capability to escalate a functional capability, it is critical that the user reauthenticate.'
@@ -8,7 +8,7 @@ When operating systems provide the capability to escalate a functional capabilit
 $ sudo egrep -iR '!authenticate' /etc/sudoers /etc/sudoers.d/
 
 If any occurrences of "!authenticate" are returned, this is a finding.)
-  desc 'fix', %q(Configure RHEL 9 to not allow users to execute privileged actions without authenticating.
+  desc 'fix', %q(Configure Rocky Linux 9 to not allow users to execute privileged actions without authenticating.
 
 Remove any occurrence of "!authenticate" found in "/etc/sudoers" file or files in the "/etc/sudoers.d" directory.
 

@@ -1,7 +1,7 @@
 control 'SV-257985' do
-  title 'RHEL 9 must not permit direct logons to the root account using remote access via SSH.'
+  title 'Rocky Linux 9 must not permit direct logons to the root account using remote access via SSH.'
   desc "Even though the communications channel may be encrypted, an additional layer of security is gained by extending the policy of not logging directly on as root. In addition, logging in with a user-specific account provides individual accountability of actions performed on the system and also helps to minimize direct attack attempts on root's password."
-  desc 'check', %q(Verify RHEL 9 remote access using SSH prevents users from logging on directly as "root" with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 remote access using SSH prevents users from logging on directly as "root" with the following command:
 
 $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '\n' ' ' | xargs sudo grep -iH '^\s*permitrootlogin'
 

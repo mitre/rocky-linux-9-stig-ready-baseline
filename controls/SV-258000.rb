@@ -1,5 +1,5 @@
 control 'SV-258000' do
-  title 'RHEL 9 SSH private host key files must have mode 0640 or less permissive.'
+  title 'Rocky Linux 9 SSH private host key files must have mode 0640 or less permissive.'
   desc 'If an unauthorized user obtains the private SSH host key file, the
 host could be impersonated.'
   desc 'check', 'Verify the SSH private host key files have a mode of "0640" or less permissive with the following command:

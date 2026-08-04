@@ -1,5 +1,5 @@
 control 'SV-257864' do
-  title 'RHEL 9 must mount /dev/shm with the noexec option.'
+  title 'Rocky Linux 9 must mount /dev/shm with the noexec option.'
   desc 'The "noexec" mount option causes the system to not execute binary files. This option must be used for mounting any file system not containing approved binary files, as they may be incompatible. Executing files from untrusted file systems increases the opportunity for nonprivileged users to attain unauthorized administrative access.'
   desc 'check', 'Verify "/dev/shm" is mounted with the "noexec" option with the following command:
 

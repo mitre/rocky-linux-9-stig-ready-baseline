@@ -1,9 +1,9 @@
 control 'SV-258155' do
-  title "RHEL 9 must allocate audit record storage capacity to store at least one week's worth of audit records."
-  desc 'To ensure RHEL 9 systems have a sufficient storage capacity in which to write the audit logs, RHEL 9 needs to be able to allocate audit record storage capacity.
+  title "Rocky Linux 9 must allocate audit record storage capacity to store at least one week's worth of audit records."
+  desc 'To ensure Rocky Linux 9 systems have a sufficient storage capacity in which to write the audit logs, Rocky Linux 9 needs to be able to allocate audit record storage capacity.
 
-The task of allocating audit record storage capacity is usually performed during initial installation of RHEL 9.'
-  desc 'check', 'Verify RHEL 9 allocates audit record storage capacity to store at least one week of audit records when audit records are not immediately sent to a central audit record storage facility.
+The task of allocating audit record storage capacity is usually performed during initial installation of Rocky Linux 9.'
+  desc 'check', 'Verify Rocky Linux 9 allocates audit record storage capacity to store at least one week of audit records when audit records are not immediately sent to a central audit record storage facility.
 
 Note: The partition size needed to capture a week of audit records is based on the activity level of the system and the total storage capacity available. Typically 10.0GB of storage space for audit records should be sufficient.
 

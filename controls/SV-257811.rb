@@ -1,5 +1,5 @@
 control 'SV-257811' do
-  title 'RHEL 9 must restrict usage of ptrace to descendant processes.'
+  title 'Rocky Linux 9 must restrict usage of ptrace to descendant processes.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore, may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
 
 The sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographic order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.
@@ -10,7 +10,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 restricts the usage of ptrace to descendant processes.
+  desc 'check', 'Verify Rocky Linux 9 restricts the usage of ptrace to descendant processes.
 
 Check the status of the "kernel.yama.ptrace_scope" kernel parameter with the following command:
 
@@ -18,7 +18,7 @@ $ sysctl kernel.yama.ptrace_scope
 kernel.yama.ptrace_scope = 1
 
 If the network parameter "kernel.yama.ptrace_scope" is not equal to "1", or nothing is returned, this is a finding.'
-  desc 'fix', "Configure RHEL 9 to restrict the usage of ptrace to descendant processes.
+  desc 'fix', "Configure Rocky Linux 9 to restrict the usage of ptrace to descendant processes.
 
 Create the drop-in if it doesn't already exist:
 

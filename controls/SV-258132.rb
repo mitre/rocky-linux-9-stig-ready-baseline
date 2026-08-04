@@ -1,5 +1,5 @@
 control 'SV-258132' do
-  title 'RHEL 9 must map the authenticated identity to the user or group account for PKI-based authentication.'
+  title 'Rocky Linux 9 must map the authenticated identity to the user or group account for PKI-based authentication.'
   desc 'Without mapping the certificate used to authenticate to the user account, the ability to determine the identity of the individual user or group will not be available for forensic analysis.'
   desc 'check', 'Note: If the system administrator (SA) demonstrates the use of an approved alternate multifactor authentication method, this requirement is not applicable.
 
@@ -15,7 +15,7 @@ domains = testing.test
 If the certmap section does not exist, ask the SA to indicate how certificates are mapped to accounts.
 
 If there is no evidence of certificate mapping, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to map the authenticated identity to the user or group account by adding or modifying the certmap section of the "/etc/sssd/sssd.conf" file based on the following example:
+  desc 'fix', 'Configure Rocky Linux 9 to map the authenticated identity to the user or group account by adding or modifying the certmap section of the "/etc/sssd/sssd.conf" file based on the following example:
 
 [certmap/testing.test/rule_name]
 matchrule = .*EDIPI@mil

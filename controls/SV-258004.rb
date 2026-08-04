@@ -1,5 +1,5 @@
 control 'SV-258004' do
-  title 'RHEL 9 SSH daemon must not allow Kerberos authentication.'
+  title 'Rocky Linux 9 SSH daemon must not allow Kerberos authentication.'
   desc "Kerberos authentication for SSH is often implemented using Generic Security Service Application Program Interface (GSSAPI). If Kerberos is enabled through SSH, the SSH daemon provides a means of access to the system's Kerberos implementation. Vulnerabilities in the system's Kerberos implementations may be subject to exploitation."
   desc 'check', %q(Verify the SSH daemon does not allow Kerberos authentication with the following command:
 

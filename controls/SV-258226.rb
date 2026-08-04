@@ -1,14 +1,14 @@
 control 'SV-258226' do
-  title 'RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /var/log/tallylog.'
+  title 'Rocky Linux 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /var/log/tallylog.'
   desc 'Without generating audit records specific to the security and mission needs of the organization, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.'
-  desc 'check', 'Verify RHEL 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/tallylog" with the following command:
+  desc 'check', 'Verify Rocky Linux 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/tallylog" with the following command:
 
 $ sudo auditctl -l | grep /var/log/tallylog
 
 -w /var/log/tallylog -p wa -k logins
 
 If the command does not return a line, or the line is commented out, is a finding.'
-  desc 'fix', 'Configure RHEL 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/tallylog".
+  desc 'fix', 'Configure Rocky Linux 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/var/log/tallylog".
 
 Add or update the following file system rule to "/etc/audit/rules.d/audit.rules":
 

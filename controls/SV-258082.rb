@@ -1,7 +1,7 @@
 control 'SV-258082' do
-  title 'RHEL 9 policycoreutils-python-utils package must be installed.'
+  title 'Rocky Linux 9 policycoreutils-python-utils package must be installed.'
   desc 'The policycoreutils-python-utils package is required to operate and manage an SELinux environment and its policies. It provides utilities such as semanage, audit2allow, audit2why, chcat, and sandbox.'
-  desc 'check', 'Verify that RHEL 9 policycoreutils-python-utils service package is installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 policycoreutils-python-utils service package is installed with the following command:
 
 $ dnf list --installed policycoreutils-python-utils
 

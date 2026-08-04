@@ -1,7 +1,7 @@
 control 'SV-257795' do
-  title 'RHEL 9 must enable mitigations against processor-based vulnerabilities.'
+  title 'Rocky Linux 9 must enable mitigations against processor-based vulnerabilities.'
   desc 'Kernel page-table isolation is a kernel feature that mitigates the Meltdown security vulnerability and hardens the kernel against attempts to bypass kernel address space layout randomization (KASLR).'
-  desc 'check', %q(Verify RHEL 9 enables kernel page-table isolation with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 enables kernel page-table isolation with the following command:
 
 $ sudo grubby --info=ALL | grep args | grep -v 'pti=on'
 
@@ -14,7 +14,7 @@ $ grep pti /etc/default/grub
 GRUB_CMDLINE_LINUX="pti=on"
 
 If "pti" is not set to "on", is missing or commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to enable kernel page-table isolation with the following command:
+  desc 'fix', 'Configure Rocky Linux 9 to enable kernel page-table isolation with the following command:
 
 $ sudo grubby --update-kernel=ALL --args="pti=on"
 

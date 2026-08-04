@@ -1,9 +1,9 @@
 control 'SV-257817' do
-  title 'RHEL 9 must implement nonexecutable data to protect its memory from unauthorized code execution.'
-  desc %q(ExecShield uses the segmentation feature on all x86 systems to prevent execution in memory higher than a certain address. It writes an address as a limit in the code segment descriptor, to control where code can be executed, on a per-process basis. When the kernel places a process's memory regions such as the stack and heap higher than this address, the hardware prevents execution in that address range. This is enabled by default on the latest Red Hat and Fedora systems if supported by the hardware.
+  title 'Rocky Linux 9 must implement nonexecutable data to protect its memory from unauthorized code execution.'
+  desc %q(ExecShield uses the segmentation feature on all x86 systems to prevent execution in memory higher than a certain address. It writes an address as a limit in the code segment descriptor, to control where code can be executed, on a per-process basis. When the kernel places a process's memory regions such as the stack and heap higher than this address, the hardware prevents execution in that address range. This is enabled by default on current Enterprise Linux systems if supported by the hardware.
 
 Checking dmesg will return a false-positive if the system has generated enough kernel messages that the "(Execute Disable) protection: active" line is no longer present in the output from dmesg(1). A better way to ensure that ExecShield is enabled is to first ensure all processors support the NX feature, and then to check that noexec was not passed to the kernel command line.)
-  desc 'check', "Verify ExecShield is enabled on 64-bit RHEL 9 systems.
+  desc 'check', "Verify ExecShield is enabled on 64-bit Rocky Linux 9 systems.
 
 Run the following command:
 
@@ -40,7 +40,7 @@ $ sudo grubby --update-kernel=ALL --remove-args=noexec'
   grubby_output = command("grubby --info=ALL | grep args | grep -E '([^[:alnum:]])(noexec)([^[:alnum:]])'").stdout.strip
 
   describe 'ExecShield' do
-    it 'is enabled on 64-bit RHEL 9 systems' do
+    it 'is enabled on 64-bit Rocky Linux 9 systems' do
       expect(grep_output).to be_empty
       expect(grubby_output).to be_empty
     end

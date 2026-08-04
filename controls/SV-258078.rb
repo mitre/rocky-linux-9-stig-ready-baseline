@@ -1,5 +1,5 @@
 control 'SV-258078' do
-  title 'RHEL 9 must use a Linux Security Module configured to enforce limits on system services.'
+  title 'Rocky Linux 9 must use a Linux Security Module configured to enforce limits on system services.'
   desc 'Without verification of the security functions, security functions may
 not operate correctly and the failure may go unnoticed. Security function is
 defined as the hardware, software, and/or firmware of the information system
@@ -12,7 +12,7 @@ events to be audited, and setting intrusion detection parameters.
     This requirement applies to operating systems performing security function
 verification/testing and/or systems and environments that require this
 functionality.'
-  desc 'check', 'Ensure that RHEL 9 verifies correct operation of security functions through the use of SELinux with the following command:
+  desc 'check', 'Ensure that Rocky Linux 9 verifies correct operation of security functions through the use of SELinux with the following command:
 
 $ getenforce
 
@@ -28,7 +28,7 @@ grep "SELINUX=" /etc/selinux/config
 SELINUX=enforcing
 
 If SELINUX line is missing, commented out, or not set to "enforcing", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to verify correct operation of security functions.
+  desc 'fix', 'Configure Rocky Linux 9 to verify correct operation of security functions.
 
 Edit the file "/etc/selinux/config" and add or modify the following line:
 

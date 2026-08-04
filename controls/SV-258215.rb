@@ -1,7 +1,7 @@
 control 'SV-258215' do
-  title 'Successful/unsuccessful uses of the umount system call in RHEL 9 must generate an audit record.'
+  title 'Successful/unsuccessful uses of the umount system call in Rocky Linux 9 must generate an audit record.'
   desc 'The changing of file permissions could indicate that a user is attempting to gain access to information that would otherwise be disallowed. Auditing DAC modifications can facilitate the identification of patterns of abuse among both authorized and unauthorized users.'
-  desc 'check', %q(Verify RHEL 9 generates an audit record for all uses of the "umount" and system call with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 generates an audit record for all uses of the "umount" and system call with the following command:
 
 $ sudo auditctl -l | grep b32 | grep 'umount\b'
 

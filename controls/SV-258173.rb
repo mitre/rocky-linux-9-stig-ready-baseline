@@ -1,5 +1,5 @@
 control 'SV-258173' do
-  title 'RHEL 9 must allocate an audit_backlog_limit of sufficient size to capture processes that start prior to the audit daemon.'
+  title 'Rocky Linux 9 must allocate an audit_backlog_limit of sufficient size to capture processes that start prior to the audit daemon.'
   desc 'Without the capability to generate audit records, it would be
 difficult to establish, correlate, and investigate the events relating to an
 incident or identify those responsible for one.
@@ -15,12 +15,12 @@ information system (e.g., module or policy filter).
     Allocating an audit_backlog_limit of sufficient size is critical in
 maintaining a stable boot process.  With an insufficient limit allocated, the
 system is susceptible to boot failures and crashes.'
-  desc 'check', %q(Verify RHEL 9 allocates a sufficient audit_backlog_limit to capture processes that start prior to the audit daemon with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 allocates a sufficient audit_backlog_limit to capture processes that start prior to the audit daemon with the following command:
 
 $ sudo grubby --info=ALL | grep args | grep 'audit_backlog_limit'
 
 If the command returns any outputs, and audit_backlog_limit is less than "8192", this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to allocate sufficient audit_backlog_limit to capture processes that start prior to the audit daemon with the following command:
+  desc 'fix', 'Configure Rocky Linux 9 to allocate sufficient audit_backlog_limit to capture processes that start prior to the audit daemon with the following command:
 
 $ sudo grubby --update-kernel=ALL --args=audit_backlog_limit=8192'
   impact 0.3

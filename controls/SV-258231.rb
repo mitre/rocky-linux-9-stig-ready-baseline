@@ -1,5 +1,5 @@
 control 'SV-258231' do
-  title 'RHEL 9 must employ FIPS 140-3 approved cryptographic hashing algorithms for all stored passwords.'
+  title 'Rocky Linux 9 must employ FIPS 140-3 approved cryptographic hashing algorithms for all stored passwords.'
   desc 'The system must use a strong hashing algorithm to store the password.
 
     Passwords need to be protected at all times, and encryption is the standard

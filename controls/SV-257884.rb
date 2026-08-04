@@ -1,8 +1,8 @@
 control 'SV-257884' do
-  title 'RHEL 9 library files must have mode 755 or less permissive.'
-  desc 'If RHEL 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
+  title 'Rocky Linux 9 library files must have mode 755 or less permissive.'
+  desc 'If Rocky Linux 9 allowed any user to make changes to software libraries, then those changes might be implemented without undergoing the appropriate testing and approvals that are part of a robust change management process.
 
-This requirement applies to RHEL 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
+This requirement applies to Rocky Linux 9 with software libraries that are accessible and configurable, as in the case of interpreted languages. Software libraries also include privileged programs that execute with escalated privileges.'
   desc 'check', %q(Verify the systemwide shared library files contained in the directories "/lib", "/lib64", "/usr/lib", and "/usr/lib64" have mode 0755 or less permissive.
 
 Check that the systemwide shared library files have mode 0755 or less permissive with the following command:

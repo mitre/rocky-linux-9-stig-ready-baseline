@@ -1,5 +1,5 @@
 control 'SV-258035' do
-  title 'RHEL 9 must have the USBGuard package installed.'
+  title 'Rocky Linux 9 must have the USBGuard package installed.'
   desc 'The USBguard-daemon is the main component of the USBGuard software framework. It runs as a service in the background and enforces the USB device authorization policy for all USB devices. The policy is defined by a set of rules using a rule language described in the usbguard-rules.conf file. The policy and the authorization state of USB devices can be modified during runtime using the usbguard tool.
 
 The system administrator (SA) must work with the site information system security officer (ISSO) to determine a list of authorized peripherals and establish rules within the USBGuard software framework to allow only authorized devices.'
@@ -10,7 +10,7 @@ $ sudo dnf list installed usbguard
 Example output:
 
 Installed Packages
-usbguard.x86_64          1.0.0-10.el9_1.2          @rhel-9-for-x86_64-appstream-rpms
+usbguard.x86_64          1.0.0-10.el9_1.2          @appstream
 
 If the USBGuard package is not installed, ask the SA to indicate how unauthorized peripherals are being blocked.
 
@@ -28,7 +28,7 @@ $ sudo systemctl start usbguard
 Verify the status of the service with the following command:
 $ sudo systemctl status usbguard
 
-Note: usbguard will need to be configured to allow authorized devices once it is enabled on RHEL 9.'
+Note: usbguard will need to be configured to allow authorized devices once it is enabled on Rocky Linux 9.'
   impact 0.5
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000378-GPOS-00163'

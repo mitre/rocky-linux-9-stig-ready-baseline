@@ -1,11 +1,11 @@
 control 'SV-257808' do
-  title 'RHEL 9 must disable the Transparent Inter Process Communication (TIPC) kernel module.'
+  title 'Rocky Linux 9 must disable the Transparent Inter Process Communication (TIPC) kernel module.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
 
 Failing to disconnect unused protocols can result in a system compromise.
 
 The Transparent Inter Process Communication (TIPC) is a protocol that is specially designed for intra-cluster communication. It can be configured to transmit messages either on UDP or directly across Ethernet. Message delivery is sequence guaranteed, loss free and flow controlled. Disabling TIPC protects the system against exploitation of any flaws in its implementation.'
-  desc 'check', 'Verify that RHEL 9 disables the ability to load the tipc kernel module with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 disables the ability to load the tipc kernel module with the following command:
 
 $ grep -r tipc /etc/modprobe.conf /etc/modprobe.d/*
 

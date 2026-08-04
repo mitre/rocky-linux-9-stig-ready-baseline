@@ -1,5 +1,5 @@
 control 'SV-257880' do
-  title 'RHEL 9 must disable mounting of cramfs.'
+  title 'Rocky Linux 9 must disable mounting of cramfs.'
   desc 'It is detrimental for operating systems to provide, or install by
 default, functionality exceeding requirements or mission objectives. These
 unnecessary capabilities or services are often overlooked and therefore may
@@ -12,7 +12,7 @@ surface of the server.
     Compressed ROM/RAM file system (or cramfs) is a read-only file system
 designed for simplicity and space-efficiency.  It is mainly used in embedded
 and small-footprint systems.'
-  desc 'check', 'Verify that RHEL 9 disables the ability to load the cramfs kernel module with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 disables the ability to load the cramfs kernel module with the following command:
 
 $ grep -r cramfs /etc/modprobe.conf /etc/modprobe.d/*
 

@@ -1,5 +1,5 @@
 control 'SV-257888' do
-  title 'RHEL 9 permissions of cron configuration files and directories must not be modified from the operating system defaults.'
+  title 'Rocky Linux 9 permissions of cron configuration files and directories must not be modified from the operating system defaults.'
   desc 'If the permissions of cron configuration files or directories are modified from the operating system defaults, it may be possible for individuals to insert unauthorized cron jobs that perform unauthorized actions, including potentially escalating privileges.'
   desc 'check', %q(Run the following command to verify that the owner, group, and mode of cron configuration files and directories match the operating system defaults:
 

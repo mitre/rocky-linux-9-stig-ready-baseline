@@ -1,7 +1,7 @@
 control 'SV-258097' do
-  title 'RHEL 9 must ensure the password complexity module is enabled in the password-auth file.'
+  title 'Rocky Linux 9 must ensure the password complexity module is enabled in the password-auth file.'
   desc 'Enabling PAM password complexity permits enforcement of strong passwords and consequently makes the system less prone to dictionary attacks.'
-  desc 'check', 'Verify RHEL 9 uses "pwquality" to enforce the password complexity rules in the password-auth file with the following command:
+  desc 'check', 'Verify Rocky Linux 9 uses "pwquality" to enforce the password complexity rules in the password-auth file with the following command:
 
 $ grep pam_pwquality /etc/pam.d/password-auth
 
@@ -10,7 +10,7 @@ password required pam_pwquality.so
 If the command does not return a line containing the value "pam_pwquality.so", or the line is commented out, this is a finding.
 
 If the system administrator (SA) can demonstrate that the required configuration is contained in a PAM configuration file included or substacked from the system-auth file, this is not a finding.'
-  desc 'fix', 'Configure RHEL 9 to use "pwquality" to enforce password complexity rules.
+  desc 'fix', 'Configure Rocky Linux 9 to use "pwquality" to enforce password complexity rules.
 
 Add the following line to the "/etc/pam.d/password-auth" file (or modify the line to have the required value):
 

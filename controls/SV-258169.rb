@@ -1,5 +1,5 @@
 control 'SV-258169' do
-  title 'RHEL 9 must produce audit records containing information to establish the identity of any individual or process associated with the event.'
+  title 'Rocky Linux 9 must produce audit records containing information to establish the identity of any individual or process associated with the event.'
   desc 'Without establishing what type of events occurred, the source of
 events, where events occurred, and the outcome of events, it would be difficult
 to establish, correlate, and investigate the events leading up to an outage or
@@ -13,7 +13,7 @@ filenames involved, and access control or flow control rules invoked.
     Enriched logging aids in making sense of who, what, and when events occur
 on a system.  Without this, determining root cause of an event will be much
 more difficult.'
-  desc 'check', 'Verify that RHEL 9 audit system is configured to resolve audit information before writing to disk, with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 audit system is configured to resolve audit information before writing to disk, with the following command:
 
 $ sudo grep log_format /etc/audit/auditd.conf
 

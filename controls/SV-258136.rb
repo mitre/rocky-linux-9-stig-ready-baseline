@@ -1,6 +1,6 @@
 control 'SV-258136' do
-  title 'RHEL 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.'
-  desc 'RHEL 9 installation media ships with an optional file integrity tool called Advanced Intrusion Detection Environment (AIDE). AIDE is highly configurable at install time. This requirement assumes the "aide.conf" file is under the "/etc" directory.
+  title 'Rocky Linux 9 must use a file integrity tool that is configured to use FIPS 140-3-approved cryptographic hashes for validating file contents and directories.'
+  desc 'Rocky Linux 9 installation media ships with an optional file integrity tool called Advanced Intrusion Detection Environment (AIDE). AIDE is highly configurable at install time. This requirement assumes the "aide.conf" file is under the "/etc" directory.
 
 File integrity tools use cryptographic hashes for verifying file contents and directories have not been altered. These hashes must be FIPS 140-3-approved cryptographic hashes.'
   desc 'check', 'Verify that AIDE is configured to use FIPS 140-3 file hashing with the following command:

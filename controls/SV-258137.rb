@@ -1,5 +1,5 @@
 control 'SV-258137' do
-  title 'RHEL 9 must use cryptographic mechanisms to protect the integrity of audit tools.'
+  title 'Rocky Linux 9 must use cryptographic mechanisms to protect the integrity of audit tools.'
   desc 'Protecting the integrity of the tools used for auditing purposes is a critical step toward ensuring the integrity of audit information. Audit information includes all information (e.g., audit records, audit settings, and audit reports) needed to successfully audit information system activity.
 
 Audit tools include, but are not limited to, vendor-provided and open-source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.

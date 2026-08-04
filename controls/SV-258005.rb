@@ -1,5 +1,5 @@
 control 'SV-258005' do
-  title 'RHEL 9 SSH daemon must not allow rhosts authentication.'
+  title 'Rocky Linux 9 SSH daemon must not allow rhosts authentication.'
   desc 'SSH trust relationships mean a compromise on one host can allow an attacker to move trivially to other hosts.'
   desc 'check', %q(Verify the SSH daemon does not allow rhosts authentication with the following command:
 

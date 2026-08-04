@@ -1,9 +1,9 @@
 control 'SV-258161' do
-  title 'RHEL 9 must label all offloaded audit logs before sending them to the central log server.'
+  title 'Rocky Linux 9 must label all offloaded audit logs before sending them to the central log server.'
   desc 'Enriched logging is needed to determine who, what, and when events occur on a system. Without this, determining root cause of an event will be much more difficult.
 
 When audit logs are not labeled before they are sent to a central log server, the audit data will not be able to be analyzed and tied back to the correct system.'
-  desc 'check', 'Verify that RHEL 9 Audit Daemon is configured to label all offloaded audit logs, with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 Audit Daemon is configured to label all offloaded audit logs, with the following command:
 
 $ sudo grep name_format /etc/audit/auditd.conf
 

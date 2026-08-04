@@ -1,5 +1,5 @@
 control 'SV-257979' do
-  title 'All RHEL 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission.'
+  title 'All Rocky Linux 9 networked systems must have and implement SSH to protect the confidentiality and integrity of transmitted and received information, as well as information during preparation for transmission.'
   desc 'Without protection of the transmitted information, confidentiality and
 integrity may be compromised because unprotected communications can be
 intercepted and either read or altered.

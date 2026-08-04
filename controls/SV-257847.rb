@@ -1,5 +1,5 @@
 control 'SV-257847' do
-  title 'RHEL 9 must use a separate file system for the system audit data path.'
+  title 'Rocky Linux 9 must use a separate file system for the system audit data path.'
   desc 'Placing "/var/log/audit" in its own partition enables better separation between audit files and other system files, and helps ensure that auditing cannot be halted due to the partition running out of space.'
   desc 'check', 'Verify that a separate file system/partition has been created for the system audit data path with the following command:
 

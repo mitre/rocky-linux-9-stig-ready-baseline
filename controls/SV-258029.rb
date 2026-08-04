@@ -1,16 +1,16 @@
 control 'SV-258029' do
-  title 'RHEL 9 must disable the ability of a user to restart the system from the login screen.'
+  title 'Rocky Linux 9 must disable the ability of a user to restart the system from the login screen.'
   desc 'A user who is at the console can reboot the system at the login screen. If restart or shutdown buttons are pressed at the login screen, this can create the risk of short-term loss of availability of systems due to reboot.'
-  desc 'check', %q(Note: This requirement assumes the use of the RHEL 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+  desc 'check', %q(Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, Gnome Shell. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
-Verify RHEL 9 disables a user's ability to restart the system with the following command:
+Verify Rocky Linux 9 disables a user's ability to restart the system with the following command:
 
 $ gsettings get org.gnome.login-screen disable-restart-buttons
 
 true
 
 If "disable-restart-buttons" is "false", this is a finding.)
-  desc 'fix', "Configure RHEL 9 to disable a user's ability to restart the system.
+  desc 'fix', "Configure Rocky Linux 9 to disable a user's ability to restart the system.
 
 $ gsettings set org.gnome.login-screen disable-restart-buttons true
 

@@ -1,5 +1,5 @@
 control 'SV-257848' do
-  title 'RHEL 9 must use a separate file system for /var/tmp.'
+  title 'Rocky Linux 9 must use a separate file system for /var/tmp.'
   desc 'The "/var/tmp" partition is used as temporary storage by many programs. Placing "/var/tmp" in its own partition enables the setting of more restrictive mount options, which can help protect programs that use it.'
   desc 'check', 'Verify that a separate file system/partition has been created for "/var/tmp" with the following command:
 

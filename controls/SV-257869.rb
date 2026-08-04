@@ -1,5 +1,5 @@
 control 'SV-257869' do
-  title 'RHEL 9 must mount /var with the nodev option.'
+  title 'Rocky Linux 9 must mount /var with the nodev option.'
   desc 'The "nodev" mount option causes the system to not interpret character or block special devices. Executing character or block special devices from untrusted file systems increases the opportunity for nonprivileged users to attain unauthorized administrative access.
 
 The only legitimate location for device files is the "/dev" directory located on the root partition, with the exception of chroot jails if implemented.'

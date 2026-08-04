@@ -1,7 +1,7 @@
 control 'SV-258236' do
-  title 'RHEL 9 cryptographic policy must not be overridden.'
+  title 'Rocky Linux 9 cryptographic policy must not be overridden.'
   desc 'Centralized cryptographic policies simplify applying secure ciphers across an operating system and the applications that run on that operating system. Use of weak or untested encryption algorithms undermines the purposes of using encryption to protect data.'
-  desc 'check', 'Verify that RHEL 9 cryptographic policies are not overridden.
+  desc 'check', 'Verify that Rocky Linux 9 cryptographic policies are not overridden.
 
 Verify that the configured policy matches the generated policy with the following command:
 
@@ -36,7 +36,7 @@ If the paths do not point to the respective files under /usr/share/crypto-polici
 Note: nss.config should not be symlinked.
 
 Note: If there is an operational need to use a subpolicy that causes the links to the crypto backends to break, this is a finding, and exceptions will need to be made by the authorizing official (AO) and documented with the information system security officer (ISSO).'
-  desc 'fix', 'Configure RHEL 9 to correctly implement the systemwide cryptographic policies by reinstalling the crypto-policies package contents.
+  desc 'fix', 'Configure Rocky Linux 9 to correctly implement the systemwide cryptographic policies by reinstalling the crypto-policies package contents.
 
 Reinstall crypto-policies with the following command:
 

@@ -1,9 +1,9 @@
 control 'SV-257814' do
-  title 'RHEL 9 must disable core dumps for all users.'
+  title 'Rocky Linux 9 must disable core dumps for all users.'
   desc 'A core dump includes a memory image taken at the time the operating system terminates an application. The memory image could contain sensitive data and is generally useful only for developers trying to debug problems.'
   desc 'check', 'Note: If kernel dumps are disabled in accordance with RHEL-09-213040, this requirement is not applicable.
 
-Verify RHEL 9 disables core dumps for all users by issuing the following command:
+Verify Rocky Linux 9 disables core dumps for all users by issuing the following command:
 
 $ grep -rs core /etc/security/limits.conf /etc/security/limits.d/*.conf
 
@@ -14,7 +14,7 @@ This can be set as a global domain (with the * wildcard) but may be set differen
 If the "core" item is missing or commented out, or the value is anything other than "0", and the need for core dumps is not documented with the information system security officer (ISSO) as an operational requirement for all domains that have the "core" item assigned, this is a finding.
 
 If entries exist for users or groups with a value set to anything other than "0", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable core dumps for all users.
+  desc 'fix', 'Configure Rocky Linux 9 to disable core dumps for all users.
 
 Add the following line to the top of the /etc/security/limits.conf or in a single ".conf" file defined in /etc/security/limits.d/:
 

@@ -1,5 +1,5 @@
 control 'SV-258081' do
-  title 'RHEL 9 must have policycoreutils package installed.'
+  title 'Rocky Linux 9 must have policycoreutils package installed.'
   desc 'Without verification of the security functions, security functions may
 not operate correctly and the failure may go unnoticed. Security function is
 defined as the hardware, software, and/or firmware of the information system
@@ -13,7 +13,7 @@ events to be audited, and setting intrusion detection parameters.
 basic operation of an SELinux-enabled system. These utilities include
 load_policy to load SELinux policies, setfile to label filesystems, newrole to
 switch roles, and run_init to run /etc/init.d scripts in the proper context.'
-  desc 'check', 'Verify RHEL 9 has the policycoreutils package installed with the following command:
+  desc 'check', 'Verify Rocky Linux 9 has the policycoreutils package installed with the following command:
 
 $ dnf list --installed policycoreutils
 

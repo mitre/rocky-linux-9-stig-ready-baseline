@@ -1,7 +1,7 @@
 control 'SV-279936' do
-  title 'RHEL 9 must audit any script or executable called by cron as root or by any privileged user.'
+  title 'Rocky Linux 9 must audit any script or executable called by cron as root or by any privileged user.'
   desc 'Any script or executable called by cron as root or by any privileged user must be owned by that user. It must also have the permissions 755 or more restrictive and should have no extended rights that allow any nonprivileged user to modify the script or executable.'
-  desc 'check', 'Verify RHEL 9 is configured to audit the execution of any system call made by cron as root or by any privileged user.
+  desc 'check', 'Verify Rocky Linux 9 is configured to audit the execution of any system call made by cron as root or by any privileged user.
 
 $ sudo auditctl -l | grep /etc/cron.d
 -w /etc/cron.d -p wa -k cronjobs
@@ -10,7 +10,7 @@ $ sudo auditctl -l | grep /var/spool/cron
 -w /var/spool/cron -p wa -k cronjobs
 
 If either of these commands do not return the expected output, or the lines are commented out, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to audit the execution of any system call made by cron as root or by any privileged user.
+  desc 'fix', 'Configure Rocky Linux 9 to audit the execution of any system call made by cron as root or by any privileged user.
 
 Add or update the following file system rules to "/etc/audit/rules.d/audit.rules":
 -w /etc/cron.d/ -p wa -k cronjobs

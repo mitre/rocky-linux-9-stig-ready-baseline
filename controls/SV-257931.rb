@@ -1,12 +1,12 @@
 control 'SV-257931' do
-  title 'All RHEL 9 local files and directories must have a valid owner.'
+  title 'All Rocky Linux 9 local files and directories must have a valid owner.'
   desc 'Unowned files and directories may be unintentionally inherited if a user is assigned the same user identifier "UID" as the UID of the unowned files.'
-  desc 'check', "Verify all local files and directories on RHEL 9 have a valid owner with the following command:
+  desc 'check', "Verify all local files and directories on Rocky Linux 9 have a valid owner with the following command:
 
 $ df --local -P | awk {'if (NR!=1) print $6'} | sudo xargs -I '{}' find '{}' -xdev -nouser
 
 If any files on the system do not have an assigned owner, this is a finding."
-  desc 'fix', 'Either remove all files and directories from the system that do not have a valid user, or assign a valid user to all unowned files and directories on RHEL 9 with the "chown" command:
+  desc 'fix', 'Either remove all files and directories from the system that do not have a valid user, or assign a valid user to all unowned files and directories on Rocky Linux 9 with the "chown" command:
 
 $ sudo chown <user> <file>'
   impact 0.5

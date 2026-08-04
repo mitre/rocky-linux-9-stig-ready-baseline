@@ -1,14 +1,14 @@
 control 'SV-258160' do
-  title 'RHEL 9 audit system must take appropriate action when the audit files have reached maximum size.'
+  title 'Rocky Linux 9 audit system must take appropriate action when the audit files have reached maximum size.'
   desc 'It is critical that when the operating system is at risk of failing to process audit logs as required, it takes action to mitigate the failure. Audit processing failures include software/hardware errors; failures in the audit capturing mechanisms; and audit storage capacity being reached or exceeded. Responses to audit failure depend upon the nature of the failure mode.'
-  desc 'check', 'Verify that RHEL 9 takes the appropriate action when the audit files have reached maximum size with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 takes the appropriate action when the audit files have reached maximum size with the following command:
 
 $ sudo grep max_log_file_action /etc/audit/auditd.conf
 
 max_log_file_action = ROTATE
 
 If the value of the "max_log_file_action" option is not "ROTATE", "SINGLE", or the line is commented out, ask the system administrator (SA)to indicate how the system takes appropriate action when an audit storage volume is full. If there is no evidence of appropriate action, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to rotate the audit log when it reaches maximum size.
+  desc 'fix', 'Configure Rocky Linux 9 to rotate the audit log when it reaches maximum size.
 
 Add or update the following line in "/etc/audit/auditd.conf" file:
 

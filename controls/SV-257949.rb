@@ -1,12 +1,12 @@
 control 'SV-257949' do
-  title 'RHEL 9 must configure a DNS processing mode in Network Manager.'
+  title 'Rocky Linux 9 must configure a DNS processing mode in Network Manager.'
   desc 'To ensure that DNS resolver settings are respected, a DNS mode in Network Manager must be configured. The following are common DNS values in NetworkManager.conf [main]:
 
 - default: NetworkManager will update /etc/resolv.conf to reflect the nameservers provided by currently active connections.
 - none: NetworkManager will not modify /etc/resolv.conf. Used when DNS is managed manually or by another service.
 - systemd-resolved: Uses systemd-resolved to manage DNS.
 - dnsmasq: Enables the internal dnsmasq plugin.'
-  desc 'check', 'Verify that RHEL 9 has a DNS mode configured in Network Manager.
+  desc 'check', 'Verify that Rocky Linux 9 has a DNS mode configured in Network Manager.
 
 $ NetworkManager --print-config
 [main]
@@ -14,8 +14,8 @@ dns=none
 
 If the dns key under main does not exist or is not set to "default", "none", or "systemd-resolved", this is a finding.
 
-Note: If RHEL 9 is configured to use a DNS resolver other than Network Manager, the configuration must be documented and approved by the information system security officer (ISSO).'
-  desc 'fix', 'Configure NetworkManager in RHEL 9 to use a DNS mode.
+Note: If Rocky Linux 9 is configured to use a DNS resolver other than Network Manager, the configuration must be documented and approved by the information system security officer (ISSO).'
+  desc 'fix', 'Configure NetworkManager in Rocky Linux 9 to use a DNS mode.
 
 In "/etc/NetworkManager/NetworkManager.conf", add the following line in the "[main]" section:
 

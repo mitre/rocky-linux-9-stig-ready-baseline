@@ -1,5 +1,5 @@
 control 'SV-257987' do
-  title 'RHEL 9 SSH daemon must be configured to use system-wide crypto policies.'
+  title 'Rocky Linux 9 SSH daemon must be configured to use system-wide crypto policies.'
   desc 'Without cryptographic integrity protections, information can be altered by unauthorized users without detection.
 
 Remote access (e.g., RDP) is access to DOD nonpublic information systems by an authorized user (or an information system) communicating through an external, nonorganization-controlled network. Remote access methods include, for example, dial-up, broadband, and wireless.
@@ -13,7 +13,7 @@ $ sudo /usr/sbin/sshd -dd 2>&1 | awk '/filename/ {print $4}' | tr -d '\r' | tr '
 /etc/ssh/sshd_config.d/50-redhat.conf:Include /etc/crypto-policies/back-ends/opensshserver.config
 
 If "Include /etc/ssh/sshd_config.d/*.conf" or "Include /etc/crypto-policies/back-ends/opensshserver.config" are not included in the system sshd config this is a finding. Additionally, if the file /etc/ssh/sshd_config.d/50-redhat.conf is missing, this is a finding.)
-  desc 'fix', 'Configure the RHEL 9 SSH daemon to use system-wide crypto policies by running the following commands:
+  desc 'fix', 'Configure the Rocky Linux 9 SSH daemon to use system-wide crypto policies by running the following commands:
 
 $ sudo dnf reinstall openssh-server'
   impact 0.5

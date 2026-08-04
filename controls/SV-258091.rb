@@ -1,13 +1,13 @@
 control 'SV-258091' do
-  title 'RHEL 9 must ensure the password complexity module in the system-auth file is configured for three retries or less.'
+  title 'Rocky Linux 9 must ensure the password complexity module in the system-auth file is configured for three retries or less.'
   desc 'Use of a complex password helps to increase the time and resources required to compromise the password. Password complexity, or strength, is a measure of the effectiveness of a password in resisting attempts at guessing and brute-force attacks. "pwquality" enforces complex password construction configuration and has the ability to limit brute-force attacks on the system.
 
-RHEL 9 uses "pwquality" as a mechanism to enforce password complexity. This is set in both:
+Rocky Linux 9 uses "pwquality" as a mechanism to enforce password complexity. This is set in both:
 /etc/pam.d/password-auth
 /etc/pam.d/system-auth
 
 By limiting the number of attempts to meet the pwquality module complexity requirements before returning with an error, the system will audit abnormal attempts at password changes.'
-  desc 'check', 'Verify RHEL 9 is configured to limit the "pwquality" retry option to "3".
+  desc 'check', 'Verify Rocky Linux 9 is configured to limit the "pwquality" retry option to "3".
 
 Check for the use of the retry option in the security directory with the following command:
 
@@ -16,7 +16,7 @@ $ grep -w retry /etc/security/pwquality.conf /etc/security/pwquality.conf.d/*.co
 retry = 3
 
 If the value of "retry" is set to "0" or greater than "3", or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to limit the "pwquality" retry option to "3".
+  desc 'fix', 'Configure Rocky Linux 9 to limit the "pwquality" retry option to "3".
 
 Add or update the following line in the "/etc/security/pwquality.conf" file or a file in the "/etc/security/pwquality.conf.d/" directory to contain the "retry" parameter:
 

@@ -1,14 +1,14 @@
 control 'SV-257947' do
-  title 'RHEL 9 must disable network management of the chrony daemon.'
+  title 'Rocky Linux 9 must disable network management of the chrony daemon.'
   desc 'Not exposing the management interface of the chrony daemon on the network diminishes the attack space.'
-  desc 'check', 'Verify RHEL 9 disables network management of the chrony daemon with the following command:
+  desc 'check', 'Verify Rocky Linux 9 disables network management of the chrony daemon with the following command:
 
 $ grep -w cmdport /etc/chrony.conf
 
 cmdport 0
 
 If the "cmdport" option is not set to "0", is commented out, or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable network management of the chrony daemon by adding/modifying the following line in the /etc/chrony.conf file:
+  desc 'fix', 'Configure Rocky Linux 9 to disable network management of the chrony daemon by adding/modifying the following line in the /etc/chrony.conf file:
 
 cmdport 0'
   impact 0.3

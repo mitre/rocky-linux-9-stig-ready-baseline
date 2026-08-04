@@ -1,5 +1,5 @@
 control 'SV-258007' do
-  title 'RHEL 9 SSH daemon must disable remote X connections for interactive users.'
+  title 'Rocky Linux 9 SSH daemon must disable remote X connections for interactive users.'
   desc 'When X11 forwarding is enabled, there may be additional exposure to the server and client displays if the sshd proxy display is configured to listen on the wildcard address.  By default, sshd binds the forwarding server to the loopback address and sets the hostname part of the DISPLAY environment variable to localhost. This prevents remote hosts from connecting to the proxy display.'
   desc 'check', %q(Verify the SSH daemon does not allow X11Forwarding with the following command:
 

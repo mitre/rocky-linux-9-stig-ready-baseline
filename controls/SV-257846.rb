@@ -1,5 +1,5 @@
 control 'SV-257846' do
-  title 'RHEL 9 must use a separate file system for /var/log.'
+  title 'Rocky Linux 9 must use a separate file system for /var/log.'
   desc 'Placing "/var/log" in its own partition enables better separation between log files and other files in "/var/".'
   desc 'check', 'Verify that a separate file system/partition has been created for "/var/log" with the following command:
 

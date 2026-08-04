@@ -1,12 +1,12 @@
 control 'SV-258120' do
-  title 'RHEL 9 must not have accounts configured with blank or null passwords.'
+  title 'Rocky Linux 9 must not have accounts configured with blank or null passwords.'
   desc 'If an account has an empty password, anyone could log in and run commands with the privileges of that account. Accounts with empty passwords should never be used in operational environments.'
   desc 'check', "Verify that null or blank passwords cannot be used with the following command:
 
 $ sudo awk -F: '!$2 {print $1}' /etc/shadow
 
 If the command returns any results, this is a finding."
-  desc 'fix', 'Configure all accounts on RHEL 9 to have a password or lock the account with the following commands:
+  desc 'fix', 'Configure all accounts on Rocky Linux 9 to have a password or lock the account with the following commands:
 
 Perform a password reset:
 

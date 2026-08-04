@@ -1,5 +1,5 @@
 control 'SV-258050' do
-  title 'Executable search paths within the initialization files of all local interactive RHEL 9 users must only contain paths that resolve to the system default or the users home directory.'
+  title 'Executable search paths within the initialization files of all local interactive Rocky Linux 9 users must only contain paths that resolve to the system default or the users home directory.'
   desc 'The executable search path (typically the PATH environment variable) contains a list of directories for the shell to search to find executables. If this path includes the current working directory (other than the users home directory), executables in these directories may be executed instead of system commands.
 
 This variable is formatted as a colon-separated list of directories. If there is an empty entry, such as a leading or trailing colon or two consecutive colons, this is interpreted as the current working directory. If deviations from the default system search path for the local interactive user are required, they must be documented with the information system security officer (ISSO).'

@@ -1,5 +1,5 @@
 control 'SV-258009' do
-  title 'RHEL 9 SSH daemon must display the date and time of the last successful account logon upon an SSH logon.'
+  title 'Rocky Linux 9 SSH daemon must display the date and time of the last successful account logon upon an SSH logon.'
   desc 'Providing users feedback on when account accesses last occurred facilitates user recognition and reporting of unauthorized account use.'
   desc 'check', %q(Verify the SSH daemon provides users with feedback on when account accesses last occurred with the following command:
 
@@ -31,8 +31,8 @@ $ sudo systemctl restart sshd.service'
 
   if %w[docker podman kubepods lxc].include?(virtualization.system) && !file('/etc/ssh/sshd_config').exist?
     impact 0.0
-    describe 'Control not applicable - SSH is not installed within containerized RHEL' do
-      skip 'Control not applicable - SSH is not installed within containerized RHEL'
+    describe 'Control not applicable - SSH is not installed within a containerized Rocky Linux system' do
+      skip 'Control not applicable - SSH is not installed within a containerized Rocky Linux system'
     end
   else
     describe sshd_config do

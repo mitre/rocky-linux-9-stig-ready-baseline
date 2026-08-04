@@ -1,7 +1,7 @@
 control 'SV-258061' do
-  title 'RHEL 9 groups must have unique Group ID (GID).'
+  title 'Rocky Linux 9 groups must have unique Group ID (GID).'
   desc 'To ensure accountability and prevent unauthenticated access, groups must be identified uniquely to prevent potential misuse and compromise of the system.'
-  desc 'check', 'Verify that RHEL 9 contains no duplicate GIDs for interactive users with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 contains no duplicate GIDs for interactive users with the following command:
 
  $  cut -d : -f 3 /etc/group | uniq -d
 

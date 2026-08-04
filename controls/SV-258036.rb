@@ -1,9 +1,9 @@
 control 'SV-258036' do
-  title 'RHEL 9 must have the USBGuard package enabled.'
+  title 'Rocky Linux 9 must have the USBGuard package enabled.'
   desc 'The USBguard-daemon is the main component of the USBGuard software framework. It runs as a service in the background and enforces the USB device authorization policy for all USB devices. The policy is defined by a set of rules using a rule language described in the usbguard-rules.conf file. The policy and the authorization state of USB devices can be modified during runtime using the usbguard tool.
 
 The system administrator (SA) must work with the site information system security officer (ISSO) to determine a list of authorized peripherals and establish rules within the USBGuard software framework to allow only authorized devices.'
-  desc 'check', 'Verify RHEL 9 has USBGuard enabled with the following command:
+  desc 'check', 'Verify Rocky Linux 9 has USBGuard enabled with the following command:
 
 $ systemctl is-active usbguard
 

@@ -1,9 +1,9 @@
 control 'SV-257855' do
-  title 'RHEL 9  must prevent code from being executed on file systems that are imported via Network File System (NFS).'
+  title 'Rocky Linux 9  must prevent code from being executed on file systems that are imported via Network File System (NFS).'
   desc 'The "noexec" mount option causes the system not to execute binary files. This option must be used for mounting any file system not containing approved binary as they may be incompatible. Executing files from untrusted file systems increases the opportunity for nonprivileged users to attain unauthorized administrative access.'
   desc 'check', 'Note: If no NFS mounts are configured, this requirement is Not Applicable.
 
-Verify RHEL 9 has the "noexec" option configured for all NFS mounts with the following command:
+Verify Rocky Linux 9 has the "noexec" option configured for all NFS mounts with the following command:
 
 $ grep nfs /etc/fstab
 

@@ -1,16 +1,16 @@
 control 'SV-258025' do
-  title 'RHEL 9 must initiate a session lock for graphical user interfaces when the screensaver is activated.'
+  title 'Rocky Linux 9 must initiate a session lock for graphical user interfaces when the screensaver is activated.'
   desc 'A session lock is a temporary action taken when a user stops work and moves away from the immediate physical vicinity of the information system but does not want to logout because of the temporary nature of the absence.'
-  desc 'check', 'Verify RHEL 9 initiates a session lock for graphical user interfaces when the screensaver is activated with the following command:
+  desc 'check', 'Verify Rocky Linux 9 initiates a session lock for graphical user interfaces when the screensaver is activated with the following command:
 
-Note: This requirement assumes the use of the RHEL 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
+Note: This requirement assumes the use of the Rocky Linux 9 default graphical user interface, the GNOME desktop environment. If the system does not have any graphical user interface installed, this requirement is Not Applicable.
 
 $ gsettings get org.gnome.desktop.screensaver lock-delay
 
 uint32 5
 
 If the "uint32" setting is not set to "5" or less, or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to initiate a session lock for graphical user interfaces when a screensaver is activated.
+  desc 'fix', 'Configure Rocky Linux 9 to initiate a session lock for graphical user interfaces when a screensaver is activated.
 
 Create a database to contain the system-wide screensaver settings (if it does not already exist) with the following command:
 

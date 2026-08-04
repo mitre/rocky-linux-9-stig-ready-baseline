@@ -1,5 +1,5 @@
 control 'SV-257816' do
-  title 'RHEL 9 must disable the use of user namespaces.'
+  title 'Rocky Linux 9 must disable the use of user namespaces.'
   desc 'It is detrimental for operating systems to provide, or install by default, functionality exceeding requirements or mission objectives. These unnecessary capabilities or services are often overlooked and therefore, may remain unsecured. They increase the risk to the platform by providing additional attack vectors.
 
 The sysctl --system command will load settings from all system configuration files. All configuration files are sorted by their filename in lexicographical order, regardless of the directories in which they reside. If multiple files specify the same option, the entry in the file with the lexicographically latest name will take precedence. Files are read from directories in the following list from top to bottom. Once a file of a given filename is loaded, any file of the same name in subsequent directories is ignored.
@@ -10,7 +10,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 disables the use of user namespaces.
+  desc 'check', 'Verify Rocky Linux 9 disables the use of user namespaces.
 
 Check the status of the "user.max_user_namespaces" parameter with the following command:
 
@@ -21,7 +21,7 @@ user.max_user_namespaces = 0
 If "user.max_user_namespaces" is not set to "0" or is missing, this is a finding.
 
 If the use of namespaces is operationally required and documented with the information system security manager (ISSM), it is not a finding.'
-  desc 'fix', 'Configure RHEL 9 to disable the use of user namespaces.
+  desc 'fix', 'Configure Rocky Linux 9 to disable the use of user namespaces.
 
 Create the drop-in if it does not already exist:
 

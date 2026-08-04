@@ -1,5 +1,5 @@
 control 'SV-257895' do
-  title 'RHEL 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access.'
+  title 'Rocky Linux 9 /etc/passwd file must have mode 0644 or less permissive to prevent unauthorized access.'
   desc 'If the "/etc/passwd" file is writable by a group-owner or the world the risk of its compromise is increased. The file contains the list of accounts on the system and associated information, and protection of this file is critical for system security.'
   desc 'check', 'Verify that the "/etc/passwd" file has mode "0644" or less permissive with the following command:
 

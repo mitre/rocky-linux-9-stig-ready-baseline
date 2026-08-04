@@ -1,5 +1,5 @@
 control 'SV-257820' do
-  title 'RHEL 9 must check the GPG signature of software packages originating from external software repositories before installation.'
+  title 'Rocky Linux 9 must check the GPG signature of software packages originating from external software repositories before installation.'
   desc 'Changes to any software components can have significant effects on the overall security of the operating system. This requirement ensures the software has not been tampered with and that it has been provided by a trusted vendor.
 
 All software packages must be signed with a cryptographic key recognized and approved by the organization.

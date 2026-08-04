@@ -1,9 +1,9 @@
 control 'SV-258122' do
-  title 'RHEL 9 must enable certificate based smart card authentication.'
+  title 'Rocky Linux 9 must enable certificate based smart card authentication.'
   desc 'Without the use of multifactor authentication, the ease of access to privileged functions is greatly increased. Multifactor authentication requires using two or more factors to achieve authentication. A privileged account is defined as an information system account with authorizations of a privileged user. The DOD Common Access Card (CAC) with DOD-approved PKI is an example of multifactor authentication.'
   desc 'check', 'Note: If the system administrator (SA) demonstrates the use of an approved alternate multifactor authentication method, this requirement is Not Applicable.
 
-To verify that RHEL 9 has smart cards  enabled in System Security Services Daemon (SSSD), run the following command:
+To verify that Rocky Linux 9 has smart cards  enabled in System Security Services Daemon (SSSD), run the following command:
 
 $ sudo grep -ir pam_cert_auth /etc/sssd/sssd.conf /etc/sssd/conf.d/
 

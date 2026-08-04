@@ -1,5 +1,5 @@
 control 'SV-258051' do
-  title 'All RHEL 9 local interactive users must have a home directory assigned in the /etc/passwd file.'
+  title 'All Rocky Linux 9 local interactive users must have a home directory assigned in the /etc/passwd file.'
   desc 'If local interactive users are not assigned a valid home directory,
 there is no place for the storage and control of files they should own.'
   desc 'check', "Verify that interactive users on the system have a home directory assigned with the following command:
@@ -13,7 +13,7 @@ djohnson:x:1002:1002:djohnson:/home/djohnson:/bin/bash
 Inspect the output and verify that all interactive users (normally users with a user identifier (UID) greater that 1000) have a home directory defined.
 
 If users home directory is not defined, this is a finding."
-  desc 'fix', 'Create and assign home directories to all local interactive users on RHEL 9 that currently do not have a home directory assigned.'
+  desc 'fix', 'Create and assign home directories to all local interactive users on Rocky Linux 9 that currently do not have a home directory assigned.'
   impact 0.5
   tag severity: 'medium'
   tag gtitle: 'SRG-OS-000480-GPOS-00227'

@@ -1,7 +1,7 @@
 control 'SV-257804' do
-  title 'RHEL 9 must be configured to disable the Asynchronous Transfer Mode kernel module.'
+  title 'Rocky Linux 9 must be configured to disable the Asynchronous Transfer Mode kernel module.'
   desc 'Disabling Asynchronous Transfer Mode (ATM) protects the system against exploitation of any flaws in its implementation.'
-  desc 'check', 'Verify that RHEL 9 disables the ability to load the ATM kernel module with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 disables the ability to load the ATM kernel module with the following command:
 
 $ grep -r atm /etc/modprobe.conf /etc/modprobe.d/*
 

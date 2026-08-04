@@ -1,5 +1,5 @@
 control 'SV-257926' do
-  title 'RHEL 9 cron configuration files directory must be owned by root.'
+  title 'Rocky Linux 9 cron configuration files directory must be owned by root.'
   desc 'Service configuration files enable or disable features of their respective services that if configured incorrectly can lead to insecure and vulnerable configurations; therefore, service configuration files must be owned by the correct group to prevent unauthorized changes.'
   desc 'check', 'Verify the ownership of all cron configuration files with the command:
 

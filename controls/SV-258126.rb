@@ -1,9 +1,9 @@
 control 'SV-258126' do
-  title 'RHEL 9 must have the opensc package installed.'
+  title 'Rocky Linux 9 must have the opensc package installed.'
   desc 'The use of PIV credentials facilitates standardization and reduces the risk of unauthorized access.
 
 The DOD has mandated the use of the common access card (CAC) to support identity management and personal authentication for systems covered under Homeland Security Presidential Directive (HSPD) 12, as well as making the CAC a primary component of layered protection for national security systems.'
-  desc 'check', 'Verify that RHEL 9 has the opensc package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the opensc package installed with the following command:
 
 $ dnf list --installed opensc
 

@@ -1,8 +1,8 @@
 control 'SV-257924' do
-  title 'RHEL 9 audit tools must be owned by root.'
+  title 'Rocky Linux 9 audit tools must be owned by root.'
   desc 'Protecting audit information also includes identifying and protecting the tools used to view and manipulate log data. Therefore, protecting audit tools is necessary to prevent unauthorized operation on audit information.
 
-RHEL 9 systems providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools, and the corresponding rights the user enjoys, to make access decisions regarding the access to audit tools.
+Rocky Linux 9 systems providing tools to interface with audit information will leverage user permissions and roles identifying the user accessing the tools, and the corresponding rights the user enjoys, to make access decisions regarding the access to audit tools.
 
 Audit tools include, but are not limited to, vendor-provided and open source audit tools needed to successfully view and manipulate audit information system activity and records. Audit tools include custom queries and report generators.'
   desc 'check', 'Verify the audit tools are owned by "root" with the following command:

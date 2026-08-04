@@ -1,10 +1,10 @@
 control 'SV-258123' do
-  title 'RHEL 9 must implement certificate status checking for multifactor authentication.'
+  title 'Rocky Linux 9 must implement certificate status checking for multifactor authentication.'
   desc 'Using an authentication device, such as a DOD common access card (CAC) or token that is separate from the information system, ensures that even if the information system is compromised, credentials stored on the authentication device will not be affected.
 
 Multifactor solutions that require devices separate from information systems gaining access include, for example, hardware tokens providing time-based or challenge-response authenticators and smart cards such as the U.S. Government Personal Identity Verification (PIV) card and the DOD CAC.
 
-RHEL 9 includes multiple options for configuring certificate status checking, but for this requirement focuses on the System Security Services Daemon (SSSD). By default, SSSD performs Online Certificate Status Protocol (OCSP) checking and certificate verification using a sha256 digest function.'
+Rocky Linux 9 includes multiple options for configuring certificate status checking, but for this requirement focuses on the System Security Services Daemon (SSSD). By default, SSSD performs Online Certificate Status Protocol (OCSP) checking and certificate verification using a sha256 digest function.'
   desc 'check', 'Note: If the system administrator (SA) demonstrates the use of an approved alternate multifactor authentication method, this requirement is not applicable.
 
 Verify the operating system implements Online Certificate Status Protocol (OCSP) and is using the proper digest value on the system with the following command:
@@ -16,7 +16,7 @@ $ sudo grep -sir certificate_verification /etc/sssd/sssd.conf /etc/sssd/conf.d/ 
 If the certificate_verification line is missing from the [sssd] section, or is missing "ocsp_dgst=sha512", ask the administrator to indicate what type of multifactor authentication is being used and how the system implements certificate status checking.
 
 If there is no evidence of certificate status checking being used, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to implement certificate status checking for multifactor authentication.
+  desc 'fix', 'Configure Rocky Linux 9 to implement certificate status checking for multifactor authentication.
 
 Review the "/etc/sssd/conf.d/certificate_verification.conf" file to determine if the system is configured to prevent OCSP or certificate verification.
 

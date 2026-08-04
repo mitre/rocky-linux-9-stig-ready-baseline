@@ -1,5 +1,5 @@
 control 'SV-257796' do
-  title 'RHEL 9 must enable auditing of processes that start prior to the audit daemon.'
+  title 'Rocky Linux 9 must enable auditing of processes that start prior to the audit daemon.'
   desc 'Without the capability to generate audit records, it would be difficult to establish, correlate, and investigate the events relating to an incident or identify those responsible for one.
 
 If auditing is enabled late in the startup process, the actions of some startup processes may not be audited. Some audit systems also maintain state information only available if auditing is enabled before a given process is created.'

@@ -1,5 +1,5 @@
 control 'SV-257971' do
-  title 'RHEL 9 must not accept router advertisements on all IPv6 interfaces.'
+  title 'Rocky Linux 9 must not accept router advertisements on all IPv6 interfaces.'
   desc 'Routing protocol daemons are typically used on routers to exchange network topology information with other routers. If this software is used when not required, system network information may be unnecessarily transmitted across the network.
 
 An illicit router advertisement message could result in a man-in-the-middle attack.
@@ -12,7 +12,7 @@ The sysctl --system command will load settings from all system configuration fil
 /usr/lib/sysctl.d/*.conf
 /lib/sysctl.d/*.conf
 /etc/sysctl.conf'
-  desc 'check', 'Verify RHEL 9 does not accept router advertisements on all IPv6 interfaces, unless the system is a router.
+  desc 'check', 'Verify Rocky Linux 9 does not accept router advertisements on all IPv6 interfaces, unless the system is a router.
 
 Note: If IPv6 is disabled on the system, this requirement is Not Applicable.
 
@@ -22,7 +22,7 @@ $ sudo sysctl net.ipv6.conf.all.accept_ra
 net.ipv6.conf.all.accept_ra = 0
 
 If "net.ipv6.conf.all.accept_ra" is not set to "0" or is missing, this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to not accept router advertisements on all IPv6 interfaces unless the system is a router.
+  desc 'fix', 'Configure Rocky Linux 9 to not accept router advertisements on all IPv6 interfaces unless the system is a router.
 
 Create a configuration file if it does not already exist:
 

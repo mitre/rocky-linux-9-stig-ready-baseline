@@ -1,9 +1,9 @@
 control 'SV-257854' do
-  title 'RHEL 9 must prevent special devices on file systems that are imported via Network File System (NFS).'
+  title 'Rocky Linux 9 must prevent special devices on file systems that are imported via Network File System (NFS).'
   desc 'The "nodev" mount option causes the system to not interpret character or block special devices. Executing character or block special devices from untrusted file systems increases the opportunity for nonprivileged users to attain unauthorized administrative access.'
   desc 'check', 'Note: If no NFS mounts are configured, this requirement is Not Applicable.
 
-Verify RHEL 9 has the "nodev" option configured for all NFS mounts with the following command:
+Verify Rocky Linux 9 has the "nodev" option configured for all NFS mounts with the following command:
 
 $ grep nfs /etc/fstab
 

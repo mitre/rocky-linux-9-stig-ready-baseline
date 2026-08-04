@@ -1,7 +1,7 @@
 control 'SV-257842' do
-  title 'RHEL 9 must have the s-nail package installed.'
+  title 'Rocky Linux 9 must have the s-nail package installed.'
   desc 'The "s-nail" package provides the mail command required to allow sending email notifications of unauthorized configuration changes to designated personnel.'
-  desc 'check', 'Verify that RHEL 9 is configured to allow sending email notifications.
+  desc 'check', 'Verify that Rocky Linux 9 is configured to allow sending email notifications.
 
 Note: The "s-nail" package provides the "mail" command that is used to send email messages.
 

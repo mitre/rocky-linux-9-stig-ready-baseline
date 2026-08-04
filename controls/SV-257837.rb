@@ -1,5 +1,5 @@
 control 'SV-257837' do
-  title 'A graphical display manager must not be installed on RHEL 9 unless approved.'
+  title 'A graphical display manager must not be installed on Rocky Linux 9 unless approved.'
   desc 'Unnecessary service packages must not be installed to decrease the attack surface of the system. Graphical display managers have a long history of security vulnerabilities and must not be used, unless approved and documented.'
   desc 'check', 'Verify that a graphical user interface is not installed with the following command:
 

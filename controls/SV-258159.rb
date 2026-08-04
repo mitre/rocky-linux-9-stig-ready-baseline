@@ -1,7 +1,7 @@
 control 'SV-258159' do
-  title 'RHEL 9 must take action when allocated audit record storage volume reaches 95 percent of the repository maximum audit record storage capacity.'
+  title 'Rocky Linux 9 must take action when allocated audit record storage volume reaches 95 percent of the repository maximum audit record storage capacity.'
   desc 'If action is not taken when storage volume reaches 95 percent utilization, the auditing system may fail when the storage volume reaches capacity.'
-  desc 'check', 'Verify that RHEL 9 is configured to take action in the event of allocated audit record storage volume reaches 95 percent of the repository maximum audit record storage capacity with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 is configured to take action in the event of allocated audit record storage volume reaches 95 percent of the repository maximum audit record storage capacity with the following command:
 
 $ sudo grep admin_space_left_action /etc/audit/auditd.conf
 

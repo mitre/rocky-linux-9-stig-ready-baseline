@@ -1,5 +1,5 @@
 control 'SV-257978' do
-  title 'All RHEL 9 networked systems must have SSH installed.'
+  title 'All Rocky Linux 9 networked systems must have SSH installed.'
   desc 'Without protection of the transmitted information, confidentiality and
 integrity may be compromised because unprotected communications can be
 intercepted and either read or altered.
@@ -16,7 +16,7 @@ can be accomplished by physical means (e.g., employing physical distribution
 systems) or by logical means (e.g., employing cryptographic techniques). If
 physical means of protection are employed, then logical means (cryptography) do
 not have to be employed, and vice versa.'
-  desc 'check', 'Verify that RHEL 9 has the openssh-server package installed with the following command:
+  desc 'check', 'Verify that Rocky Linux 9 has the openssh-server package installed with the following command:
 
 $ dnf list --installed openssh-server
 

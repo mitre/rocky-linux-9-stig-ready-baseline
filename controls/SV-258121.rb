@@ -1,14 +1,14 @@
 control 'SV-258121' do
-  title 'RHEL 9 must use the common access card (CAC) smart card driver.'
+  title 'Rocky Linux 9 must use the common access card (CAC) smart card driver.'
   desc 'Smart card login provides two-factor authentication stronger than that provided by a username and password combination. Smart cards leverage public key infrastructure to provide and verify credentials. Configuring the smart card driver in use by the organization helps to prevent users from using unauthorized smart cards.'
-  desc 'check', 'Verify RHEL loads the CAC driver with the following command:
+  desc 'check', 'Verify Rocky Linux loads the CAC driver with the following command:
 
 $ sudo opensc-tool --get-conf-entry app:default:card_drivers
 
 cac
 
 If "cac" is not listed as a card driver, or no line is returned for "card_drivers", this is a finding.'
-  desc 'fix', 'Configure RHEL 9 to load the CAC driver.
+  desc 'fix', 'Configure Rocky Linux 9 to load the CAC driver.
 
 $ sudo opensc-tool --set-conf-entry app:default:card_drivers:cac
 

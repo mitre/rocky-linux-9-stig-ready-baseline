@@ -1,5 +1,5 @@
 control 'SV-258006' do
-  title 'RHEL 9 SSH daemon must not allow known hosts authentication.'
+  title 'Rocky Linux 9 SSH daemon must not allow known hosts authentication.'
   desc 'Configuring the IgnoreUserKnownHosts setting for the SSH daemon provides additional assurance that remote login via SSH will require a password, even in the event of misconfiguration elsewhere.'
   desc 'check', %q(Verify the SSH daemon does not allow known hosts authentication with the following command:
 

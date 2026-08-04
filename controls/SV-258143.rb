@@ -1,11 +1,11 @@
 control 'SV-258143' do
-  title 'RHEL 9 must be configured so that the rsyslog daemon does not accept log messages from other servers unless the server is being used for log aggregation.'
+  title 'Rocky Linux 9 must be configured so that the rsyslog daemon does not accept log messages from other servers unless the server is being used for log aggregation.'
   desc "Unintentionally running a rsyslog server accepting remote messages puts the system at increased risk. Malicious rsyslog messages sent to the server could exploit vulnerabilities in the server software itself, could introduce misleading information into the system's logs, or could fill the system's storage leading to a denial of service.
 
 If the system is intended to be a log aggregation server, its use must be documented with the information system security officer (ISSO)."
   desc 'check', "Note: If the system administrator can demonstrate that another tool (e.g., SPLUNK) is being used to manage log off-load and aggregation in lieu of rsyslog, this check is not applicable.
 
-Verify RHEL 9 is not configured to receive remote logs using rsyslog with the following commands:
+Verify Rocky Linux 9 is not configured to receive remote logs using rsyslog with the following commands:
 
 $ ss -tulnp | grep rsyslog
 
@@ -18,7 +18,7 @@ Check for remote logging configuration in rsyslog by examining the rsyslog confi
 $ sudo grep -E 'InputTCPServerRun | UDPServerRun | RELPServerRun | imtcp | imudp | imrelp' /etc/rsyslog.conf /etc/rsyslog.d/*
 
 If this command returns uncommented lines enabling network listeners, the system is accepting remote logs.  If this system is not documented and authorized as a log aggregation server, this is a finding."
-  desc 'fix', 'Configure RHEL 9 to not receive remote logs using rsyslog.
+  desc 'fix', 'Configure Rocky Linux 9 to not receive remote logs using rsyslog.
 
 Remove the lines in /etc/rsyslog.conf and any files in the /etc/rsyslog.d directory that match any of the following:
 InputTCPServerRun

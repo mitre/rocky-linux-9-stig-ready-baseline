@@ -1,5 +1,5 @@
 control 'SV-258046' do
-  title 'RHEL 9 system accounts must not have an interactive login shell.'
+  title 'Rocky Linux 9 system accounts must not have an interactive login shell.'
   desc 'Ensuring shells are not given to system accounts upon login makes it more difficult for attackers to make use of system accounts.'
   desc 'check', %q(Verify that system accounts must not have an interactive login shell with the following command:
 
@@ -14,7 +14,7 @@ lp:4:/sbin/nologin
 Identify the system accounts from this listing that do not have a nologin shell.
 
 If any system account (other than the root account) has a login shell and it is not documented with the information system security officer (ISSO), this is a finding.)
-  desc 'fix', 'Configure RHEL 9 so that all noninteractive accounts on the system do not have an interactive shell assigned to them.
+  desc 'fix', 'Configure Rocky Linux 9 so that all noninteractive accounts on the system do not have an interactive shell assigned to them.
 
 If the system account needs a shell assigned for mission operations, document the need with the information system security officer (ISSO).
 

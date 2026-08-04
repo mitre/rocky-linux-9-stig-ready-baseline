@@ -1,14 +1,14 @@
 control 'SV-258217' do
-  title 'RHEL 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.'
+  title 'Rocky Linux 9 must generate audit records for all account creations, modifications, disabling, and termination events that affect /etc/sudoers.'
   desc 'The actions taken by system administrators must be audited to keep a record of what was executed on the system, as well as for accountability purposes. Editing the sudoers file may be sign of an attacker trying to establish persistent methods to a system, auditing the editing of the sudoers files mitigates this risk.'
-  desc 'check', %q(Verify RHEL 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/etc/sudoers" with the following command:
+  desc 'check', %q(Verify Rocky Linux 9 generates audit records for all account creations, modifications, disabling, and termination events that affect "/etc/sudoers" with the following command:
 
 $ sudo auditctl -l | grep '/etc/sudoers[^.]'
 
 -w /etc/sudoers -p wa -k identity
 
 If the command does not return a line, or the line is commented out, this is a finding.)
-  desc 'fix', 'Configure RHEL 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/etc/sudoers".
+  desc 'fix', 'Configure Rocky Linux 9 to generate audit records for all account creations, modifications, disabling, and termination events that affect "/etc/sudoers".
 
 Add or update the following file system rule to "/etc/audit/rules.d/audit.rules":
 
