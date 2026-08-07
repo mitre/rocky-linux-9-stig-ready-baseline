@@ -1,7 +1,10 @@
-name: UBI9 Testing Matrix
+name: Rocky 8 Container Testing Matrix
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   validate:
@@ -12,11 +15,11 @@ jobs:
       CHEF_LICENSE_KEY: ${{ secrets.SAF_CHEF_LICENSE_KEY }}
       KITCHEN_LOCAL_YAML: kitchen.container.yml
       LC_ALL: "en_US.UTF-8"
-      PLATFORM: "ubi9"
+      PLATFORM: "rocky-9"
       DEPLOYMENT: "container"
       HARDENING_SOURCE: "iron-bank"
-      HARDENED_CONTAINER_IMAGE: "registry1.dso.mil/ironbank/redhat/ubi/ubi9"
-      VANILLA_CONTAINER_IMAGE: "registry.access.redhat.com/ubi9/ubi:9.3-1610"
+      HARDENED_CONTAINER_IMAGE: "registry1.dso.mil/ironbank/opensource/rockylinux/rockylinux9:9.8"
+      VANILLA_CONTAINER_IMAGE: "rockylinux/rockylinux:9.8"
     strategy:
       matrix:
         suite: ["vanilla", "hardened"]
