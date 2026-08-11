@@ -34,7 +34,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get -y install jq
 
       - name: Check out repository
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6.0.2
+        uses: actions/checkout@v7  # v7.0.0
         with:
           persist-credentials: false
 
@@ -45,7 +45,7 @@ jobs:
         run: echo "COMMIT_SHORT_SHA=$(git rev-parse --short ${{ github.sha }})" >> $GITHUB_ENV
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@e5517072e87f198d9533967ae13d97c11b604005  # v1.99.0
+        uses: ruby/setup-ruby@v1  # v1.321.0
         with:
           ruby-version: "3.1"
 
@@ -121,7 +121,7 @@ jobs:
           command_string: "view summary -f json -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json -o spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}-data.json"
 
       - name: Upload Test Result JSON
-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f  # v6.0.0
+        uses: actions/upload-artifact@v7  # v7.0.1
         with:
           name: ${{ env.PLATFORM }}_${{ matrix.suite }}.json
           path: spec/results/
@@ -131,7 +131,7 @@ jobs:
         env:
           SAF_HEIMDALL_UPLOAD_KEY: ${{ secrets.SAF_HEIMDALL_UPLOAD_KEY }}
         run: |
-          curl -# -s -F data=@spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json \
+          curl --fail-with-body --silent --show-error -F data=@spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json \
             -F "filename=${{ env.PLATFORM }}_${{ matrix.suite }}-${{ env.COMMIT_SHORT_SHA }}.json" \
             -F "public=true" \
             -F "evaluationTags=${{ env.COMMIT_SHORT_SHA }},${{ github.repository }},${{ github.workflow }}" \
@@ -153,7 +153,7 @@ jobs:
       - name: Validate scan threshold
         uses: mitre/saf_action@a19f76ed3721c14aa8a1afb8eded117d8bf16a5d  # v1.9.0
         with:
-          command_string: "validate threshold -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json -F ${{ matrix.suite }}.threshold.yml"
+          command_string: "validate threshold -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json -T rocky9_${{ matrix.suite }}.threshold.yml"
 
       - name: Cleanup SSH private key
         if: always()

@@ -29,7 +29,7 @@ verifier:
 suites:
   - name: vanilla
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-vanilla.yml
+      playbook: spec/ansible/roles/ansible-role-rocky-vanilla.yml
     driver:
       tags:
         Name: Vanilla-<%= ENV['USER'] %>
@@ -37,7 +37,7 @@ suites:
 
   - name: hardened
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-hardened-lxd.yml
+      playbook: spec/ansible/roles/ansible-role-rocky-hardened-lxd.yml
     driver:
       tags:
         Name: Hardened-<%= ENV['USER'] %>
