@@ -9,7 +9,7 @@ Verifying the authenticity of software prior to installation validates the integ
 
 $ grep -w gpgcheck /etc/yum.repos.d/*.repo | more
 
-/etc/yum.repos.d/rocky.repo:gpgcheck = 1
+/etc/yum.repos.d/Rocky-BaseOS.repo:gpgcheck = 1
 
 For all listed repos, if "gpgcheck" is not set to "1", or if the option is missing or commented out, ask the system administrator how the GPG signatures of local software packages are being verified.
 

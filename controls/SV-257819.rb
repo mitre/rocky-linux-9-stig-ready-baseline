@@ -1,18 +1,24 @@
 control 'SV-257819' do
   title 'Rocky Linux 9 must ensure cryptographic verification of vendor software packages.'
   desc 'Cryptographic verification of vendor software packages ensures that all software packages are obtained from a valid source and protects against spoofing that could lead to installation of malware. Rocky Linux cryptographically signs its software packages, including updates, with GPG keys to verify their validity.'
-  desc 'check', 'Confirm the Rocky Linux package-signing key is installed and its fingerprint matches the vendor value.
+  desc 'check', 'Confirm the Rocky Linux 2022 release key is installed and its fingerprint matches the organization-approved Rocky Linux signing-key fingerprint.
 
 List installed GPG keys:
 
 $ sudo rpm -q --queryformat "%{SUMMARY}\\n" gpg-pubkey | grep -i "Rocky"
 
+Rocky Enterprise Software Foundation - Release key 2022
+
 Verify the Rocky Linux 9 release key file exists:
 
 $ sudo gpg -q --keyid-format short --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
 
-If the key file is missing, the Rocky Linux package-signing key is not installed, or its fingerprint does not match the organization-approved Rocky Linux signing-key fingerprint, this is a finding.'
-  desc 'fix', 'Install the Rocky Linux package-signing key and verify its fingerprint against the Rocky Linux published signing-key value.
+The default profile input expects this fingerprint:
+
+21CB 256A E16F C54C 6E65 2949 702D 426D 350D 275D
+
+If the key file is missing, the Rocky Linux 2022 release key is not installed, or its fingerprint does not match the organization-approved Rocky Linux signing-key fingerprint, this is a finding.'
+  desc 'fix', 'Install the Rocky Linux package-signing key and verify its fingerprint against the organization-approved Rocky Linux signing-key fingerprint.
 
 Import the Rocky Linux 9 release key into the system keyring:
 

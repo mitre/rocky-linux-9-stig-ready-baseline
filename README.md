@@ -3,7 +3,7 @@
 This InSpec profile adapts the Red Hat Enterprise Linux 9 Security Technical Implementation Guide (RHEL9 STIG) for Rocky Linux 9. It can help programs automate Rocky Linux compliance checks against the DoD requirements represented by the source RHEL9 STIG.
 
 - Profile Version: `2.4.0`
-- Source guidance: Red Hat Enterprise Linux 9 Security Technical Implementation Guide v2r4
+- Source guidance: Red Hat Enterprise Linux 9 Security Technical Implementation Guide v2r7
 
 This profile was developed to reduce the time it takes to perform a security checks based upon the STIG Guidance from the Defense Information Systems Agency (DISA) in partnership between the DISA Services Directorate (SD) and the DISA Risk Management Executive (RME) office.
 
@@ -16,6 +16,7 @@ Table of Contents
 
 - [Rocky Linux 9 STIG-ready InSpec Profile](#rocky-linux-9-stig-ready-inspec-profile)
   - [Source guidance](#source-guidance)
+    - [Rocky Linux Tailoring](#rocky-linux-tailoring)
 - [Getting Started and Intended Usage](#getting-started-and-intended-usage)
   - [Intended Usage - main vs releases](#intended-usage---main-vs-releases)
   - [Environment Aware Testing](#environment-aware-testing)
@@ -34,11 +35,17 @@ The RHEL9 STIG (see public.cyber.mil/stigs/) is the source compliance guide adap
 
 The requirements associated with the RHEL9 STIG are derived from the [Security Requirements Guides](https://csrc.nist.gov/glossary/term/security_requirements_guide) and align to the [National Institute of Standards and Technology](https://www.nist.gov/) (NIST) [Special Publication (SP) 800-53](https://csrc.nist.gov/Projects/risk-management/sp800-53-controls/release-search#!/800-53) Security Controls, [DoD Control Correlation Identifier](https://public.cyber.mil/stigs/cci/) and related standards.
 
-The source RHEL9 STIG checks provide technical implementation validation for the defined DoD requirements. This Rocky Linux adaptation can be tailored for an organization's environment.
+The source RHEL9 STIG checks provide technical implementation validation for the defined DoD requirements. This profile adapts those checks for Rocky Linux 9.
+
+### Rocky Linux Tailoring
+
+This profile retains the source RHEL9 STIG control identifiers, CCIs, NIST mappings, and severity tags for traceability. It changes control titles, rationale, check text, and remediation directions only where RHEL-specific behavior would be inaccurate for Rocky Linux, such as release support policy, package repositories, signing keys, and Red Hat Subscription Manager applicability. These changes do not alter the underlying DoD security requirement.
+
+RHEL-specific Subscription Manager validation is Not Applicable on Rocky Linux because Rocky does not use Red Hat subscription entitlements. Rocky lifecycle and signing-key values are vendor-specific and must be revalidated when Rocky publishes a new release or signing key. This is tailored guidance for Rocky Linux 9, not official DISA Rocky Linux STIG content; organizations should retain their tailoring rationale as assessment evidence.
 
 ### Source STIG
 
-- RedHat Enterprise Linux 9 Security Technical Implementation Guide v2r4
+- Red Hat Enterprise Linux 9 Security Technical Implementation Guide v2r7
 
 ### Current Profile Statistics
 

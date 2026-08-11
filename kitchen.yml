@@ -6,7 +6,7 @@ verifier:
     - cli
     - json:spec/results/%{platform}_%{suite}.json
   inspec_tests:
-    - name: RedHat 9 STIG v2r7
+    - name: Rocky Linux 9 STIG-ready baseline (RHEL 9 STIG v2r7 source guidance)
       path: .
   input_files:
     - kitchen.inputs.yml
@@ -17,4 +17,3 @@ verifier:
   load_plugins: true
   env_vars:
     - "CHEF_LICENSE=<%= ENV['CHEF_LICENSE'] %>"
-

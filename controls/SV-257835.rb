@@ -13,7 +13,6 @@ Check to see if TFTP server is installed with the following command:
 
 $ sudo dnf list --installed tftp-server
 
-Updating Subscription Management repositories.
 Installed Packages
 tftp-server.x86_64                             5.2-38.el9                              @appstream
 

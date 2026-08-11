@@ -3,9 +3,13 @@ control 'SV-257778' do
   desc 'Installing software updates is a fundamental mitigation against the exploitation of publicly known vulnerabilities. If the most recent security patches and updates are not installed, unauthorized users may take advantage of weaknesses in the unpatched software. The lack of prompt attention to patching could result in a system compromise.'
   desc 'check', 'Verify Rocky Linux 9 security patches and updates are installed and up to date. Updates are required to be applied with a frequency determined by organizational policy.
 
-Obtain the list of available package security updates from the Rocky Linux repositories configured for the system. Updates may not be present if the underlying packages are not installed.
+Identify available security advisories from the Rocky Linux repositories configured for the system. Where the configured repositories provide security advisory metadata, run the following command:
 
-Check that the available package security updates have been installed on the system with the following command:
+$ sudo dnf updateinfo list --security
+
+Updates may not be present if the underlying packages are not installed.
+
+Review the update history to verify that security updates are installed at the frequency required by organizational policy:
 
 $ sudo dnf history list | more
 
