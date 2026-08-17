@@ -9640,33 +9640,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Reload the daemon for this change to take effect.
 
   $ sudo systemctl daemon-reload'
-    impact 0.7
-    tag severity: 'high'
-    tag gtitle: 'SRG-OS-000324-GPOS-00125'
-    tag gid: 'V-257784'
-    tag rid: 'SV-257784r1155651_rule'
-    tag stig_id: 'RHEL-09-211045'
-    tag fix_id: 'F-61449r1155650_fix'
-    tag cci: ['CCI-000366', 'CCI-002235']
-    tag nist: ['CM-6 b', 'AC-6 (10)']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    setting = 'CtrlAltDelBurstAction'
-    expected_value = 'none'
-    configured_values = command("grep -iRhs '^[[:space:]]*#{setting}[[:space:]]*=' /etc/systemd/system.conf /etc/systemd/system.conf.d 2>/dev/null").stdout.lines.filter_map do |line|
-      line.match(/^\s*#{setting}\s*=\s*(?<value>\S+)/i)&.[](:value)&.downcase
-    end
-
-    describe 'Ctrl-Alt-Delete burst action' do
-      it "sets #{setting} to #{expected_value}" do
-        expect(configured_values).not_to be_empty, "No uncommented #{setting} setting was found in the systemd configuration"
-        expect(configured_values).to all(eq(expected_value)), "#{setting} must be set only to #{expected_value}; found: #{configured_values.join(', ')}"
-      end
-    end
   end
 
   control 'SV-257789' do
@@ -9697,43 +9670,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   In Rocky Linux 9.3 and later:
   sudo grub2-mkconfig -o /boot/grub2/grub.cfg --update-bls-cmdline'
-    impact 0.7
-    tag check_id: 'C-61530r1134893_chk'
-    tag severity: 'high'
-    tag gid: 'V-257789'
-    tag rid: 'SV-257789r1137691_rule'
-    tag stig_id: 'RHEL-09-212020'
-    tag gtitle: 'SRG-OS-000080-GPOS-00048'
-    tag fix_id: 'F-61454r1134894_fix'
-    tag 'documentable'
-    tag cci: ['CCI-000213']
-    tag nist: ['AC-3']
-    tag 'host'
-
-    only_if('Control not applicable within a container without sudo enabled', impact: 0.0) do
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    end
-
-    grubfile = file(input('grub_conf_path'))
-
-    describe grubfile do
-      it { should exist }
-    end
-
-    if grubfile.exist?
-      superusers_account = grubfile.content.to_s.match(/set superusers="(?<superusers_account>\w+)"/)
-
-      describe 'The GRUB superuser' do
-        it "should be set in the GRUB config file ('#{grubfile}')" do
-          expect(superusers_account).to_not be_nil, "No superuser account set in '#{grubfile}'"
-        end
-        unless superusers_account.nil?
-          it 'should not contain easily guessable usernames' do
-            expect(input('disallowed_grub_superusers')).to_not include(superusers_account[:superusers_account]), "Superuser account is set to easily guessable username '#{superusers_account[:superusers_account]}'"
-          end
-        end
-      end
-    end
   end
 
   control 'SV-257817' do
@@ -9817,37 +9753,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   To mask the kdump service run the following command:
 
   $ sudo systemctl mask --now kdump'
-    impact 0.5
-    tag check_id: 'C-61559r1044875_chk'
-    tag severity: 'medium'
-    tag gid: 'V-257818'
-    tag rid: 'SV-257818r1044876_rule'
-    tag stig_id: 'RHEL-09-213115'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag fix_id: 'F-61483r925440_fix'
-    tag 'documentable'
-    tag cci: ['CCI-000366']
-    tag nist: ['CM-6 b']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    kdump = service('kdump')
-
-    if kdump.installed?
-      describe kdump do
-        it { should_not be_enabled }
-        it { should_not be_running }
-        its('params.LoadState') { should cmp 'masked' }
-        its('params.UnitFileState') { should cmp 'masked' }
-      end
-    else
-      describe kdump do
-        it { should_not be_installed }
-      end
-    end
   end
 
   control 'SV-257819' do
@@ -9956,49 +9861,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/home" file system is mounted without the "nodev" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "nodev" option on the "/home" directory.'
-    impact 0.5
-    tag check_id: 'C-61591r1044929_chk'
-    tag severity: 'medium'
-    tag gid: 'V-257850'
-    tag rid: 'SV-257850r1044930_rule'
-    tag stig_id: 'RHEL-09-231045'
-    tag gtitle: 'SRG-OS-000368-GPOS-00154'
-    tag fix_id: 'F-61515r925536_fix'
-    tag 'documentable'
-    tag cci: ['CCI-001764']
-    tag nist: ['CM-7 (2)']
-    tag 'host'
-
-    only_if('Control not applicable within a container', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    interactive_users = passwd.where {
-      uid.to_i >= 1000 && shell !~ /nologin/
-    }
-
-    interactive_user_homedirs = interactive_users.homes.map { |home_path|
-      home_path.match(%r{^(.*)/.*$}).captures.first
-    }.uniq
-
-    option = 'nodev'
-
-    mounted_on_root = interactive_user_homedirs.select { |dir| dir == '/' }
-    not_configured = interactive_user_homedirs.reject { |dir| etc_fstab.where { mount_point == dir }.configured? }
-    option_not_set = interactive_user_homedirs.reject { |dir| etc_fstab.where { mount_point == dir }.mount_options.flatten.include?(option) }
-    configured_without_option = option_not_set - not_configured
-
-    describe 'All interactive user home directories' do
-      it "should not be mounted under root ('/')" do
-        expect(mounted_on_root).to be_empty, "Home directories mounted on root ('/'):\n\t- #{mounted_on_root.join("\n\t- ")}"
-      end
-      it 'should be configured in /etc/fstab' do
-        expect(not_configured).to be_empty, "Unconfigured home directories:\n\t- #{not_configured.join("\n\t- ")}"
-      end
-      it "should have the '#{option}' mount option set" do
-        expect(configured_without_option).to be_empty, "Mounted home directories without '#{option}' set:\n\t- #{configured_without_option.join("\n\t- ")}"
-      end
-    end
   end
 
   control 'SV-257851' do
@@ -10014,47 +9876,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/home" file system is mounted without the "nosuid" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "nosuid" option on the "/home" directory.'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000368-GPOS-00154'
-    tag gid: 'V-257851'
-    tag rid: 'SV-257851r1044932_rule'
-    tag stig_id: 'RHEL-09-231050'
-    tag fix_id: 'F-61516r925539_fix'
-    tag cci: ['CCI-000366', 'CCI-001764']
-    tag nist: ['CM-6 b', 'CM-7 (2)']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    interactive_users = passwd.where {
-      uid.to_i >= 1000 && shell !~ /nologin/
-    }
-
-    interactive_user_homedirs = interactive_users.homes.map { |home_path|
-      home_path.match(%r{^(.*)/.*$}).captures.first
-    }.uniq
-
-    option = 'nosuid'
-
-    mounted_on_root = interactive_user_homedirs.select { |dir| dir == '/' }
-    not_configured = interactive_user_homedirs.reject { |dir| etc_fstab.where { mount_point == dir }.configured? }
-    option_not_set = interactive_user_homedirs.reject { |dir| etc_fstab.where { mount_point == dir }.mount_options.flatten.include?(option) }
-    configured_without_option = option_not_set - not_configured
-
-    describe 'All interactive user home directories' do
-      it "should not be mounted under root ('/')" do
-        expect(mounted_on_root).to be_empty, "Home directories mounted on root ('/'):\n\t- #{mounted_on_root.join("\n\t- ")}"
-      end
-      it 'should be configured in /etc/fstab' do
-        expect(not_configured).to be_empty, "Unconfigured home directories:\n\t- #{not_configured.join("\n\t- ")}"
-      end
-      it "should have the '#{option}' mount option set" do
-        expect(configured_without_option).to be_empty, "Mounted home directories without '#{option}' set:\n\t- #{configured_without_option.join("\n\t- ")}"
-      end
-    end
   end
 
   control 'SV-257852' do
@@ -10070,47 +9891,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/home" file system is mounted without the "noexec" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "noexec" option on the "/home" directory.'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag gid: 'V-257852'
-    tag rid: 'SV-257852r991589_rule'
-    tag stig_id: 'RHEL-09-231055'
-    tag fix_id: 'F-61517r925542_fix'
-    tag cci: ['CCI-000366']
-    tag nist: ['CM-6 b']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    interactive_users = passwd.where {
-      uid.to_i >= 1000 && shell !~ /nologin/
-    }
-
-    interactive_user_homedirs = interactive_users.homes.map { |home_path|
-      home_path.match(%r{^(.*)/.*$}).captures.first
-    }.uniq
-
-    option = 'noexec'
-
-    mounted_on_root = interactive_user_homedirs.select { |dir| dir == '/' }
-    not_configured = interactive_user_homedirs.reject { |dir| etc_fstab.where { mount_point == dir }.configured? }
-    option_not_set = interactive_user_homedirs.reject { |dir| etc_fstab.where { mount_point == dir }.mount_options.flatten.include?(option) }
-    configured_without_option = option_not_set - not_configured
-
-    describe 'All interactive user home directories' do
-      it "should not be mounted under root ('/')" do
-        expect(mounted_on_root).to be_empty, "Home directories mounted on root ('/'):\n\t- #{mounted_on_root.join("\n\t- ")}"
-      end
-      it 'should be configured in /etc/fstab' do
-        expect(not_configured).to be_empty, "Unconfigured home directories:\n\t- #{not_configured.join("\n\t- ")}"
-      end
-      it "should have the '#{option}' mount option set" do
-        expect(configured_without_option).to be_empty, "Mounted home directories without '#{option}' set:\n\t- #{configured_without_option.join("\n\t- ")}"
-      end
-    end
   end
 
   control 'SV-257866' do
@@ -10126,45 +9906,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/tmp" file system is mounted without the "nodev" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "nodev" option on the "/tmp" directory.'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000368-GPOS-00154'
-    tag gid: 'V-257866'
-    tag rid: 'SV-257866r958804_rule'
-    tag stig_id: 'RHEL-09-231125'
-    tag fix_id: 'F-61531r925584_fix'
-    tag cci: ['CCI-001764']
-    tag nist: ['CM-7 (2)']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    path = '/tmp'
-    option = 'nodev'
-    path_mount = mount(path)
-    fstab_mount = etc_fstab.where { mount_point == path }
-
-    describe path_mount do
-      it { should be_mounted }
-    end
-
-    if path_mount.mounted?
-      describe path_mount do
-        its('options') { should include option }
-      end
-    end
-
-    describe fstab_mount do
-      it { should exist }
-    end
-
-    if fstab_mount.configured?
-      describe fstab_mount do
-        its('mount_options.flatten') { should include option }
-      end
-    end
   end
 
   control 'SV-257867' do
@@ -10178,45 +9919,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/tmp" file system is mounted without the "noexec" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "noexec" option on the "/tmp" directory.'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000368-GPOS-00154'
-    tag gid: 'V-257867'
-    tag rid: 'SV-257867r958804_rule'
-    tag stig_id: 'RHEL-09-231130'
-    tag fix_id: 'F-61532r925587_fix'
-    tag cci: ['CCI-001764']
-    tag nist: ['CM-7 (2)']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    path = '/tmp'
-    option = 'noexec'
-    path_mount = mount(path)
-    fstab_mount = etc_fstab.where { mount_point == path }
-
-    describe path_mount do
-      it { should be_mounted }
-    end
-
-    if path_mount.mounted?
-      describe path_mount do
-        its('options') { should include option }
-      end
-    end
-
-    describe fstab_mount do
-      it { should exist }
-    end
-
-    if fstab_mount.configured?
-      describe fstab_mount do
-        its('mount_options.flatten') { should include option }
-      end
-    end
   end
 
   control 'SV-257868' do
@@ -10230,45 +9932,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/tmp" file system is mounted without the "nosuid" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "nosuid" option on the "/tmp" directory.'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000368-GPOS-00154'
-    tag gid: 'V-257868'
-    tag rid: 'SV-257868r958804_rule'
-    tag stig_id: 'RHEL-09-231135'
-    tag fix_id: 'F-61533r925590_fix'
-    tag cci: ['CCI-001764']
-    tag nist: ['CM-7 (2)']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    path = '/tmp'
-    option = 'nosuid'
-    path_mount = mount(path)
-    fstab_mount = etc_fstab.where { mount_point == path }
-
-    describe path_mount do
-      it { should be_mounted }
-    end
-
-    if path_mount.mounted?
-      describe path_mount do
-        its('options') { should include option }
-      end
-    end
-
-    describe fstab_mount do
-      it { should exist }
-    end
-
-    if fstab_mount.configured?
-      describe fstab_mount do
-        its('mount_options.flatten') { should include option }
-      end
-    end
   end
 
   control 'SV-257869' do
@@ -10284,47 +9947,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   If the "/var" file system is mounted without the "nodev" option, this is a finding.'
     desc 'fix', 'Modify "/etc/fstab" to use the "nodev" option on the "/var" directory.'
-    impact 0.5
-    tag check_id: 'C-61610r925592_chk'
-    tag severity: 'medium'
-    tag gid: 'V-257869'
-    tag rid: 'SV-257869r1102009_rule'
-    tag stig_id: 'RHEL-09-231140'
-    tag gtitle: 'SRG-OS-000368-GPOS-00154'
-    tag fix_id: 'F-61534r925593_fix'
-    tag 'documentable'
-    tag cci: ['CCI-001764']
-    tag nist: ['CM-7 (2)']
-    tag 'host'
-
-    only_if('Control not applicable within a container', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    path = '/var'
-    option = 'nodev'
-    path_mount = mount(path)
-    fstab_mount = etc_fstab.where { mount_point == path }
-
-    describe path_mount do
-      it { should be_mounted }
-    end
-
-    if path_mount.mounted?
-      describe path_mount do
-        its('options') { should include option }
-      end
-    end
-
-    describe fstab_mount do
-      it { should exist }
-    end
-
-    if fstab_mount.configured?
-      describe fstab_mount do
-        its('mount_options.flatten') { should include option }
-      end
-    end
   end
 
   control 'SV-257889' do
@@ -10474,37 +10096,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   Reload the firewall rules for changes to take effect:
   $ sudo firewall-cmd --reload'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag satisfies: ['SRG-OS-000368-GPOS-00154', 'SRG-OS-000370-GPOS-00155', 'SRG-OS-000480-GPOS-00232']
-    tag gid: 'V-257937'
-    tag rid: 'SV-257937r1106310_rule'
-    tag stig_id: 'RHEL-09-251020'
-    tag fix_id: 'F-61602r1102092_fix'
-    tag cci: ['CCI-001764', 'CCI-000366']
-    tag nist: ['CM-7 (2)', 'CM-6 b']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    describe service('firewalld') do
-      it { should be_running }
-    end
-
-    describe firewalld do
-      its('zone') { should_not be_empty }
-    end
-
-    failing_zones = firewalld.zone.reject { |fz| firewalld.zone(fz).target == 'DROP' }
-
-    describe 'All firewall zones' do
-      it 'should be configured to drop all incoming network packets unless explicitly accepted' do
-        expect(failing_zones).to be_empty, "Failing zones:\n\t- #{failing_zones.join("\n\t- ")}"
-      end
-    end
   end
 
   control 'SV-257959' do
@@ -10539,50 +10130,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Reload settings from all system configuration files with the following command:
 
   $ sudo sysctl --system'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag gid: 'V-257959'
-    tag rid: 'SV-257959r1155724_rule'
-    tag stig_id: 'RHEL-09-253020'
-    tag fix_id: 'F-61624r1155723_fix'
-    tag cci: ['CCI-000366']
-    tag nist: ['CM-6 b']
-    tag 'host'
-
-    only_if('Control not applicable within a container', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    parameter = 'net.ipv4.conf.all.accept_source_route'
-    value = 0
-    regexp = /^\s*-?#{Regexp.escape(parameter)}\s*=\s*#{value}\s*$/
-    exclusion_regexp = /^\s*-#{Regexp.escape(parameter)}\s*$/
-
-    if input('ipv4_enabled') == false
-      impact 0.0
-      describe 'IPv4 is disabled on the system, this requirement is Not Applicable.' do
-        skip 'IPv4 is disabled on the system, this requirement is Not Applicable.'
-      end
-    else
-      describe kernel_parameter(parameter) do
-        its('value') { should eq value }
-      end
-
-      search_results = command("/usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F #{parameter}").stdout.strip.split("\n")
-
-      correct_result = search_results.any? { |line| line.match(regexp) }
-      incorrect_results = search_results.map(&:strip).reject { |line| line.match(regexp) || line.match(exclusion_regexp) }
-
-      describe 'Kernel config files' do
-        it "should configure '#{parameter}'" do
-          expect(correct_result).to eq(true), 'No config file was found that correctly sets this action'
-        end
-        it 'should not have incorrect or conflicting setting(s) in the config files' do
-          expect(incorrect_results).to be_empty, "Incorrect or conflicting setting(s) found:\n\t- #{incorrect_results.join("\n\t- ")}"
-        end
-      end
-    end
   end
 
   control 'SV-257962' do
@@ -10617,50 +10164,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Reload settings from all system configuration files with the following command:
 
   $ sudo sysctl --system'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag gid: 'V-257962'
-    tag rid: 'SV-257962r1155733_rule'
-    tag stig_id: 'RHEL-09-253035'
-    tag fix_id: 'F-61627r1155732_fix'
-    tag cci: ['CCI-000366']
-    tag nist: ['CM-6 b']
-    tag 'host'
-
-    only_if('Control not applicable within a container', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    parameter = 'net.ipv4.conf.all.rp_filter'
-    value = 1
-    regexp = /^\s*-?#{Regexp.escape(parameter)}\s*=\s*#{value}\s*$/
-    exclusion_regexp = /^\s*-#{Regexp.escape(parameter)}\s*$/
-
-    if input('ipv4_enabled') == false
-      impact 0.0
-      describe 'IPv4 is disabled on the system, this requirement is Not Applicable.' do
-        skip 'IPv4 is disabled on the system, this requirement is Not Applicable.'
-      end
-    else
-      describe kernel_parameter(parameter) do
-        its('value') { should eq value }
-      end
-
-      search_results = command("/usr/lib/systemd/systemd-sysctl --cat-config | egrep -v '^(#|;)' | grep -F #{parameter}").stdout.strip.split("\n")
-
-      correct_result = search_results.any? { |line| line.match(regexp) }
-      incorrect_results = search_results.map(&:strip).reject { |line| line.match(regexp) || line.match(exclusion_regexp) }
-
-      describe 'Kernel config files' do
-        it "should configure '#{parameter}'" do
-          expect(correct_result).to eq(true), 'No config file was found that correctly sets this action'
-        end
-        it 'should not have incorrect or conflicting setting(s) in the config files' do
-          expect(incorrect_results).to be_empty, "Incorrect or conflicting setting(s) found:\n\t- #{incorrect_results.join("\n\t- ")}"
-        end
-      end
-    end
   end
 
   control 'SV-257978' do
@@ -10693,39 +10196,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
     desc 'fix', 'The openssh-server package can be installed with the following command:
 
   $ sudo dnf install openssh-server'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000423-GPOS-00187'
-    tag satisfies: ['SRG-OS-000423-GPOS-00187', 'SRG-OS-000424-GPOS-00188', 'SRG-OS-000425-GPOS-00189', 'SRG-OS-000426-GPOS-00190']
-    tag gid: 'V-257978'
-    tag rid: 'SV-257978r1045013_rule'
-    tag stig_id: 'RHEL-09-255010'
-    tag fix_id: 'F-61643r925920_fix'
-    tag cci: ['CCI-002418', 'CCI-002420', 'CCI-002421', 'CCI-002422']
-    tag nist: ['SC-8', 'SC-8 (2)', 'SC-8 (1)']
-    tag 'host'
-    tag 'container-conditional'
-
-    openssh_present = package('openssh-server').installed?
-    container_environment = %w[docker podman kubepods lxc].include?(virtualization.system)
-
-    only_if('This requirement is Not Applicable in a container without OpenSSH installed or when physical protections are employed', impact: 0.0) do
-      openssh_present || input('physical_protections_employed') || !container_environment
-    end
-
-    if container_environment && !input('allow_container_openssh_server')
-      describe 'In a container Environment' do
-        it 'the OpenSSH Server should be installed only when allowed in a container environment' do
-          expect(openssh_present).to eq(false), 'OpenSSH Server is installed but not approved for the container environment'
-        end
-      end
-    else
-      describe 'OpenSSH Server package' do
-        it 'should be installed' do
-          expect(package('openssh-server').installed?).to eq(true), 'OpenSSH Server is not installed'
-        end
-      end
-    end
   end
 
   control 'SV-257981' do
@@ -10823,43 +10293,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
     desc 'fix', 'Configure the Rocky Linux 9 SSH daemon to use system-wide crypto policies by running the following commands:
 
   $ sudo dnf reinstall openssh-server'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000250-GPOS-00093'
-    tag satisfies: ['SRG-OS-000250-GPOS-00093', 'SRG-OS-000393-GPOS-00173', 'SRG-OS-000394-GPOS-00174', 'SRG-OS-000125-GPOS-00065']
-    tag gid: 'V-257987'
-    tag rid: 'SV-257987r1014852_rule'
-    tag stig_id: 'RHEL-09-255055'
-    tag fix_id: 'F-61652r925947_fix'
-    tag cci: ['CCI-001453']
-    tag nist: ['AC-17 (2)']
-    tag 'host'
-    tag 'container-conditional'
-
-    openssh_present = package('openssh-server').installed?
-    container_environment = %w[docker podman kubepods lxc].include?(virtualization.system)
-
-    only_if('This requirement is Not Applicable in the container without open-ssh installed', impact: 0.0) {
-      !container_environment || openssh_present
-    }
-
-    if container_environment && !input('allow_container_openssh_server')
-      describe 'In a container Environment' do
-        it 'the OpenSSH Server should be installed only when allowed in a container environment' do
-          expect(openssh_present).to eq(false), 'OpenSSH Server is installed but not approved for the container environment'
-        end
-      end
-    else
-      describe file('/etc/ssh/sshd_config.d/50-redhat.conf') do
-        it { should exist }
-      end
-      describe sshd_config do
-        its('Include') { should include '/etc/ssh/sshd_config.d/*.conf' }
-      end
-      describe sshd_config('/etc/ssh/sshd_config.d/50-redhat.conf') do
-        its('Include') { should include '/etc/crypto-policies/back-ends/opensshserver.config' }
-      end
-    end
   end
 
   control 'SV-257989' do
@@ -11026,47 +10459,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   For the changes to take effect, the SSH daemon must be restarted.
 
   $ sudo systemctl restart sshd.service'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000126-GPOS-00066'
-    tag satisfies: ['SRG-OS-000163-GPOS-00072', 'SRG-OS-000126-GPOS-00066', 'SRG-OS-000279-GPOS-00109', 'SRG-OS-000395-GPOS-00175']
-    tag gid: 'V-257996'
-    tag rid: 'SV-257996r1134915_rule'
-    tag stig_id: 'RHEL-09-255100'
-    tag fix_id: 'F-61661r1045054_fix'
-    tag cci: ['CCI-001133', 'CCI-000879', 'CCI-002361', 'CCI-002891']
-    tag nist: ['SC-10', 'MA-4 e', 'AC-12', 'MA-4 (7)']
-    tag 'host'
-    tag 'container-conditional'
-
-    setting = 'ClientAliveInterval'
-    gssapi_authentication = input('sshd_config_values')
-    value = gssapi_authentication[setting]
-    openssh_present = package('openssh-server').installed?
-    container_environment = %w[docker podman kubepods lxc].include?(virtualization.system)
-
-    only_if('This requirement is Not Applicable in the container without open-ssh installed', impact: 0.0) {
-      !container_environment || openssh_present
-    }
-
-    if container_environment && !input('allow_container_openssh_server')
-      describe 'In a container Environment' do
-        it 'the OpenSSH Server should be installed only when allowed in a container environment' do
-          expect(openssh_present).to eq(false), 'OpenSSH Server is installed but not approved for the container environment'
-        end
-      end
-    else
-      describe 'The OpenSSH Server configuration' do
-        it "has the correct #{setting} configuration" do
-          expect(sshd_config.params[setting.downcase]).to cmp(value), "The #{setting} setting in the SSHD config is not correct. Ensure it is set to '#{value}'."
-        end
-
-        it "has the correct #{setting} runtime value" do
-          runtime_value = command('sshd -T').stdout.match(/^#{setting.downcase}\s+(\S+)/i)&.captures&.first
-          expect(runtime_value).to cmp(value), "The #{setting} runtime value is not correct. Ensure sshd -T resolves '#{setting}' to '#{value}'."
-        end
-      end
-    end
   end
 
   control 'SV-258009' do
@@ -11135,28 +10527,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Add or update the following line in the "/etc/security/pwquality.conf" file or a file in the "/etc/security/pwquality.conf.d/" directory to contain the "retry" parameter:
 
   retry = 3'
-    impact 0.5
-    tag check_id: 'C-61832r1045183_chk'
-    tag severity: 'medium'
-    tag gid: 'V-258091'
-    tag rid: 'SV-258091r1045185_rule'
-    tag stig_id: 'RHEL-09-611010'
-    tag gtitle: 'SRG-OS-000069-GPOS-00037'
-    tag fix_id: 'F-61756r1045184_fix'
-    tag 'documentable'
-    tag cci: ['CCI-000366', 'CCI-000192', 'CCI-004066']
-    tag nist: ['CM-6 b', 'IA-5 (1) (a)', 'IA-5 (1) (h)']
-    tag 'host'
-
-    only_if('This control is Not Applicable for containers', impact: 0.0) do
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    end
-
-    describe 'System pwquality setting' do
-      subject { parse_config(command('grep -rh retry /etc/security/pwquality.conf*').stdout.strip) }
-      its('retry') { should cmp > 0 }
-      its('retry') { should cmp <= input('min_retry') }
-    end
   end
 
   control 'SV-258109' do
@@ -11174,37 +10544,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Add or update the following line in the "/etc/security/pwquality.conf" file or a configuration file in the "/etc/security/pwquality.conf.d/" directory to contain the "ocredit" parameter:
 
   ocredit = -1'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000266-GPOS-00101'
-    tag gid: 'V-258109'
-    tag rid: 'SV-258109r1045220_rule'
-    tag stig_id: 'RHEL-09-611100'
-    tag fix_id: 'F-61774r1045219_fix'
-    tag cci: ['CCI-001619', 'CCI-004066']
-    tag nist: ['IA-5 (1) (a)', 'IA-5 (1) (h)']
-    tag 'host'
-    tag 'container'
-
-    # value = input('ocredit')
-    setting = 'ocredit'
-
-    describe 'pwquality.conf settings' do
-      let(:config) { parse_config_file('/etc/security/pwquality.conf', multiple_values: true) }
-      let(:setting_value) { config.params[setting].is_a?(Integer) ? [config.params[setting]] : Array(config.params[setting]) }
-
-      it "has `#{setting}` set" do
-        expect(setting_value).not_to be_empty, "#{setting} is not set in pwquality.conf"
-      end
-
-      it "only sets `#{setting}` once" do
-        expect(setting_value.length).to eq(1), "#{setting} is commented or set more than once in pwquality.conf"
-      end
-
-      it "sets `#{setting}` to a negative value" do
-        expect(setting_value.first.to_i).to be < 0, "#{setting} is not set to a negative value in pwquality.conf"
-      end
-    end
   end
 
   control 'SV-258113' do
@@ -11224,41 +10563,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Add or update the following line in the "/etc/security/pwquality.conf" file or a configuration file in the "/etc/security/pwquality.conf.d/" directory to contain the "maxclassrepeat" parameter:
 
   maxclassrepeat = 4'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000072-GPOS-00040'
-    tag gid: 'V-258113'
-    tag rid: 'SV-258113r1045232_rule'
-    tag stig_id: 'RHEL-09-611120'
-    tag fix_id: 'F-61778r1045231_fix'
-    tag cci: ['CCI-000195', 'CCI-004066']
-    tag nist: ['IA-5 (1) (b)', 'IA-5 (1) (h)']
-    tag 'host'
-    tag 'container'
-
-    value = input('maxclassrepeat')
-    setting = 'maxclassrepeat'
-
-    describe 'pwquality.conf settings' do
-      let(:config) { parse_config_file('/etc/security/pwquality.conf', multiple_values: true) }
-      let(:setting_value) { config.params[setting].is_a?(Integer) ? [config.params[setting]] : Array(config.params[setting]) }
-
-      it "has `#{setting}` set" do
-        expect(setting_value).not_to be_empty, "#{setting} is not set in pwquality.conf"
-      end
-
-      it "only sets `#{setting}` once" do
-        expect(setting_value.length).to eq(1), "#{setting} is commented or set more than once in pwquality.conf"
-      end
-
-      it "does not set `#{setting}` to zero" do
-        expect(setting_value.first.to_i).to be > 0, "#{setting} is set to zero in pwquality.conf"
-      end
-
-      it "does not set `#{setting}` to more than #{value}" do
-        expect(setting_value.first.to_i).to be <= value.to_i, "#{setting} is set to a value greater than #{value} in pwquality.conf"
-      end
-    end
   end
 
   control 'SV-258115' do
@@ -11278,37 +10582,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   Add or update the following line in the "/etc/security/pwquality.conf" file or a configuration file in the "/etc/security/pwquality.conf.d/" directory to contain the "minclass" parameter:
 
   minclass = 4'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000072-GPOS-00040'
-    tag gid: 'V-258115'
-    tag rid: 'SV-258115r1045238_rule'
-    tag stig_id: 'RHEL-09-611130'
-    tag fix_id: 'F-61780r1045237_fix'
-    tag cci: ['CCI-000195', 'CCI-004066']
-    tag nist: ['IA-5 (1) (b)', 'IA-5 (1) (h)']
-    tag 'host'
-    tag 'container'
-
-    value = input('minclass')
-    setting = 'minclass'
-
-    describe 'pwquality.conf settings' do
-      let(:config) { parse_config_file('/etc/security/pwquality.conf', multiple_values: true) }
-      let(:setting_value) { config.params[setting].is_a?(Integer) ? [config.params[setting]] : Array(config.params[setting]) }
-
-      it "has `#{setting}` set" do
-        expect(setting_value).not_to be_empty, "#{setting} is not set in pwquality.conf"
-      end
-
-      it "only sets `#{setting}` once" do
-        expect(setting_value.length).to eq(1), "#{setting} is commented or set more than once in pwquality.conf"
-      end
-
-      it "sets `#{setting}` to at least #{value}" do
-        expect(setting_value.first.to_i).to be >= value.to_i, "#{setting} is set to a value less than #{value} in pwquality.conf"
-      end
-    end
   end
 
   control 'SV-258131' do
@@ -11348,56 +10621,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
   Obtain a valid copy of the DOD root CA file from the PKI CA certificate bundle from cyber.mil and copy the DoD_PKE_CA_chain.pem into the following file:
   /etc/sssd/pki/sssd_auth_ca_db.pem'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000066-GPOS-00034'
-    tag satisfies: ['SRG-OS-000066-GPOS-00034', 'SRG-OS-000384-GPOS-00167']
-    tag gid: 'V-258131'
-    tag rid: 'SV-258131r1134927_rule'
-    tag stig_id: 'RHEL-09-631010'
-    tag fix_id: 'F-61796r997112_fix'
-    tag cci: ['CCI-000185', 'CCI-001991', 'CCI-004068']
-    tag nist: ['IA-5 (2) (a)', 'IA-5 (2) (b) (1)', 'IA-5 (2) (d)', 'IA-5 (2) (b) (2)']
-    tag 'host'
-    tag 'container'
-
-    only_if('This control is Not Applicable when smart-card authentication is disabled or an approved alternate multifactor authentication method is configured.', impact: 0.0) {
-      input('smart_card_enabled') && input('alternate_mfa_method') == ''
-    }
-
-    root_ca_file = input('root_ca_file') # This gets the entire hash from input
-    root_ca_file_path = root_ca_file['path'] # Extract the path for file operations
-    issuer_dn_expected = root_ca_file['issuer_dn'] # Extract the expected issuer DN
-    subject_dn_expected = root_ca_file['subject_dn'] # Extract the expected subject DN
-    # quick check to see if the designated Root CA is present; fail if it is not
-    if file(root_ca_file_path).exist?
-      # Check the Root CA's validity and details
-
-      describe 'The Root CA' do
-        subject { x509_certificate(root_ca_file_path) }
-
-        # Verify that the issuer_dn matches the expected issuer DN
-        it 'has the correct issuer_dn' do
-          expect(subject.issuer_dn).to match(issuer_dn_expected) # Match the expected issuer DN
-        end
-
-        # Verify that the subject_dn matches the expected subject DN
-        it 'has the correct subject_dn' do
-          expect(subject.subject_dn).to match(subject_dn_expected) # Match the expected subject DN
-        end
-
-        # Ensure that the certificate is valid (i.e., it hasn't expired)
-        it 'has not expired' do
-          expect(subject.validity_in_days).to be > 0
-        end
-      end
-    else
-
-      describe file(root_ca_file_path) do
-        it { should exist }
-      end
-
-    end
   end
 
   control 'SV-258132' do
@@ -11427,25 +10650,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   The "sssd" service must be restarted for the changes to take effect. To restart the "sssd" service, run the following command:
 
   $ sudo systemctl restart sssd.service'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000068-GPOS-00036'
-    tag gid: 'V-258132'
-    tag rid: 'SV-258132r1134929_rule'
-    tag stig_id: 'RHEL-09-631015'
-    tag fix_id: 'F-61797r1014904_fix'
-    tag cci: ['CCI-000187']
-    tag nist: ['IA-5 (2) (c)', 'IA-5 (2) (a) (2)']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers, when smart-card authentication is disabled, or when an approved alternate multifactor authentication method is configured.', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system) && input('smart_card_enabled') && input('alternate_mfa_method') == ''
-    }
-
-    describe file('/etc/sssd/sssd.conf') do
-      it { should exist }
-      its('content') { should match(/^\s*\[certmap.*\]\s*$/) }
-    end
   end
 
   control 'SV-258143' do
@@ -11484,52 +10688,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   The rsyslog daemon must be restarted for the changes to take effect:
 
   $ sudo systemctl restart rsyslog.service'
-    impact 0.5
-    tag check_id: 'C-61884r1155669_chk'
-    tag severity: 'medium'
-    tag gid: 'V-258143'
-    tag rid: 'SV-258143r1155671_rule'
-    tag stig_id: 'RHEL-09-652025'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag fix_id: 'F-61808r1155670_fix'
-    tag 'documentable'
-    tag cci: ['CCI-000366']
-    tag nist: ['CM-6 b']
-    tag 'host'
-    tag 'container'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    if input('is_log_aggregation_server') == true
-      impact 0.0
-      describe 'N/A' do
-        skip 'This control is NA because the system is a log aggregation server.'
-      end
-    else
-      rsyslog_config_files = input('logging_conf_files').join(' ')
-      active_rsyslog_config = command("grep -hsv '^[[:space:]]*#' #{rsyslog_config_files}").stdout
-      remote_modules = active_rsyslog_config.lines.grep(/(?:\A\s*[$]ModLoad\s+im(?:tcp|udp|relp)\b|module\s*\(\s*(?=[^)]*\bload\s*=\s*"im(?:tcp|udp|relp)"))/i)
-      legacy_serverrun = active_rsyslog_config.lines.grep(/(?:\A\s*[$])?(?:InputTCPServerRun|UDPServerRun|RELPServerRun)\b/i)
-      remote_inputs = active_rsyslog_config.lines.grep(/input\s*\([^)]*\btype\s*=\s*"im(?:tcp|udp|relp)"/i)
-
-      describe 'remote rsyslog input modules' do
-        it 'is not configured to receive remote logs' do
-          expect(remote_modules).to be_empty, "Remote rsyslog input module settings found:\n#{remote_modules.join}"
-        end
-      end
-      describe 'legacy rsyslog listener configuration' do
-        it 'is not configured to receive remote logs' do
-          expect(legacy_serverrun).to be_empty, "Legacy rsyslog listener settings found:\n#{legacy_serverrun.join}"
-        end
-      end
-      describe 'RainerScript rsyslog listener configuration' do
-        it 'is not configured to receive remote logs' do
-          expect(remote_inputs).to be_empty, "RainerScript rsyslog listener settings found:\n#{remote_inputs.join}"
-        end
-      end
-    end
   end
 
   control 'SV-258144' do
@@ -11621,38 +10779,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   If a remote server is not configured, or the line is commented out, ask the system administrator (SA) to indicate how the audit logs are off-loaded to a different system or media.
 
   If there is no evidence that the audit logs are being off-loaded to another system or media, this is a finding.)
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000479-GPOS-00224'
-    tag satisfies: ['SRG-OS-000342-GPOS-00133', 'SRG-OS-000479-GPOS-00224', 'SRG-OS-000480-GPOS-00227']
-    tag gid: 'V-258149'
-    tag rid: 'SV-258149r1155580_rule'
-    tag stig_id: 'RHEL-09-652055'
-    tag fix_id: 'F-61814r1155579_fix'
-    tag cci: ['CCI-001851', 'CCI-000366']
-    tag nist: ['AU-4 (1)', 'CM-6 b']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    if input('alternative_logging_method') == ''
-      rsyslog_config_files = input('logging_conf_files').join(' ')
-      active_rsyslog_config = command("grep -hsv '^[[:space:]]*#' #{rsyslog_config_files}").stdout
-      legacy_tcp_forwarding = active_rsyslog_config.match?(/@@\S+/)
-      rainer_tcp_forwarding = active_rsyslog_config.match?(/action\(\s*(?=[^)]*\btype\s*=\s*"omfwd")(?=[^)]*\bprotocol\s*=\s*"tcp")(?=[^)]*\btarget\s*=\s*"[^"]+")[^)]*\)/i)
-
-      describe 'Rsyslog audit record forwarding' do
-        it 'forwards audit records over TCP to a remote system' do
-          expect(legacy_tcp_forwarding || rainer_tcp_forwarding).to be(true), "No active TCP forwarding rule found in #{rsyslog_config_files}"
-        end
-      end
-    else
-      describe 'manual check' do
-        skip 'Manual check required. Ask the administrator to indicate how logging is done for this system.'
-      end
-    end
   end
 
   control 'SV-258150' do
@@ -11686,40 +10812,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
 
       The rsyslog daemon must be restarted for the changes to take effect:
       $ sudo systemctl restart rsyslog.service'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000480-GPOS-00227'
-    tag gid: 'V-258150'
-    tag rid: 'SV-258150r1045296_rule'
-    tag stig_id: 'RHEL-09-652060'
-    tag fix_id: 'F-61815r926436_fix'
-    tag cci: ['CCI-000366']
-    tag nist: ['CM-6 b']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    rsyslog_config_files = input('logging_conf_files').join(' ')
-    active_rsyslog_config = command("grep -hsv '^[[:space:]]*#' #{rsyslog_config_files}").stdout
-    legacy_cron_rule = %r{^\s*cron\.\*\s+/var/log/cron\s*$}i
-    rainer_cron_rule = %r{^\s*cron\.\*\s+action\((?=[^)]*\btype\s*=\s*"omfile")(?=[^)]*\bfile\s*=\s*"/var/log/cron")[^)]*\)\s*$}i
-    legacy_messages_rule = %r{^\s*\*\.info;mail\.none;authpriv\.none;cron\.none\s+/var/log/messages\s*$}i
-    rainer_messages_rule = %r{^\s*\*\.info;mail\.none;authpriv\.none;cron\.none\s+action\((?=[^)]*\btype\s*=\s*"omfile")(?=[^)]*\bfile\s*=\s*"/var/log/messages")[^)]*\)\s*$}i
-
-    describe.one do
-      describe 'Rsyslog cron logging configuration' do
-        it 'logs cron events to /var/log/cron' do
-          expect(active_rsyslog_config).to match(Regexp.union(legacy_cron_rule, rainer_cron_rule)), "No active cron logging rule found in #{rsyslog_config_files}"
-        end
-      end
-      describe 'Rsyslog all-facility logging configuration' do
-        it 'logs all non-cron facilities to /var/log/messages' do
-          expect(active_rsyslog_config).to match(Regexp.union(legacy_messages_rule, rainer_messages_rule)), "No active /var/log/messages rule found in #{rsyslog_config_files}"
-        end
-      end
-    end
   end
 
   control 'SV-258166' do
@@ -11743,42 +10835,6 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
     desc 'fix', 'Configure the audit log to be protected from unauthorized read access by setting the correct owner as "root" with the following command:
 
   $ sudo chown root /var/log/audit'
-    impact 0.5
-    tag severity: 'medium'
-    tag gtitle: 'SRG-OS-000057-GPOS-00027'
-    tag satisfies: ['SRG-OS-000057-GPOS-00027', 'SRG-OS-000058-GPOS-00028', 'SRG-OS-000059-GPOS-00029', 'SRG-OS-000206-GPOS-00084']
-    tag gid: 'V-258166'
-    tag rid: 'SV-258166r1045303_rule'
-    tag stig_id: 'RHEL-09-653085'
-    tag fix_id: 'F-61831r926484_fix'
-    tag cci: ['CCI-000162', 'CCI-000163', 'CCI-000164', 'CCI-001314']
-    tag nist: ['AU-9', 'AU-9 a', 'SI-11 b']
-    tag 'host'
-
-    only_if('This control is Not Applicable to containers', impact: 0.0) {
-      !%w[docker podman kubepods lxc].include?(virtualization.system)
-    }
-
-    auditd_conf_file = file('/etc/audit/auditd.conf')
-
-    if auditd_conf_file.exist?
-      audit_log_file = auditd_conf(auditd_conf_file.path).log_file
-
-      if audit_log_file.to_s.empty?
-        describe 'auditd log_file setting' do
-          subject { audit_log_file.to_s }
-          it { should_not be_empty }
-        end
-      else
-        describe directory(File.dirname(audit_log_file)) do
-          its('owner') { should eq 'root' }
-        end
-      end
-    else
-      describe auditd_conf_file do
-        it { should exist }
-      end
-    end
   end
 
   control 'SV-258232' do

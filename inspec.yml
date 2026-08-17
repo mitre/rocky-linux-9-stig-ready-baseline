@@ -4,8 +4,7 @@ maintainer: MITRE SAF Team
 copyright: MITRE
 license: Apache-2.0
 summary: "InSpec profile adapted from the DISA RHEL 9 STIG for Rocky Linux 9"
-version: 2.4.0
-# NOTE: for testing with test-kitchen, put back to ">= 6.0" when finished
+version: 2.7.1
 inspec_version: ">= 5.0"
 
 supports:
@@ -15,7 +14,11 @@ supports:
 depends:
   - name: redhat-enterprise-linux-9-stig-baseline
     git: https://github.com/mitre/redhat-enterprise-linux-9-stig-baseline.git
-    tag: v2.4.0
+    # Interim: track the upstream's open patch branch, which carries fixes
+    # this profile depends on (broken-test repairs, version correction).
+    # Replace with a tag pin once the branch merges and a release is cut.
+    branch: "2.7.1"
+    
 ### ROCKY-SPECIFIC INPUT OVERRIDES ###
 # The RHEL dependency supplies the full input set. This overlay declares only
 # defaults whose Rocky Linux values differ from the RHEL baseline. Sites may
