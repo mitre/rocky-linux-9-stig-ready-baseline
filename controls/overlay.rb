@@ -9527,6 +9527,35 @@ include_controls 'redhat-enterprise-linux-9-stig-baseline' do
   To load the rules to the kernel immediately, use the following command:
 
   $ sudo augenrules --load'
+    impact 0.5
+    tag check_id: 'C-84496r1156359_chk'
+    tag severity: 'medium'
+    tag gid: 'V-279936'
+    tag rid: 'SV-279936r1156361_rule'
+    tag stig_id: 'RHEL-09-654097'
+    tag gtitle: 'SRG-OS-000471-GPOS-00215'
+    tag fix_id: 'F-84401r1156360_fix'
+    tag 'documentable'
+    tag cci: ['CCI-000172']
+    tag nist: ['AU-12 c']
+    tag 'host'
+
+    only_if('This control is Not Applicable to containers', impact: 0.0) {
+      !%w[docker podman kubepods lxc].include?(virtualization.system)
+    }
+
+    audit_paths = ['/etc/cron.d', '/var/spool/cron']
+
+    describe 'Cron directories auditing' do
+      audit_paths.each do |audit_path|
+        it "#{audit_path} is audited properly" do
+          audit_rule = auditd.file(audit_path)
+          expect(audit_rule).to exist
+          expect(audit_rule.permissions.flatten).to include('w', 'a')
+          expect(audit_rule.key.uniq).to include(input('audit_rule_keynames').merge(input('audit_rule_keynames_overrides'))[audit_path])
+        end
+      end
+    end
   end
 
   control 'SV-257777' do
