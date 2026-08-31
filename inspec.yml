@@ -40,7 +40,7 @@ inputs:
       "Rocky Enterprise Software Foundation - Release key 2022": "21CB 256A E16F C54C 6E65 2949 702D 426D 350D 275D"
     profile: redhat-enterprise-linux-9-stig-baseline
 
-  # Audit-watch controls SV-258176 through SV-258226 and SV-279936.
+  # Audit-watch controls SV-258176 through SV-258226.
   # Rocky maps /usr/sbin/setsebool to the "privileged" audit key; all other
   # values retain the RHEL baseline defaults.
   - name: audit_rule_keynames
@@ -122,11 +122,4 @@ inputs:
       '/etc/cron.d'                   : 'cronjobs',
       '/var/spool/cron'               : 'cronjobs'
     }
-    profile: redhat-enterprise-linux-9-stig-baseline
-
-  # SV-258099, SV-258100: Rocky's password-hash work factor.
-  - name: password_hash_rounds
-    description: Number of rounds for hashing passwords
-    type: Numeric
-    value: 100000
     profile: redhat-enterprise-linux-9-stig-baseline

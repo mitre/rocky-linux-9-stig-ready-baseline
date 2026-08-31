@@ -31,14 +31,14 @@ jobs:
           sudo apt -y install jq
 
       - name: Login to registry
-        uses: docker/login-action@v3
+        uses: docker/login-action@4907a6ddec9925e35a0a9e82d7399ccc52663121 # v4.1.0
         with:
           registry: ${{ secrets.SAF_IRONBANK_REGISTRY }}
           username: ${{ secrets.SAF_IRONBANK_CLI_USERNAME }}
           password: ${{ secrets.SAF_IRONBANK_CLI_TOKEN }}
 
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
 
       - name: Clone full repository so we can push
         run: git fetch --prune --unshallow
@@ -53,7 +53,7 @@ jobs:
         run: echo ${{ env.COMMIT_SHORT_SHA }}
 
       - name: Setup Ruby
-        uses: ruby/setup-ruby@v1
+        uses: ruby/setup-ruby@95ef2b042f9d7a56d8268cba8559e2842e2ad01b # v1.321.0
         with:
           ruby-version: "3.1"
 
@@ -77,13 +77,13 @@ jobs:
       - name: Save our ${{ matrix.suite }} results summary
         continue-on-error: true
         if: ${{ !contains(steps.commit.outputs.message, 'only-validate-profile') }}
-        uses: mitre/saf_action@v1.5.2
+        uses: mitre/saf_action@a19f76ed3721c14aa8a1afb8eded117d8bf16a5d # v1.9.0
         with:
           command_string: "view summary -j -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json -o spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}-data.json"
 
       - name: Save Test Result JSON
         if: ${{ !contains(steps.commit.outputs.message, 'only-validate-profile') }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
           name: ${{ env.PLATFORM }}_${{ matrix.suite }}.json
           path: spec/results/
@@ -100,7 +100,7 @@ jobs:
 
       - name: Display our ${{ matrix.suite }} results summary
         if: ${{ !contains(steps.commit.outputs.message, 'only-validate-profile') }}
-        uses: mitre/saf_action@v1.5.2
+        uses: mitre/saf_action@a19f76ed3721c14aa8a1afb8eded117d8bf16a5d # v1.9.0
         with:
           command_string: "view summary -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json"
 
@@ -113,6 +113,6 @@ jobs:
 
       - name: Ensure the scan meets our ${{ matrix.suite }} results threshold
         if: ${{ !contains(steps.commit.outputs.message, 'only-validate-profile') }}
-        uses: mitre/saf_action@v1.5.2
+        uses: mitre/saf_action@a19f76ed3721c14aa8a1afb8eded117d8bf16a5d # v1.9.0
         with:
-          command_string: "validate threshold -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json -T rocky9_${{ matrix.suite }}.threshold.yml"
+          command_string: "validate threshold -i spec/results/${{ env.PLATFORM }}_${{ matrix.suite }}.json --templateFile rocky9_${{ matrix.suite }}.threshold.yml"
