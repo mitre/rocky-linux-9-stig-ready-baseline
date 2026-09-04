@@ -1,11 +1,11 @@
 ---
 platforms:
-  - name: rhel-9
+  - name: rocky-9
 
 driver:
   name: proxy
   host: <%= ENV.fetch("KITCHEN_HOST") %>
-  username: rhel
+  username: rocky
   ssh_key: <%= ENV.fetch("KITCHEN_SSH_KEY") %>
 
 provisioner:
@@ -22,10 +22,14 @@ provisioner:
   requirements_collection_path: spec/ansible/roles/requirements.yml
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
 
+verifier:
+  input_files:
+    - kitchen.inputs.yml
+
 suites:
   - name: vanilla
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-vanilla.yml
+      playbook: spec/ansible/roles/ansible-role-rocky-vanilla.yml
     driver:
       tags:
         Name: Vanilla-<%= ENV['USER'] %>
@@ -33,7 +37,7 @@ suites:
 
   - name: hardened
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-hardened.yml
+      playbook: spec/ansible/roles/ansible-role-rocky-hardened-lxd.yml
     driver:
       tags:
         Name: Hardened-<%= ENV['USER'] %>
@@ -42,36 +46,30 @@ suites:
 lifecycle:
   pre_converge:
     - remote: |
-        echo "+++ Checking subscription manager +++"
-        source /etc/osbuild-subscription-register.env
-        sudo subscription-manager register --activationkey=$ACTIVATION_KEY --org=$ORG_ID
-        sudo subscription-manager status
-        # https://access.redhat.com/solutions/7127504
-        mkdir -p /tmp/backup-repos
-        find /etc/yum.repos.d/ -maxdepth 1 -type f -name "*.repo" ! -name "redhat.repo" -exec mv {} /tmp/backup-repos/ \;
+        set -euo pipefail
         echo "+++ Updating DNF Packages +++"
         sudo dnf -y update --nogpgcheck --nobest
         echo ""
         echo "+++ Installing needed packages for workflow and utility +++\n\n"
-        sudo dnf -y install --nogpgcheck bc bind-utils redhat-lsb-core vim git wget gcc openssl-devel libffi-devel bzip2-devel
+        sudo dnf -y install --nogpgcheck bc bind-utils vim git wget gcc openssl-devel libffi-devel bzip2-devel selinux-policy-targeted policycoreutils
         echo ""
         echo "+++ Installing Python 3.9 and Ansible +++\n\n"
         export PATH=/usr/local/bin:$PATH
         sudo dnf -y install python3-pip
         sudo python3 -m pip install ansible jmespath
         echo ""
-        echo "+++ Updating the ec2-user to keep sudo working after hardening phase +++\n\n"
-        sudo chage -d $(( $( date +%s ) / 86400 )) rhel
+        echo "+++ Updating the rocky user to keep sudo working after hardening phase +++\n\n"
+        sudo chage -d $(( $( date +%s ) / 86400 )) rocky
         echo ""
-        echo "+++ updating ec2-user sudo config for hardening phase +++\n\n"
-        sudo chmod 600 /etc/sudoers && sudo sed -i'' "/rhel/d" /etc/sudoers && sudo chmod 400 /etc/sudoers
+        echo "+++ updating rocky sudo config for hardening phase +++\n\n"
+        sudo chmod 600 /etc/sudoers && sudo sed -i'' "/rocky/d" /etc/sudoers && sudo chmod 400 /etc/sudoers
         sudo dnf -y install git
         echo "+++ add cinc-auditor for local shell +++\n\n"
         curl -L https://omnitruck.cinc.sh/install.sh | sudo bash -s -- -P cinc-auditor
 
 transport:
   name: ssh
-  username: rhel
+  username: rocky
   ssh_key: <%= ENV.fetch("KITCHEN_SSH_KEY") %>
   #https://github.com/neillturner/kitchen-ansible/issues/295
   max_ssh_sessions: 2

@@ -1,0 +1,25 @@
+---
+- hosts:
+    - localhost
+  roles:
+    - roles/ansible-role-rocky-vanilla
+    - roles/ansible-role-rocky-hardened
+    - roles/rhel9STIG
+  serial: 50
+  become: yes
+  vars:
+    rhel9stig_bootloader_password_hash: "changethispassword"
+    rhel9stig_use_aide: false # task is busted https://github.com/ansible-lockdown/RHEL9-STIG/issues/161
+    # This cloud VM has no guest-managed GRUB configuration and uses a locked,
+    # SSH-key-only CI account. The role uses this compatibility flag to skip
+    # guest bootloader work and its connecting-user password assertion.
+    system_is_ec2: true
+    rhel_09_212010: false
+    rhel_09_212020: false
+    rhel_09_212025: false
+    rhel_09_212030: false
+    # The Rocky LXD cloud image has no kdump service to disable.
+    rhel_09_213115: false
+    rhel_09_251040: false # task is busted as of release 1.1.0
+    rhel_09_652025: false # task is busted as of release 1.1.0
+    rhel_09_653030: false

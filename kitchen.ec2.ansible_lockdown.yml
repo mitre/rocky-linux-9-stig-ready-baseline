@@ -1,12 +1,12 @@
 ---
 platforms:
-  - name: rhel-9
+  - name: rocky-9
 
 driver:
   name: ec2
-  # subnet_id: "<%= ENV['SAF_PIPELINE_SUBNET'] %>"
-  # security_group_ids:
-  #   - "<%= ENV['SAF_PIPELINE_SG'] %>"
+  subnet_id: <%= ENV.fetch('SAF_PIPELINE_SUBNET') %>
+  security_group_ids:
+    - <%= ENV.fetch('SAF_PIPELINE_SG') %>
   metadata_options:
     http_tokens: required
     http_put_response_hop_limit: 1
@@ -32,10 +32,14 @@ provisioner:
   requirements_collection_path: spec/ansible/roles/requirements.yml
   ansible_extra_flags: <%= ENV['ANSIBLE_EXTRA_FLAGS'] %>
 
+verifier:
+  input_files:
+    - kitchen.inputs.yml
+
 suites:
   - name: vanilla
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-vanilla.yml
+      playbook: spec/ansible/roles/ansible-role-rocky-vanilla.yml
     driver:
       tags:
         Name: Vanilla-EC2-Ansible-Lockdown-<%= ENV['USER'] %>
@@ -43,7 +47,7 @@ suites:
 
   - name: hardened
     provisioner:
-      playbook: spec/ansible/roles/ansible-role-rhel-hardened.yml
+      playbook: spec/ansible/roles/ansible-role-rocky-hardened.yml
     driver:
       tags:
         Name: Hardened-EC2-Ansible-Lockdown-<%= ENV['USER'] %>
@@ -52,8 +56,14 @@ suites:
 lifecycle:
   pre_converge:
     - remote: |
+        echo "+++ Configuring Rocky CDN repositories +++"
+        sudo sed -i \
+          -e 's|^mirrorlist=|#mirrorlist=|' \
+          -e 's|^#baseurl=http://dl.rockylinux.org/$contentdir|baseurl=https://download.rockylinux.org/pub/rocky|' \
+          /etc/yum.repos.d/rocky.repo \
+          /etc/yum.repos.d/rocky-extras.repo
+        sudo dnf clean all
         # echo "+++ Refreshing DNF package cache +++"
-        # sudo dnf -y clean all
         echo ""
         echo "+++ Updating DNF Packages +++"
         sudo dnf -y update --nogpgcheck --nobest
