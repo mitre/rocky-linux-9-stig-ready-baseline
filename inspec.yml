@@ -14,10 +14,8 @@ supports:
 depends:
   - name: redhat-enterprise-linux-9-stig-baseline
     git: https://github.com/mitre/redhat-enterprise-linux-9-stig-baseline.git
-    # Interim: track the upstream's open patch branch, which carries fixes
-    # this profile depends on (broken-test repairs, version correction).
-    # Replace with a tag pin once the branch merges and a release is cut.
-    branch: "2.7.1"
+    # Merge the parent profile's virtualization updates before this overlay.
+    branch: main
     
 ### ROCKY-SPECIFIC INPUT OVERRIDES ###
 # The RHEL dependency supplies the full input set. This overlay declares only
