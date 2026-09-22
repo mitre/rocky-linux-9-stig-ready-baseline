@@ -4,7 +4,7 @@ maintainer: MITRE SAF Team
 copyright: MITRE
 license: Apache-2.0
 summary: "InSpec profile adapted from the DISA RHEL 9 STIG for Rocky Linux 9"
-version: 2.7.1
+version: 0.1.0
 inspec_version: ">= 5.0"
 
 supports:
