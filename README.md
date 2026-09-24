@@ -2,7 +2,7 @@
 
 This InSpec profile adapts the Red Hat Enterprise Linux 9 Security Technical Implementation Guide (RHEL9 STIG) for Rocky Linux 9. It can help programs automate Rocky Linux compliance checks against the DoD requirements represented by the source RHEL9 STIG.
 
-- Profile Version: `0.1.0`
+- Profile Version: `0.1.1`
 - Source guidance: Red Hat Enterprise Linux 9 Security Technical Implementation Guide v2r7
 
 This profile was developed to reduce the time it takes to perform a security checks based upon the STIG Guidance from the Defense Information Systems Agency (DISA) in partnership between the DISA Services Directorate (SD) and the DISA Risk Management Executive (RME) office.
